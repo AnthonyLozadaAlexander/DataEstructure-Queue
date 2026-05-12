@@ -1,11 +1,13 @@
 package Modelo;
 
-public interface Cola {
+public interface Cola <T> {
 	
-	void encolar(String dato);
-	String desencolar();
-	void buscarCola(String dato);
+	void encolar(T dato);
+	T desencolar();
+	void buscarCola(T dato);
 	void mostrarCola();
 	void eliminarCola();
+	void invertirCola();
+	void quitarPrimeroCola();
 
 }

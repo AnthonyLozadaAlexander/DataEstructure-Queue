@@ -1,21 +1,46 @@
 package Modelo;
 
-public class tadCola implements Cola {
+public class tadCola <T> implements Cola <T> {
 
+	// Punteros Principio y Fin
+	private NodoCola<T> principio;
+	private NodoCola<T> fin;
+	private String nombre;
+	
+	public tadCola(String nombre) {
+		super();
+		this.nombre = "";
+		T principio = null;
+		T fin = null;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	
 	@Override
-	public void encolar(String dato) {
-		
+	public void encolar(T dato) {
+		NodoCola aux;
+		aux = new NodoCola(dato, null);
+		if(principio == null) {
+			principio = aux;
+			fin = aux;
+		}else {
+			fin.siguiente = aux;
+			fin = aux;
+		}
 		
 	}
 
 	@Override
-	public String desencolar() {
+	public T desencolar() {
 		
 		return null;
 	}
 
 	@Override
-	public void buscarCola(String dato) {
+	public void buscarCola(T dato) {
 		
 		
 	}
@@ -28,6 +53,18 @@ public class tadCola implements Cola {
 
 	@Override
 	public void eliminarCola() {
+		
+		
+	}
+
+	@Override
+	public void invertirCola() {
+		
+		
+	}
+
+	@Override
+	public void quitarPrimeroCola() {
 		
 		
 	}
