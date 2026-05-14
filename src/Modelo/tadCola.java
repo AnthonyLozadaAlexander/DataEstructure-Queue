@@ -23,8 +23,8 @@ public class tadCola <T> implements Cola <T> {
 	public void encolar(T dato) {
 		NodoCola aux;
 		aux = new NodoCola(dato, null);
-		if(principio == null) {
-			principio = aux;
+		if(principio == null) { // si el puntero apunta a null, por lo tanto esta vacio y entonces 
+			principio = aux;    // el puntero principio apunta a la referencia de aux con el nuevo dato
 			fin = aux;
 		}else {
 			fin.siguiente = aux;
