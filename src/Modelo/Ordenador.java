@@ -12,7 +12,7 @@ public class Ordenador<T>{
         TadCola<T> mayor =  new TadCola<>("Mayor");
 
         if(original.numElemCola() > 1) {
-            pivot = original.desencolar();
+            pivot = original.desencolar(); // toma el pivote
 
             while (!(original.colaVacia())) {
                 T elementoActual = original.desencolar();
@@ -23,7 +23,6 @@ public class Ordenador<T>{
                     mayor.encolar(elementoActual);
                 }
             }
-
 
             ordenarQuickSort(menor);
             ordenarQuickSort(mayor);
