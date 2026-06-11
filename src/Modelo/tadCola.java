@@ -122,7 +122,6 @@ public class TadCola<T> implements Cola<T> {
     public boolean buscar(T elemento) {
         boolean encontrado = false;
 		boolean on = false;
-        // NodoCola<T> aux = principio;
         if (principio != null) {
             encontrado = buscarR(principio, elemento, on);
         }
@@ -143,5 +142,6 @@ public class TadCola<T> implements Cola<T> {
 
 		return on;
     }
+
 
 }
