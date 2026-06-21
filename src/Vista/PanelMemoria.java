@@ -23,11 +23,8 @@ public class PanelMemoria extends JPanel {
             return;
         }
 
-        if (colaDibujar.colaVacia()) {
-            dibujarReferencias(g);
-        } else {
-            dibujarNodos(g);
-        }
+        dibujarReferencias(g);
+        dibujarNodos(g);
 
 
 
@@ -42,14 +39,14 @@ public class PanelMemoria extends JPanel {
         // Puntero Fin
         int yFin = 80;
         g.drawString("Fin", xPunteros + 15, yFin - 10);
-        g.drawRoundRect(xPunteros, yFin, lado, lado, 15, 15);
+        g.drawRect(xPunteros, yFin, lado, lado); // rectangulo fin
         g.drawLine(xPunteros, yFin + lado, xPunteros + lado, yFin); // linea diagonal
 
         // Puntero Principio
-        int yPrincipio = 200;
-        g.drawRoundRect(xPunteros, yPrincipio, lado, lado, 15, 15);
-        g.drawLine(xPunteros, yPrincipio + lado, xPunteros + lado, yPrincipio); // linea diagonal
-        g.drawString("Principio", xPunteros + 5, yPrincipio + lado + 20);
+        int yPrincipio = 450;
+        g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
+        g.drawLine(50, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
+        g.drawString("Principio", 50 + 5, yPrincipio + lado + 20); // titulo principio
     }
 
     private void dibujarNodos(Graphics g) {
