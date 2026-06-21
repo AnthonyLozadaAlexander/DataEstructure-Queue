@@ -48,6 +48,10 @@ public class FrmSimulador extends JFrame {
         return btnEncolar;
     }
 
+    public javax.swing.JButton getBtnCrear(){
+        return btnCrear;
+    }
+
     public javax.swing.JTextField getTxtValorEncolar(){
         return txtValor;
     }
@@ -138,7 +142,7 @@ public class FrmSimulador extends JFrame {
                     .addGroup(TituloLayout.createSequentialGroup()
                         .addGap(357, 357, 357)
                         .addComponent(label1)
-                        .addContainerGap(376, Short.MAX_VALUE))
+                        .addContainerGap(377, Short.MAX_VALUE))
             );
             TituloLayout.setVerticalGroup(
                 TituloLayout.createParallelGroup()
@@ -160,7 +164,7 @@ public class FrmSimulador extends JFrame {
             btnCrear.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnCrear.setForeground(new Color(0x5e9900));
             btnCrear.setName("btnCrear");
-            btnCrear.addActionListener(e -> btnCrear(e));
+            // btnCrear.addActionListener(e -> btnCrear(e));
 
             //---- label2 ----
             label2.setText("COLA");
@@ -291,7 +295,7 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(17, Short.MAX_VALUE))
+                        .addContainerGap(117, Short.MAX_VALUE))
             );
         }
 
@@ -379,8 +383,9 @@ public class FrmSimulador extends JFrame {
             Derecha.setLayout(DerechaLayout);
             DerechaLayout.setHorizontalGroup(
                 DerechaLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                    .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING)
+                    .addGroup(DerechaLayout.createSequentialGroup()
+                        .addGap(42, 42, 42)
                         .addGroup(DerechaLayout.createParallelGroup()
                             .addGroup(DerechaLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -398,14 +403,12 @@ public class FrmSimulador extends JFrame {
                                 .addGap(12, 12, 12)
                                 .addComponent(lblFIn, GroupLayout.PREFERRED_SIZE, 29, GroupLayout.PREFERRED_SIZE))
                             .addGroup(DerechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addGroup(DerechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnDescendente2, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(label7, GroupLayout.Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnDescendente2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(DerechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnAscendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(40, 40, 40))
-                    .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnDescendente))
+                                .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(32, Short.MAX_VALUE))
             );
             DerechaLayout.setVerticalGroup(
                 DerechaLayout.createParallelGroup()
@@ -434,10 +437,10 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnDescendente)
                         .addGap(26, 26, 26)
                         .addComponent(btnDescendente2)
-                        .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                        .addGap(52, 52, 52)
                         .addComponent(label7)
                         .addGap(18, 18, 18)
-                        .addComponent(scrollPane1, GroupLayout.PREFERRED_SIZE, 193, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 263, Short.MAX_VALUE))
             );
         }
 
@@ -454,16 +457,13 @@ public class FrmSimulador extends JFrame {
         contentPaneLayout.setHorizontalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addGroup(contentPaneLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(contentPaneLayout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(Botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 618, GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addComponent(Titulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-                    .addGap(0, 1, Short.MAX_VALUE))
+                    .addContainerGap()
+                    .addComponent(Botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 630, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
@@ -472,8 +472,8 @@ public class FrmSimulador extends JFrame {
                     .addGap(4, 4, 4)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(Botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Centro, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE))
                     .addGap(0, 0, 0))
         );
         pack();
