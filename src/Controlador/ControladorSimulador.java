@@ -2,10 +2,6 @@ package Controlador;
 
 import Modelo.TadCola;
 import Vista.FrmSimulador;
-import Vista.PanelMemoria;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class ControladorSimulador {
 
@@ -27,6 +23,10 @@ public class ControladorSimulador {
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> dibujarReferencias());
     }
 
+    private String Elementos(){
+        return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+    }
+
     private void dibujarReferencias(){
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
@@ -38,7 +38,7 @@ public class ControladorSimulador {
         modeloCola.encolar(dato);
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
-        vistaPrincipal.txtValor("");
+        vistaPrincipal.setTxtValor("");
 
     }
 

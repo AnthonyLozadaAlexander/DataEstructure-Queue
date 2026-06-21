@@ -8,7 +8,6 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
-import javax.swing.BoxLayout;
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -34,6 +33,7 @@ public class FrmSimulador extends JFrame {
 
         // agregamos al panel centro el panelMemoria
         Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
+        Centro.setBackground(Color.white);
 
         // reactualizamos la memoria visual
         Centro.revalidate();
@@ -52,12 +52,20 @@ public class FrmSimulador extends JFrame {
         return btnCrear;
     }
 
+    public void setLblTamanio(String dato){
+        lblTamanio.setText(dato);
+    }
+
     public javax.swing.JTextField getTxtValorEncolar(){
         return txtValor;
     }
 
-    public void txtValor(String dato){
+    public void setTxtValor(String dato){
         txtValor.setText(dato);
+    }
+
+    public void setTxtHistorial(String dato){
+        txtHistorial.setText(dato);
     }
 
 
@@ -140,16 +148,16 @@ public class FrmSimulador extends JFrame {
             TituloLayout.setHorizontalGroup(
                 TituloLayout.createParallelGroup()
                     .addGroup(TituloLayout.createSequentialGroup()
-                        .addGap(367, 367, 367)
+                        .addGap(428, 428, 428)
                         .addComponent(label1)
-                        .addContainerGap(367, Short.MAX_VALUE))
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             );
             TituloLayout.setVerticalGroup(
                 TituloLayout.createParallelGroup()
-                    .addGroup(TituloLayout.createSequentialGroup()
-                        .addGap(22, 22, 22)
+                    .addGroup(GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
+                        .addContainerGap(23, Short.MAX_VALUE)
                         .addComponent(label1)
-                        .addContainerGap(22, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
             );
         }
 
@@ -383,9 +391,9 @@ public class FrmSimulador extends JFrame {
             Derecha.setLayout(DerechaLayout);
             DerechaLayout.setHorizontalGroup(
                 DerechaLayout.createParallelGroup()
-                    .addComponent(scrollPane1, GroupLayout.Alignment.TRAILING)
-                    .addGroup(DerechaLayout.createSequentialGroup()
-                        .addGap(42, 42, 42)
+                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addGroup(GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
+                        .addContainerGap(28, Short.MAX_VALUE)
                         .addGroup(DerechaLayout.createParallelGroup()
                             .addGroup(DerechaLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -408,7 +416,7 @@ public class FrmSimulador extends JFrame {
                                     .addComponent(btnAscendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnDescendente))
                                 .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(32, Short.MAX_VALUE))
+                        .addContainerGap())
             );
             DerechaLayout.setVerticalGroup(
                 DerechaLayout.createParallelGroup()
@@ -447,7 +455,7 @@ public class FrmSimulador extends JFrame {
         //======== Centro ========
         {
             Centro.setBackground(Color.white);
-            Centro.setBorder(new LineBorder(Color.black, 1, true));
+            Centro.setBorder(LineBorder.createBlackLineBorder());
             Centro.setName("Centro");
             Centro.setLayout(new BorderLayout());
         }
@@ -460,9 +468,10 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(Botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 630, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 708, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(1, Short.MAX_VALUE))
                 .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
@@ -472,8 +481,8 @@ public class FrmSimulador extends JFrame {
                     .addGap(4, 4, 4)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(Botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Centro, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE))
+                        .addComponent(Centro, GroupLayout.DEFAULT_SIZE, 701, Short.MAX_VALUE)
+                        .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(0, 0, 0))
         );
         pack();
