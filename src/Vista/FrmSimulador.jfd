@@ -4,14 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :::p, comp Botones:::p::p, space :::p, comp Centro:::p:630:p, space :::p, comp Derecha:::::x}, comp Titulo::l:::x}"
-			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Derecha::l:::x, comp Centro::t::701:x}, space :p:0:p}}"
+			"$horizontalGroup": "par l {seq {space :p::p, comp Botones:::p::p, space :p::p, comp Centro:::p:708:p, space :::p, comp Derecha:::p::p, space ::1:x}, comp Titulo:::::x}"
+			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Centro::l::701:x, comp Derecha::l:::x}, space :p:0:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:367:p, comp label1:::p::p, space ::367:x}}"
-				"$verticalGroup": "par l {seq l {space :p:22:p, comp label1:::p::p, space ::22:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:428:p, comp label1:::p::p, space :::x}}"
+				"$verticalGroup": "par l {seq t {space ::23:x, comp label1:::p::p, space :p:21:p}}"
 			} ) {
 				name: "Titulo"
 				"background": new java.awt.Color( 0, 0, 51, 255 )
@@ -111,7 +111,7 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {comp scrollPane1::t:::x, seq l {space :p:42:p, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}, comp label7::t:p:144:p}}, space ::32:x}}"
+				"$horizontalGroup": "par l {comp scrollPane1::::190:x, seq t {space ::28:x, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}, comp label7::t:p:144:p}}, space :::p}}"
 				"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp label6::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par l {comp label9:::p::p, seq l {space :2:2:p, comp lblFrente:::p::p}}, space s:::p, par l {comp label11:::p::p, seq l {space :2:2:p, comp lblFIn:::p::p}}, space :p:30:p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnDescendente2:::p::p, space :p:52:p, comp label7:::p::p, space s:::p, comp scrollPane1::::263:x}}"
 			} ) {
 				name: "Derecha"
@@ -192,11 +192,11 @@ new FormModel {
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "Centro"
 				"background": new java.awt.Color( 255, 255, 255, 255 )
-				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, true )
+				"border": new javax.swing.border.LineBorder( sfield java.awt.Color black, 1, false )
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 6, 0 )
-			"size": new java.awt.Dimension( 874, 650 )
+			"size": new java.awt.Dimension( 905, 650 )
 		} )
 	}
 }
