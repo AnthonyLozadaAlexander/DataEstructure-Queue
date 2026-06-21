@@ -4,13 +4,13 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq l {par t:::p {seq {space :::p, comp Botones:::p::p, space :::p, comp Centro:::p:618:p, space :::p, comp Derecha:::::x}, comp Titulo:::p::p}, space :0:1:x}}"
-			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Centro::l:::x, comp Derecha::l:::x}, space :p:0:p}}"
+			"$horizontalGroup": "par l {seq {space :::p, comp Botones:::p::p, space :::p, comp Centro:::p:630:p, space :::p, comp Derecha:::::x}, comp Titulo::l:::x}"
+			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Derecha::l:::x, comp Centro::t::701:x}, space :p:0:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:357:p, comp label1:::p::p, space ::376:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:367:p, comp label1:::p::p, space ::367:x}}"
 				"$verticalGroup": "par l {seq l {space :p:22:p, comp label1:::p::p, space ::22:x}}"
 			} ) {
 				name: "Titulo"
@@ -25,7 +25,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space :p:16:p, par l {par t:l {comp txtBuscar:::p:172:p, comp btnBuscar:::p:172:p}, par l:l::p {comp btnVerPrimero:::::x, comp btnVerUltimo::l:p:172:p}, par l:l::p {comp label3::l:p:96:p, comp btnEncolar::l:::x, comp txtValor:::::x, comp btnDesencolar:::::x, comp label4:::p:96:p, comp btnEliminarPrimero::l:::x, comp btnVaciarCola::l:p:172:p, comp label5::l:p:123:p, comp btnCrear::l:::x, comp label2::l:p:54:p}}, space ::24:x}}"
-				"$verticalGroup": "par l {seq l {space :p:12:p, comp label2:::p::p, space u:::p, comp btnCrear:::p::p, space u:::p, comp label3:::p::p, space s:::p, comp btnEncolar:::p::p, space s:::p, comp txtValor:::p::p, space u:::p, comp label4:::p::p, space u:::p, comp btnDesencolar:::p::p, space u:::p, comp btnEliminarPrimero:::p::p, space u:::p, comp btnVaciarCola:::p::p, space s:::p, comp label5:::p::p, space u:::p, comp btnVerPrimero:::p::p, space :p:12:p, comp btnVerUltimo:::p::p, space u:::p, comp btnBuscar:::p:30:p, space u:::p, comp txtBuscar:::p::p, space ::17:x}}"
+				"$verticalGroup": "par l {seq l {space :p:12:p, comp label2:::p::p, space u:::p, comp btnCrear:::p::p, space u:::p, comp label3:::p::p, space s:::p, comp btnEncolar:::p::p, space s:::p, comp txtValor:::p::p, space u:::p, comp label4:::p::p, space u:::p, comp btnDesencolar:::p::p, space u:::p, comp btnEliminarPrimero:::p::p, space u:::p, comp btnVaciarCola:::p::p, space s:::p, comp label5:::p::p, space u:::p, comp btnVerPrimero:::p::p, space :p:12:p, comp btnVerUltimo:::p::p, space u:::p, comp btnBuscar:::p:30:p, space u:::p, comp txtBuscar:::p::p, space ::117:x}}"
 			} ) {
 				name: "Botones"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -111,8 +111,8 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq t {space :0:0:x, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {par l:::p {comp btnDescendente2::t:::x, comp label7::t:p:144:p}, par l:::p {comp btnAscendente::l:::x, comp btnDescendente:::::x}}}, space :p:40:p}, comp scrollPane1::t:::x}"
-				"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp label6::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par l {comp label9:::p::p, seq l {space :2:2:p, comp lblFrente:::p::p}}, space s:::p, par l {comp label11:::p::p, seq l {space :2:2:p, comp lblFIn:::p::p}}, space :p:30:p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnDescendente2:::p::p, space ::22:x, comp label7:::p::p, space :p:18:p, comp scrollPane1:::p:193:p}}"
+				"$horizontalGroup": "par l {comp scrollPane1::t:::x, seq l {space :p:42:p, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}, comp label7::t:p:144:p}}, space ::32:x}}"
+				"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp label6::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par l {comp label9:::p::p, seq l {space :2:2:p, comp lblFrente:::p::p}}, space s:::p, par l {comp label11:::p::p, seq l {space :2:2:p, comp lblFIn:::p::p}}, space :p:30:p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnDescendente2:::p::p, space :p:52:p, comp label7:::p::p, space s:::p, comp scrollPane1::::263:x}}"
 			} ) {
 				name: "Derecha"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -196,7 +196,7 @@ new FormModel {
 			} )
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 6, 0 )
-			"size": new java.awt.Dimension( 874, 570 )
+			"size": new java.awt.Dimension( 874, 650 )
 		} )
 	}
 }
