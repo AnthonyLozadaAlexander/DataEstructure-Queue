@@ -36,17 +36,18 @@ public class PanelMemoria extends JPanel {
         int xPunteros = 100;
         int lado = 50;
 
-        // Puntero Fin
-        int yFin = 80;
-        g.drawString("Fin", xPunteros + 15, yFin - 10);
-        g.drawRect(xPunteros, yFin, lado, lado); // rectangulo fin
-        g.drawLine(xPunteros, yFin + lado, xPunteros + lado, yFin); // linea diagonal
+        /*// Puntero Fin
+        int yFin = 250;
+        g.drawString("Fin", 50 + 15, yFin - 10);
+        g.drawRect(50, yFin, lado, lado); // rectangulo fin
+        g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal*/
 
         // Puntero Principio
         int yPrincipio = 450;
         g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
         g.drawLine(50, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
         g.drawString("Principio", 50 + 5, yPrincipio + lado + 20); // titulo principio
+
     }
 
     private void dibujarNodos(Graphics g) {
@@ -55,16 +56,25 @@ public class PanelMemoria extends JPanel {
         int ancho = 60;
         int alto = 40;
         int espacio = 40;
+        int lado = 50;
+
 
         Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int totalElementos = colaDibujar.numElemCola();
+
+        int yFin = 250;
+        g.drawString("Fin", 50 + 15, yFin - 10); // titulo fin
+        g.drawRect(50, yFin, lado, lado); // rectangulo fin
+        g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal
 
         try {
             while (!colaDibujar.colaVacia()) {
                 String dato = colaDibujar.desencolar();
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
+
+                g.drawLine(75, 450, 75, 390); // puntero que apunta al primer elemento de la cola
 
                 g.drawRect(xi, y, ancho, alto);
                 g.drawString(dato, xi + 25, y + 25);
@@ -73,7 +83,10 @@ public class PanelMemoria extends JPanel {
                     int xSalida = xi + ancho;
                     int xLlegada = xSalida + espacio;
                     int yCentro = y + (alto / 2);
+                    int xCentro = xLlegada + (ancho / 2);
 
+
+                    // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo actual con el puntero fin
                     g.drawLine(xSalida, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }
 
