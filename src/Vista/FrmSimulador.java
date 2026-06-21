@@ -65,7 +65,7 @@ public class FrmSimulador extends JFrame {
     }
 
     public void setTxtHistorial(String dato){
-        txtHistorial.setText(dato);
+        txtHistorial.append(dato + "\n");
     }
 
 
@@ -324,6 +324,7 @@ public class FrmSimulador extends JFrame {
                 scrollPane1.setName("scrollPane1");
 
                 //---- txtHistorial ----
+                txtHistorial.setFont(new Font("Cascadia Code", Font.BOLD, 14));
                 txtHistorial.setName("txtHistorial");
                 scrollPane1.setViewportView(txtHistorial);
             }
@@ -391,9 +392,9 @@ public class FrmSimulador extends JFrame {
             Derecha.setLayout(DerechaLayout);
             DerechaLayout.setHorizontalGroup(
                 DerechaLayout.createParallelGroup()
-                    .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(scrollPane1)
                     .addGroup(GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addContainerGap(28, Short.MAX_VALUE)
+                        .addContainerGap(18, Short.MAX_VALUE)
                         .addGroup(DerechaLayout.createParallelGroup()
                             .addGroup(DerechaLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
@@ -470,8 +471,7 @@ public class FrmSimulador extends JFrame {
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 708, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(1, Short.MAX_VALUE))
+                    .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(

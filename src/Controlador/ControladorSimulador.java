@@ -30,6 +30,7 @@ public class ControladorSimulador {
     private void dibujarReferencias(){
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
+        vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
     }
 
     private void ejecutarEncolar(){
@@ -39,6 +40,7 @@ public class ControladorSimulador {
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtValor("");
+        vistaPrincipal.setTxtHistorial("Dato Encolado: " + dato);
 
     }
 

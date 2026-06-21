@@ -4,7 +4,7 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p::p, comp Botones:::p::p, space :p::p, comp Centro:::p:708:p, space :::p, comp Derecha:::p::p, space ::1:x}, comp Titulo:::::x}"
+			"$horizontalGroup": "par l {seq {space :p::p, comp Botones:::p::p, space :p::p, comp Centro:::p:708:p, space :::p, comp Derecha:::::x}, comp Titulo:::::x}"
 			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Centro::l::701:x, comp Derecha::l:::x}, space :p:0:p}}"
 		} ) {
 			name: "this"
@@ -111,7 +111,7 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {comp scrollPane1::::190:x, seq t {space ::28:x, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}, comp label7::t:p:144:p}}, space :::p}}"
+				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq t {space ::18:x, par l {seq l {space :p:29:p, comp label13:::p:87:p}, seq l {comp label6:::p::p, space u:::p, comp lblTamanio:::p:29:p}, seq l {comp label9:::p::p, space :12:12:p, comp lblFrente:::p:29:p}, seq l {comp label11:::p::p, space :p:12:p, comp lblFIn:::p:29:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}, comp label7::t:p:144:p}}, space :::p}}"
 				"$verticalGroup": "par l {seq l {space :p:31:p, par b {comp label6::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par l {comp label9:::p::p, seq l {space :2:2:p, comp lblFrente:::p::p}}, space s:::p, par l {comp label11:::p::p, seq l {space :2:2:p, comp lblFIn:::p::p}}, space :p:30:p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnDescendente2:::p::p, space :p:52:p, comp label7:::p::p, space s:::p, comp scrollPane1::::263:x}}"
 			} ) {
 				name: "Derecha"
@@ -127,6 +127,7 @@ new FormModel {
 					name: "scrollPane1"
 					add( new FormComponent( "javax.swing.JTextArea" ) {
 						name: "txtHistorial"
+						"font": new java.awt.Font( "Cascadia Code", 1, 14 )
 					} )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
