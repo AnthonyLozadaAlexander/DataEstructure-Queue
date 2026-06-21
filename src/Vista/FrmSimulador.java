@@ -33,7 +33,7 @@ public class FrmSimulador extends JFrame {
         // panel.setPreferredSize(tamanioOriginal);
 
         // agregamos al panel centro el panelMemoria
-        Centro.add(panel, java.awt.BorderLayout.CENTER);
+        Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
 
         // reactualizamos la memoria visual
         Centro.revalidate();
@@ -140,9 +140,9 @@ public class FrmSimulador extends JFrame {
             TituloLayout.setHorizontalGroup(
                 TituloLayout.createParallelGroup()
                     .addGroup(TituloLayout.createSequentialGroup()
-                        .addGap(357, 357, 357)
+                        .addGap(367, 367, 367)
                         .addComponent(label1)
-                        .addContainerGap(377, Short.MAX_VALUE))
+                        .addContainerGap(367, Short.MAX_VALUE))
             );
             TituloLayout.setVerticalGroup(
                 TituloLayout.createParallelGroup()
@@ -164,7 +164,7 @@ public class FrmSimulador extends JFrame {
             btnCrear.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnCrear.setForeground(new Color(0x5e9900));
             btnCrear.setName("btnCrear");
-            // btnCrear.addActionListener(e -> btnCrear(e));
+            btnCrear.addActionListener(e -> btnCrear(e));
 
             //---- label2 ----
             label2.setText("COLA");
