@@ -16,13 +16,20 @@ public class ControladorSimulador {
         this.modeloCola = modeloCola;
         this.vistaPrincipal = vistaPrincipal;
 
-        // detecta el boton encolar de la interfaz
-        this.vistaPrincipal.getBtnEncolar().addActionListener(new ActionListener(){
-            @Override
+        // boton encolar de la interfaz
+        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> ejecutarEncolar()); //{
+           /* @Override
             public void actionPerformed(ActionEvent e){
                 ejecutarEncolar();
             }
-        });
+        });*/
+
+        this.vistaPrincipal.getBtnCrear().addActionListener(e -> dibujarReferencias());
+    }
+
+    private void dibujarReferencias(){
+        vistaPrincipal.getPanelMemoria().setCola(modeloCola);
+        vistaPrincipal.getPanelMemoria().repaint();
     }
 
     private void ejecutarEncolar(){
