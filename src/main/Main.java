@@ -4,12 +4,12 @@ import Controlador.ControladorSimulador;
 import Modelo.ColaVacia;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
-import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class Main {
     public static void main(String[] args) {
 
-        FlatLightLaf.setup();
+        FlatIntelliJLaf.setup();
         TadCola<String> modelo = new TadCola<>("Cola Principal");
         FrmSimulador vista = new FrmSimulador();
 
