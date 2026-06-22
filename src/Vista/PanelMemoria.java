@@ -94,11 +94,11 @@ public class PanelMemoria extends JPanel {
                 g.drawRect(xi, y, ancho, alto);
                 g.drawString(dato, xi + 8, y + 25);
 
-
+                // if para dibujar puntero del siguiente nodo
                 if (i < (totalElementos - 1)) {
-                    int xSalida = xi + ancho;
-                    int xLlegada = xSalida + espacio;
-                    int yCentro = y + (alto / 2);
+                    int xSalida = xi + ancho; // inicio () -->
+                    int xLlegada = xSalida + espacio; // fin ()
+                    int yCentro = y + (alto / 2); // mitad del rectangulo arista lateral derecho
                     // int xCentro = xLlegada + (ancho / 2);
 
 
