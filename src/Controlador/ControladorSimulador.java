@@ -14,14 +14,14 @@ public class ControladorSimulador {
         this.vistaPrincipal = vistaPrincipal;
 
         // boton encolar de la interfaz
-        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> ejecutarEncolar()); //{
+        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> dibujarEncolar()); //{
            /* @Override
             public void actionPerformed(ActionEvent e){
                 ejecutarEncolar();
             }
         });*/
 
-        this.vistaPrincipal.getBtnCrear().addActionListener(e -> dibujarReferencias());
+        this.vistaPrincipal.getBtnCrear().addActionListener(e -> crearCola());
 
     }
 
@@ -29,7 +29,7 @@ public class ControladorSimulador {
         return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
     }
 
-    private void dibujarReferencias(){
+    private void crearCola(){
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
@@ -41,7 +41,7 @@ public class ControladorSimulador {
         }
     }
 
-    private void ejecutarEncolar(){
+    private void dibujarEncolar(){
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         modeloCola.encolar(dato);
