@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.ColaVacia;
+import Modelo.Algoritmos;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
@@ -13,7 +14,7 @@ public class ControladorSimulador {
         this.modeloCola = modeloCola;
         this.vistaPrincipal = vistaPrincipal;
 
-        // boton encolar de la interfaz
+        // boton encolar
         this.vistaPrincipal.getBtnEncolar().addActionListener(e -> dibujarEncolar()); //{
            /* @Override
             public void actionPerformed(ActionEvent e){
@@ -21,6 +22,7 @@ public class ControladorSimulador {
             }
         });*/
 
+        // boton crear cola
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> crearCola());
 
     }
@@ -38,6 +40,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
         } catch (ColaVacia e) {
             this.vistaPrincipal.setLblFrente("N");
+            this.vistaPrincipal.setLblFin("N");
         }
     }
 
@@ -53,8 +56,10 @@ public class ControladorSimulador {
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
+            this.vistaPrincipal.setLblFin(dato);
         } catch (ColaVacia e) {
             this.vistaPrincipal.setLblFrente("N");
+            this.vistaPrincipal.setLblFin("N");
         }
 
     }
