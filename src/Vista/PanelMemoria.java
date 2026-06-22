@@ -26,8 +26,6 @@ public class PanelMemoria extends JPanel {
         dibujarReferencias(g);
         dibujarNodos(g);
 
-
-
         /*g.drawRect(x, y, ancho, alto); // dibujar rectangulo
         g.drawString("Dato Test", x + 15, y  + 25);*/
     }
@@ -51,6 +49,8 @@ public class PanelMemoria extends JPanel {
     }
 
     private void dibujarNodos(Graphics g) {
+
+        // Constantes para las cajas
         int x = 50;
         int y = 350;
         int ancho = 60;
@@ -74,20 +74,22 @@ public class PanelMemoria extends JPanel {
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
 
-                g.drawLine(75, 450, 75, 390); // puntero que apunta al primer elemento de la cola
+                g.drawLine(75, 450, 75, 390); // puntero principio que apunta al primer elemento de la cola
 
-                g.drawLine(xi + 45, y, xi + 45, y+40); // caja de referencia
+                g.drawLine(xi + 45, y, xi + 45, y+40); // linea para la caja de referencia
+
                 g.drawRect(xi, y, ancho, alto);
                 g.drawString(dato, xi + 8, y + 25);
 
-                if (i < totalElementos - 1) {
+
+                if (i < (totalElementos - 1)) {
                     int xSalida = xi + ancho;
                     int xLlegada = xSalida + espacio;
                     int yCentro = y + (alto / 2);
                     int xCentro = xLlegada + (ancho / 2);
 
 
-                    // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo actual con el puntero fin
+                    // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.drawLine(xSalida, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }
 
