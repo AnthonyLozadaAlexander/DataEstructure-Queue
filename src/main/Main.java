@@ -11,12 +11,12 @@ public class Main {
 
         FlatLightLaf.setup();
         TadCola<String> modelo = new TadCola<>("Cola Principal");
-        FrmSimulador window = new FrmSimulador();
+        FrmSimulador vista = new FrmSimulador();
 
-            ControladorSimulador controlador = new ControladorSimulador(modelo, window);
-            window.setVisible(true);
-            window.setResizable(false);
-            window.setLocationRelativeTo(null);
+            ControladorSimulador controlador = new ControladorSimulador(modelo, vista);
+            vista.setVisible(true);
+            vista.setResizable(false);
+            vista.setLocationRelativeTo(null);
 
     }
 }
