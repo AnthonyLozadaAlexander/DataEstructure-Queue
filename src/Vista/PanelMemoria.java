@@ -76,8 +76,9 @@ public class PanelMemoria extends JPanel {
 
                 g.drawLine(75, 450, 75, 390); // puntero que apunta al primer elemento de la cola
 
+                g.drawLine(xi + 45, y, xi + 45, y+40); // caja de referencia
                 g.drawRect(xi, y, ancho, alto);
-                g.drawString(dato, xi + 25, y + 25);
+                g.drawString(dato, xi + 8, y + 25);
 
                 if (i < totalElementos - 1) {
                     int xSalida = xi + ancho;
