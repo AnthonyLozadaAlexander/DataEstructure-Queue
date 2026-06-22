@@ -1,5 +1,6 @@
 package Controlador;
 
+import Modelo.ColaVacia;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
@@ -21,6 +22,7 @@ public class ControladorSimulador {
         });*/
 
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> dibujarReferencias());
+
     }
 
     private String Elementos(){
@@ -31,6 +33,12 @@ public class ControladorSimulador {
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
+        try{
+            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblTamanio(Elementos());
+        } catch (ColaVacia e) {
+            this.vistaPrincipal.setLblFrente("N");
+        }
     }
 
     private void ejecutarEncolar(){
@@ -41,6 +49,13 @@ public class ControladorSimulador {
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtValor("");
         vistaPrincipal.setTxtHistorial("Dato Encolado: " + dato);
+
+        try{
+            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblTamanio(Elementos());
+        } catch (ColaVacia e) {
+            this.vistaPrincipal.setLblFrente("N");
+        }
 
     }
 
