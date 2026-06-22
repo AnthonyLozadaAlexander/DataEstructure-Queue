@@ -32,6 +32,7 @@ public class FrmSimulador extends JFrame {
         // panel.setPreferredSize(tamanioOriginal);
 
         // agregamos al panel centro el panelMemoria
+        panel.setFont(new Font("Arial", Font.BOLD, 11));
         panel.setBackground(Color.white);
         Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
 
@@ -70,6 +71,10 @@ public class FrmSimulador extends JFrame {
 
     public void setTxtHistorial(String dato){
         txtHistorial.append(dato + "\n");
+    }
+
+    public void setLblFin(String dato){
+        lblFIn.setText(dato);
     }
 
 
