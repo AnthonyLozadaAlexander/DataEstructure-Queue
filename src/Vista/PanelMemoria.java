@@ -48,6 +48,16 @@ public class PanelMemoria extends JPanel {
 
     }
 
+    private void redibujarFin(Graphics g, int xi, int lado){
+
+        int yFin = 250;
+        g.drawString("Fin", xi + 25, yFin - 10); // titulo fin
+        g.drawRect(xi + 10, yFin, lado, lado); // rectangulo fin
+        g.drawLine(xi + 10, yFin + lado, (xi+10) + lado, yFin); // linea diagonal
+
+
+    }
+
     private void dibujarNodos(Graphics g) {
 
         // Constantes para las cajas
@@ -63,16 +73,19 @@ public class PanelMemoria extends JPanel {
         int i = 0;
         int totalElementos = colaDibujar.numElemCola();
 
-        int yFin = 250;
-        g.drawString("Fin", 50 + 15, yFin - 10); // titulo fin
-        g.drawRect(50, yFin, lado, lado); // rectangulo fin
-        g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal
+            /*int yFin = 250;
+            g.drawString("Fin", 50 + 15, yFin - 10); // titulo fin
+            g.drawRect(50, yFin, lado, lado); // rectangulo fin
+            g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal*/
+
 
         try {
             while (!colaDibujar.colaVacia()) {
+
                 String dato = colaDibujar.desencolar();
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
+
 
                 g.drawLine(75, 450, 75, 390); // puntero principio que apunta al primer elemento de la cola
 
@@ -86,11 +99,14 @@ public class PanelMemoria extends JPanel {
                     int xSalida = xi + ancho;
                     int xLlegada = xSalida + espacio;
                     int yCentro = y + (alto / 2);
-                    int xCentro = xLlegada + (ancho / 2);
+                    // int xCentro = xLlegada + (ancho / 2);
 
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.drawLine(xSalida, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+                }else{
+                    // repaint();
+                    redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
                 }
 
                 colaAux.encolar(dato); // mandamos el dato a la cola de respaldo
@@ -100,9 +116,13 @@ public class PanelMemoria extends JPanel {
             while (!colaAux.colaVacia()) {
                 colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la colaOriginal
             }
+
         } catch (ColaVacia e) {
             System.out.println("Error: " + e.getMessage());
         }
+
+
+
     }
 
 }
