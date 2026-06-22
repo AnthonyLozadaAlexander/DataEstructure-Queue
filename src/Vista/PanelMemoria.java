@@ -33,12 +33,15 @@ public class PanelMemoria extends JPanel {
     private void dibujarReferencias(Graphics g) {
         int xPunteros = 100;
         int lado = 50;
+        // Puntero Fin
 
-        /*// Puntero Fin
-        int yFin = 250;
-        g.drawString("Fin", 50 + 15, yFin - 10);
-        g.drawRect(50, yFin, lado, lado); // rectangulo fin
-        g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal*/
+        if (colaDibujar.numElemCola() == 0) {
+                int yFin = 250;
+                g.drawString("Fin", 50 + 25, yFin - 10);
+                g.drawRect(50 + 10, yFin, lado, lado); // rectangulo fin
+                g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal
+        }
+
 
         // Puntero Principio
         int yPrincipio = 450;
