@@ -45,6 +45,10 @@ public class FrmSimulador extends JFrame {
         return panel;
     }
 
+    public javax.swing.JButton getBtnBuscar(){
+        return btnBuscar;
+    }
+
     public javax.swing.JButton getBtnEncolar(){
         return btnEncolar;
     }
@@ -76,6 +80,11 @@ public class FrmSimulador extends JFrame {
     public void setLblFin(String dato){
         lblFIn.setText(dato);
     }
+
+    public String getTxtBuscar(){
+        return txtBuscar.getText();
+    }
+
 
 
     private void btnCrear(ActionEvent e) {

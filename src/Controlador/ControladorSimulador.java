@@ -25,6 +25,8 @@ public class ControladorSimulador {
         // boton crear cola
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> crearCola());
 
+        this.vistaPrincipal.getBtnBuscar().addActionListener(e -> buscar());
+
     }
 
     private String Elementos(){
@@ -32,6 +34,7 @@ public class ControladorSimulador {
     }
 
     private void crearCola(){
+
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
@@ -44,9 +47,25 @@ public class ControladorSimulador {
         }
     }
 
+    private void buscar(){
+        String dato = vistaPrincipal.getTxtBuscar();
+        boolean encontrar = modeloCola.buscar(dato);
+
+        if(encontrar){
+            vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
+        }else{
+            vistaPrincipal.setTxtHistorial("Dato No Encontrado");
+        }
+    }
+
     private void dibujarEncolar(){
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
+        if(dato.equals("") || dato.isEmpty()){
+            vistaPrincipal.setTxtHistorial("Error: Debe Ingresar Un Dato");
+            return;
+        }
+
         modeloCola.encolar(dato);
         vistaPrincipal.getPanelMemoria().setCola(modeloCola);
         vistaPrincipal.getPanelMemoria().repaint();

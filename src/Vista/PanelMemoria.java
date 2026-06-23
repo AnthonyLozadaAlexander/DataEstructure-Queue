@@ -47,7 +47,7 @@ public class PanelMemoria extends JPanel {
         int yPrincipio = 450;
         g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
         g.drawLine(50, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
-        g.drawString("Principio", 50 + 5, yPrincipio + lado + 20); // titulo principio
+        g.drawString("Principio", 50, yPrincipio + lado + 20); // titulo principio
 
     }
 
@@ -97,7 +97,7 @@ public class PanelMemoria extends JPanel {
 
                 g.drawLine(xi + 45, y, xi + 45, y+40); // linea para la caja de referencia
 
-                g.drawRect(xi, y, ancho, alto);
+                g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
                 g.drawString(dato, xi + 8, y + 25);
 
                 // if para dibujar puntero del siguiente nodo
