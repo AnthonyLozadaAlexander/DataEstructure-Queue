@@ -33,8 +33,8 @@ public class PanelMemoria extends JPanel {
     private void dibujarReferencias(Graphics g) {
         int xPunteros = 100;
         int lado = 50;
-        // Puntero Fin
 
+        // Puntero Fin
         if (colaDibujar.numElemCola() == 0) {
                 int yFin = 250;
                 g.drawString("Fin", 50 + 25, yFin - 10);
@@ -58,6 +58,9 @@ public class PanelMemoria extends JPanel {
         g.drawRect(xi + 10, yFin, lado, lado); // rectangulo fin
         g.drawLine(xi + 10, yFin + lado, (xi+10) + lado, yFin); // linea diagonal
 
+    }
+
+    private void punteroFin(Graphics g, int xi, int lado){
 
     }
 
@@ -110,6 +113,8 @@ public class PanelMemoria extends JPanel {
                 }else{
                     // repaint();
                     redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
+                    g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
+
                 }
 
                 colaAux.encolar(dato); // mandamos el dato a la cola de respaldo
