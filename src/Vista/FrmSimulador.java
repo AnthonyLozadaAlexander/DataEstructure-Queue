@@ -61,6 +61,10 @@ public class FrmSimulador extends JFrame {
         return btnDesencolar;
     }
 
+    public javax.swing.JButton getBtnVaciarCola(){
+        return btnVaciarCola;
+    }
+
     public void setLblTamanio(String dato){
         lblTamanio.setText(dato);
     }
