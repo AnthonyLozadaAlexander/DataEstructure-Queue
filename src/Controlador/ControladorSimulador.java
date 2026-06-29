@@ -32,6 +32,9 @@ public class ControladorSimulador {
         // boton desencolar
         this.vistaPrincipal.getBtnDesencolar().addActionListener(e  -> desencolar());
 
+        // boton eliminar primero
+        this.vistaPrincipal.getBtnEliminarPrimero().addActionListener(e -> quitarPrimero());
+
     }
 
     private String Elementos(){
