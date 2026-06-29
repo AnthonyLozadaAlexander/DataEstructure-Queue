@@ -64,7 +64,7 @@ public class TadCola<T> implements Cola<T> {
 
     public void quitarPrimero() throws ColaVacia {
         if (colaVacia()) {
-            throw new ColaVacia("Quitar primero: La cola est� vac�a");
+            throw new ColaVacia("Quitar primero: La cola esta vac�a");
         } else {
             principio = principio.siguiente;
             if (principio == null)

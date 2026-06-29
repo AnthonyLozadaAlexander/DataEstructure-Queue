@@ -1,19 +1,20 @@
 package main;
 
 import Controlador.ControladorSimulador;
+import Modelo.ColaVacia;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
-import com.formdev.flatlaf.FlatLightLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
 
 public class Main {
     public static void main(String[] args) {
-        FlatLightLaf.setup();
+        FlatIntelliJLaf.setup();
         TadCola<String> modelo = new TadCola<>("Cola Principal");
-        FrmSimulador window = new FrmSimulador();
+        FrmSimulador vista = new FrmSimulador();
+        ControladorSimulador controlador = new ControladorSimulador(modelo, vista);
+        vista.setVisible(true);
+        vista.setResizable(false);
+        vista.setLocationRelativeTo(null);
 
-        ControladorSimulador controlador = new ControladorSimulador(modelo, window);
-        window.setVisible(true);
-        window.setResizable(false);
-        window.setLocationRelativeTo(null);
     }
 }

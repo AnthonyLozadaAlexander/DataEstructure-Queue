@@ -1,6 +1,6 @@
 package Modelo;
 
-public class Ordenador<T>{
+public class Algoritmos<T> {
 
     public void ejecutarQuickSort(Cola<T> original) throws ColaVacia{
         ordenarQuickSort(original);
@@ -39,4 +39,5 @@ public class Ordenador<T>{
 
         }
     }
+
 }
