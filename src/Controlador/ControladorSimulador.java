@@ -35,10 +35,21 @@ public class ControladorSimulador {
         // boton eliminar primero
         this.vistaPrincipal.getBtnEliminarPrimero().addActionListener(e -> quitarPrimero());
 
+        // boton vaciar cola
+        this.vistaPrincipal.getBtnVaciarCola().addActionListener(e -> vaciarCola());
+
     }
 
     private String Elementos(){
         return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+    }
+
+    private void vaciarCola(){
+        modeloCola.eliminarCola();
+        vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+        vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+        this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
+        this.vistaPrincipal.setLblTamanio(Elementos());
     }
 
     private void quitarPrimero(){
