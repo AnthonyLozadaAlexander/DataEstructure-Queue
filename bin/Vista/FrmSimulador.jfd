@@ -111,8 +111,8 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq t {space ::23:x, comp label7:::p:144:p, space :p:24:p}, seq l {space :p:20:p, par l {seq l {space :p:29:p, comp label13:::p:87:p}, par t:l {comp btnDescendente2::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}}, par l:l::p {seq l {comp label6:::p::p, space :::p, comp lblTamanio:::::x}, seq l {comp label11:::p::p, space :::p, comp lblFIn:::p:27:p}, seq l {comp label9:::p::p, space :::p, comp lblFrente:::p:27:p}}}, space ::23:x}}"
-				"$verticalGroup": "par l {seq l {space :p:42:p, par b {comp lblTamanio::b:p::p, comp label6::b:p::p}, space s:::p, par b {comp label9::b:p::p, comp lblFrente::b:p:25:p}, space :p:18:p, par b {comp label11::b:p::p, comp lblFIn::b:p::p}, space s:::p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnDescendente2:::p::p, space :p:53:p, comp label7:::p::p, space s:::p, comp scrollPane1::::261:x}}"
+				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq t {space ::25:x, comp label7:::p:144:p, space :p:24:p}, seq l {space :p:20:p, par l {seq l {space :p:29:p, comp label13:::p:87:p}, par t:l {comp btnInvertir::t:p:144:p, par l:t::p {comp btnAscendente::l:::x, comp btnDescendente:::p::p}}, par l:l::p {seq l {comp label6:::p::p, space :::p, comp lblTamanio:::::x}, seq l {comp label11:::p::p, space :::p, comp lblFIn:::p:27:p}, seq l {comp label9:::p::p, space :::p, comp lblFrente:::p:27:p}}}, space ::23:x}}"
+				"$verticalGroup": "par l {seq l {space :p:42:p, par b {comp lblTamanio::b:p::p, comp label6::b:p::p}, space s:::p, par b {comp label9::b:p::p, comp lblFrente::b:p:25:p}, space :p:18:p, par b {comp label11::b:p::p, comp lblFIn::b:p::p}, space s:::p, comp label13:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space :p:26:p, comp btnInvertir:::p::p, space :p:53:p, comp label7:::p::p, space s:::p, comp scrollPane1::::261:x}}"
 			} ) {
 				name: "Derecha"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -185,7 +185,7 @@ new FormModel {
 					"foreground": #Color3
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
-					name: "btnDescendente2"
+					name: "btnInvertir"
 					"text": "Invertir"
 					"font": #Font0
 				} )

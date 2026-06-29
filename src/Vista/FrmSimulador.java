@@ -17,7 +17,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
-import javax.swing.border.LineBorder;
 
 /**
  * @author USUARIO
@@ -61,6 +60,10 @@ public class FrmSimulador extends JFrame {
         return btnDesencolar;
     }
 
+    public javax.swing.JButton getBtnInvertirCola(){
+        return btnInvertir;
+    }
+
     public javax.swing.JButton getBtnVaciarCola(){
         return btnVaciarCola;
     }
@@ -100,24 +103,7 @@ public class FrmSimulador extends JFrame {
 
 
     private void btnCrear(ActionEvent e) {
-       /* // Guardamos el tamanio original del Panel Centro
-        java.awt.Dimension tamanioOriginal = Centro.getPreferredSize();
 
-        // cambiamos el layout del Panel Centro
-        Centro.setLayout(new java.awt.BorderLayout());
-
-        // instanciamos el PanelMemoria
-        PanelMemoria panelDibujo = new PanelMemoria();
-
-        // le damos el tamanio original al panelDibujo
-        panelDibujo.setPreferredSize(tamanioOriginal);
-
-
-        Centro.add(panelDibujo, java.awt.BorderLayout.CENTER);
-        Centro.revalidate();
-        Centro.repaint();
-
-        btnCrear.setEnabled(false);*/
     }
 
     private void initComponents() {
@@ -153,7 +139,7 @@ public class FrmSimulador extends JFrame {
         label13 = new JLabel();
         btnAscendente = new JButton();
         btnDescendente = new JButton();
-        btnDescendente2 = new JButton();
+        btnInvertir = new JButton();
         Centro = new JPanel();
 
         //======== this ========
@@ -413,10 +399,10 @@ public class FrmSimulador extends JFrame {
             btnDescendente.setForeground(new Color(0x0066ff));
             btnDescendente.setName("btnDescendente");
 
-            //---- btnDescendente2 ----
-            btnDescendente2.setText("Invertir");
-            btnDescendente2.setFont(new Font("Cascadia Code", Font.BOLD, 16));
-            btnDescendente2.setName("btnDescendente2");
+            //---- btnInvertir ----
+            btnInvertir.setText("Invertir");
+            btnInvertir.setFont(new Font("Cascadia Code", Font.BOLD, 16));
+            btnInvertir.setName("btnInvertir");
 
             GroupLayout DerechaLayout = new GroupLayout(Derecha);
             Derecha.setLayout(DerechaLayout);
@@ -424,7 +410,7 @@ public class FrmSimulador extends JFrame {
                 DerechaLayout.createParallelGroup()
                     .addComponent(scrollPane1)
                     .addGroup(GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
+                        .addContainerGap(25, Short.MAX_VALUE)
                         .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(DerechaLayout.createSequentialGroup()
@@ -434,7 +420,7 @@ public class FrmSimulador extends JFrame {
                                 .addGap(29, 29, 29)
                                 .addComponent(label13, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE))
                             .addGroup(DerechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnDescendente2, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInvertir, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
                                 .addGroup(DerechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnAscendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnDescendente)))
@@ -475,7 +461,7 @@ public class FrmSimulador extends JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(btnDescendente)
                         .addGap(26, 26, 26)
-                        .addComponent(btnDescendente2)
+                        .addComponent(btnInvertir)
                         .addGap(53, 53, 53)
                         .addComponent(label7)
                         .addGap(18, 18, 18)
@@ -552,7 +538,7 @@ public class FrmSimulador extends JFrame {
     private JLabel label13;
     private JButton btnAscendente;
     private JButton btnDescendente;
-    private JButton btnDescendente2;
+    private JButton btnInvertir;
     private JPanel Centro;
     // JFormDesigner - End of variables declaration  //GEN-END:variables  @formatter:on
 }
