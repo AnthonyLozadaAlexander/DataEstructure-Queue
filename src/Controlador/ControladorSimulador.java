@@ -38,10 +38,27 @@ public class ControladorSimulador {
         // boton vaciar cola
         this.vistaPrincipal.getBtnVaciarCola().addActionListener(e -> vaciarCola());
 
+        // boton invertirCola
+        this.vistaPrincipal.getBtnInvertirCola().addActionListener(e -> invertirCola());
+
     }
 
     private String Elementos(){
         return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+    }
+
+    private void invertirCola(){
+        try {
+            modeloCola.invertirCola();
+            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+            this.vistaPrincipal.setTxtHistorial("Cola Invertida");
+            this.vistaPrincipal.setLblTamanio(Elementos());
+            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+        }catch(ColaVacia e){
+            this.vistaPrincipal.setLblFrente("N");
+            this.vistaPrincipal.setLblFin("N");
+        }
     }
 
     private void vaciarCola(){
