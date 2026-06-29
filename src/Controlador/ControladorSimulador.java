@@ -15,8 +15,9 @@ public class ControladorSimulador {
         this.vistaPrincipal = vistaPrincipal;
 
         // boton encolar
-        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> dibujarEncolar()); //{
-           /* @Override
+        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> dibujarEncolar());
+        /*{
+            @Override
             public void actionPerformed(ActionEvent e){
                 ejecutarEncolar();
             }
@@ -25,14 +26,30 @@ public class ControladorSimulador {
         // boton crear cola
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> crearCola());
 
+        // boton buscar
         this.vistaPrincipal.getBtnBuscar().addActionListener(e -> buscar());
 
+        // boton desencolar
         this.vistaPrincipal.getBtnDesencolar().addActionListener(e  -> desencolar());
 
     }
 
     private String Elementos(){
         return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+    }
+
+    private void quitarPrimero(){
+        try {
+            modeloCola.quitarPrimero();
+            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+            this.vistaPrincipal.setTxtHistorial("Primer Elemento Quitado");
+            this.vistaPrincipal.setLblTamanio(Elementos());
+            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+        }catch (ColaVacia e){
+            this.vistaPrincipal.setLblFrente("N");
+            this.vistaPrincipal.setLblFin("N");
+        }
     }
 
     private void desencolar(){
