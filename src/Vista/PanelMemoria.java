@@ -60,9 +60,9 @@ public class PanelMemoria extends JPanel {
 
     }
 
-    private void punteroFin(Graphics g, int xi, int lado){
+    /*private void punteroFin(Graphics g, int xi, int lado){
 
-    }
+    }*/
 
     private void dibujarNodos(Graphics g) {
 
