@@ -18,19 +18,21 @@ public class PanelMemoria extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // limpiamos la pizarra de dibujo primero
+        Graphics2D g2d = (Graphics2D) g;
+        g2d.translate(0, -70); // mover el punto origen un poco hacia arriba
 
         if (colaDibujar == null) { // si la cola aun no esta creada
             return;
         }
 
-        dibujarReferencias(g);
-        dibujarNodos(g);
+        dibujarReferencias(g2d);
+        dibujarNodos(g2d);
 
         /*g.drawRect(x, y, ancho, alto); // dibujar rectangulo
         g.drawString("Dato Test", x + 15, y  + 25);*/
     }
 
-    private void dibujarReferencias(Graphics g) {
+    private void dibujarReferencias(Graphics2D g) {
         int xPunteros = 100;
         int lado = 50;
 
@@ -51,7 +53,7 @@ public class PanelMemoria extends JPanel {
 
     }
 
-    private void redibujarFin(Graphics g, int xi, int lado){
+    private void redibujarFin(Graphics2D g, int xi, int lado){
 
         int yFin = 250;
         g.drawString("Fin", xi + 25, yFin - 10); // titulo fin
@@ -64,7 +66,7 @@ public class PanelMemoria extends JPanel {
 
     }*/
 
-    private void dibujarNodos(Graphics g) {
+    private void dibujarNodos(Graphics2D g) {
 
         // Constantes para las cajas
         int x = 50;
