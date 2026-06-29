@@ -85,6 +85,10 @@ public class FrmSimulador extends JFrame {
         lblFIn.setText(dato);
     }
 
+    public javax.swing.JButton getBtnEliminarPrimero(){
+        return btnEliminarPrimero;
+    }
+
     public String getTxtBuscar(){
         return txtBuscar.getText();
     }
