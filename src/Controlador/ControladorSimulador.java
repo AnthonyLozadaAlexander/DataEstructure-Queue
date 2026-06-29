@@ -27,10 +27,26 @@ public class ControladorSimulador {
 
         this.vistaPrincipal.getBtnBuscar().addActionListener(e -> buscar());
 
+        this.vistaPrincipal.getBtnDesencolar().addActionListener(e  -> desencolar());
+
     }
 
     private String Elementos(){
         return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+    }
+
+    private void desencolar(){
+        try {
+            String dato = modeloCola.desencolar();
+            vistaPrincipal.getPanelMemoria().setCola(modeloCola);
+            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
+            this.vistaPrincipal.setTxtHistorial("Dato Desencolado: " + dato);
+            this.vistaPrincipal.setLblTamanio(Elementos());
+            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+        }catch(ColaVacia e){
+            this.vistaPrincipal.setLblFrente("N");
+            this.vistaPrincipal.setLblFin("N");
+        }
     }
 
     private void crearCola(){
