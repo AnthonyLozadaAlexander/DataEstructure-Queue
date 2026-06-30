@@ -47,9 +47,9 @@ public class PanelMemoria extends JPanel {
 
         // Puntero Principio
         int yPrincipio = 450;
-        g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
-        g.drawLine(50, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
-        g.drawString("Principio", 50, yPrincipio + lado + 20); // titulo principio
+        g.drawRect(55, yPrincipio, lado, lado); // rectangulo principio
+        g.drawLine(55, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
+        g.drawString("Principio", 55, yPrincipio + lado + 20); // titulo principio
 
     }
 

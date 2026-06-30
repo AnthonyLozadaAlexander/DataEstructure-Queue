@@ -119,29 +119,5 @@ public class TadCola<T> implements Cola<T> {
         }
     }
 
-    public boolean buscar(T elemento) {
-        boolean encontrado = false;
-		boolean on = false;
-        if (principio != null) {
-            encontrado = buscarR(principio, elemento, on);
-        }
-
-        return encontrado;
-
-    }
-
-    private boolean buscarR(NodoCola aux, T elemento, boolean on) {
-        if (aux != null && on == false) {
-            if (aux.dato.equals(elemento)) {
-                on = true;
-            } else {
-				aux = aux.siguiente;
-				on = buscarR(aux, elemento, on);
-			}
-        }
-
-		return on;
-    }
-
 
 }

@@ -56,8 +56,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
         }catch(ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            N();
         }
     }
 
@@ -78,8 +77,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
         }catch (ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            N();
         }
     }
 
@@ -92,8 +90,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
         }catch(ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            N();
         }
     }
 
@@ -106,19 +103,22 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
         } catch (ColaVacia e) {
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            N();
         }
     }
 
     private void buscar(){
-        String dato = vistaPrincipal.getTxtBuscar();
-        boolean encontrar = modeloCola.buscar(dato);
+        try {
+            String dato = vistaPrincipal.getTxtBuscar();
+            boolean encontrar = Algoritmos.buscarR(modeloCola, dato);
 
-        if(encontrar){
-            vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
-        }else{
-            vistaPrincipal.setTxtHistorial("Dato No Encontrado");
+            if (encontrar) {
+                vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
+            } else {
+                vistaPrincipal.setTxtHistorial("Dato No Encontrado");
+            }
+        }catch(ColaVacia e){
+            N();
         }
     }
 
@@ -141,10 +141,14 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFin(dato);
         } catch (ColaVacia e) {
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            N();
         }
 
+    }
+
+    public void N(){
+        this.vistaPrincipal.setLblFrente("N");
+        this.vistaPrincipal.setLblFin("N");
     }
 
 
