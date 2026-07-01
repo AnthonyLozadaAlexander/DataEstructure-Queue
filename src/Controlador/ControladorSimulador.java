@@ -50,14 +50,17 @@ public class ControladorSimulador {
     private void invertirCola(){
         try {
             modeloCola.invertirCola();
-            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
             this.vistaPrincipal.setTxtHistorial("Cola Invertida");
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(modeloCola));
+            modeloCola.invertirCola();
+            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con la cola invertida
+            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
         }catch(ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            this.etiquetasN();
         }
     }
 
@@ -78,8 +81,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
         }catch (ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            etiquetasN();
         }
     }
 
@@ -92,8 +94,7 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
         }catch(ColaVacia e){
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            etiquetasN();
         }
     }
 
@@ -106,19 +107,22 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
         } catch (ColaVacia e) {
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            etiquetasN();
         }
     }
 
     private void buscar(){
-        String dato = vistaPrincipal.getTxtBuscar();
-        boolean encontrar = modeloCola.buscar(dato);
+        try {
+            String dato = vistaPrincipal.getTxtBuscar();
+            boolean encontrar = Algoritmos.buscarR(modeloCola, dato);
 
-        if(encontrar){
-            vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
-        }else{
-            vistaPrincipal.setTxtHistorial("Dato No Encontrado");
+            if (encontrar) {
+                vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
+            } else {
+                vistaPrincipal.setTxtHistorial("Dato No Encontrado");
+            }
+        }catch(ColaVacia e){
+            etiquetasN();
         }
     }
 
@@ -141,10 +145,14 @@ public class ControladorSimulador {
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFin(dato);
         } catch (ColaVacia e) {
-            this.vistaPrincipal.setLblFrente("N");
-            this.vistaPrincipal.setLblFin("N");
+            etiquetasN();
         }
 
+    }
+
+    public void etiquetasN(){
+        this.vistaPrincipal.setLblFrente("N");
+        this.vistaPrincipal.setLblFin("N");
     }
 
 

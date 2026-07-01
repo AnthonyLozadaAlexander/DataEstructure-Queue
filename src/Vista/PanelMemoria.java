@@ -33,23 +33,22 @@ public class PanelMemoria extends JPanel {
     }
 
     private void dibujarReferencias(Graphics2D g) {
-        int xPunteros = 100;
+        // int xPunteros = 100;
         int lado = 50;
 
-        // Puntero Fin
-        if (colaDibujar.numElemCola() == 0) {
-                int yFin = 250;
-                g.drawString("Fin", 50 + 25, yFin - 10);
-                g.drawRect(50 + 10, yFin, lado, lado); // rectangulo fin
-                g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal
-        }
+        // Referencia Fin
+        int yFin = 250;
+        g.drawString("Fin", 50 + 25, yFin - 10);
+        g.drawRect(50 + 10, yFin, lado, lado); // rectangulo fin
+        g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal
 
 
-        // Puntero Principio
+
+        // Referencia Principio
         int yPrincipio = 450;
         g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
-        g.drawLine(50, yPrincipio + lado, 50 + lado, yPrincipio); // linea diagonal
-        g.drawString("Principio", 50, yPrincipio + lado + 20); // titulo principio
+        g.drawLine(50, yPrincipio + lado, (50) + lado, yPrincipio); // linea diagonal
+        g.drawString("Principio", 55, yPrincipio + lado + 20); // titulo principio
 
     }
 
@@ -93,7 +92,7 @@ public class PanelMemoria extends JPanel {
                 String dato = colaDibujar.desencolar();
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
-
+                int xj = (x + i * (ancho + espacio)); // calcula la posicion x2 para el rectangulo de la referencia Fin
 
                 g.drawLine(75, 450, 75, 390); // puntero principio que apunta al primer elemento de la cola
 
@@ -114,8 +113,14 @@ public class PanelMemoria extends JPanel {
                     g.drawLine(xSalida, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }else{
                     // repaint();
-                    redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
-                    g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
+                    // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
+                    if(i == 0){
+                        g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50);
+                    }else {
+                        g.drawLine(85 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
+                        // g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
+                        g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
+                    }
 
                 }
 
