@@ -2,7 +2,7 @@ package Modelo;
 
 public class Algoritmos {
 
-    public static <T> void ejecutarQuickSortAscendente(Cola<T> original) throws ColaVacia{
+    public static <T> void QuickSortAscendente(Cola<T> original) throws ColaVacia{
         ordenarQuickSortAscendente(original);
     }
 
@@ -40,7 +40,7 @@ public class Algoritmos {
         }
     }
 
-    public static <T> void ejecutarQuickSortDescendente(Cola<T> original) throws ColaVacia{
+    public static <T> void QuickSortDescendente(Cola<T> original) throws ColaVacia{
         ordenarQuickSortDescendente(original);
     }
 
@@ -94,6 +94,24 @@ public class Algoritmos {
         }
 
         return encontrado;
+    }
+
+    public static <T> T ultimoElementoDeLaCola(Cola<T> cola) throws ColaVacia{
+        T ultimoElemento = null;
+        T guardar = null;
+
+        if(!cola.colaVacia()) {
+            guardar = cola.desencolar();
+            ultimoElemento = ultimoElementoDeLaCola(cola);
+            if (cola.colaVacia()) {
+                ultimoElemento = guardar;
+
+            }
+            cola.encolar(guardar); // restaurar cola
+        }
+
+
+        return ultimoElemento;
     }
 
 }
