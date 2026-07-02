@@ -19,7 +19,7 @@ public class PanelMemoria extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // limpiamos la pizarra de dibujo primero
         Graphics2D g2d = (Graphics2D) g;
-        g2d.translate(0, -70); // mover el punto origen un poco hacia arriba
+        g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
         if (colaDibujar == null) { // si la cola aun no esta creada
             return;
@@ -105,18 +105,19 @@ public class PanelMemoria extends JPanel {
                 g.drawLine(xi + 45, y, xi + 45, y+40); // linea para la caja de referencia
 
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
-                g.drawString(dato, xi + 8, y + 25);
+                g.drawString(dato, xi + 8, y + 25); // texto del dato en la caja del nodo
 
                 // if para dibujar puntero del siguiente nodo
                 if (i < (totalElementos - 1)) {
                     int xOrigen = xi + ancho; // inicio () -->
                     int xLlegada = xOrigen + espacio; // fin ()
                     int yCentro = y + (alto / 2); // mitad del rectangulo arista lateral derecho
-                    // int xCentro = xLlegada + (ancho / 2);
+
 
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
-                    g.drawLine(xOrigen, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+                    g.drawOval((xOrigen - 12), yCentro - 5, 10, 10);
+                    g.drawLine((xOrigen - 10), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }else{
                     // repaint();
                     // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
@@ -134,7 +135,7 @@ public class PanelMemoria extends JPanel {
             }
 
             while (!colaAux.colaVacia()) {
-                colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la colaOriginal
+                colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la colaDibujar
             }
 
         } catch (ColaVacia e) {
