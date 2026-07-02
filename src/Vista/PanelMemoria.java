@@ -10,7 +10,7 @@ import java.awt.*;
 public class PanelMemoria extends JPanel {
     private Cola<String> colaDibujar;
 
-    public void setCola(Cola<String> colaDibujar) {
+    public void setCola(Cola<String> colaDibujar) { // setter para la cola de Dibujos
         this.colaDibujar = colaDibujar;
     }
 
@@ -25,30 +25,36 @@ public class PanelMemoria extends JPanel {
             return;
         }
 
-        dibujarReferencias(g2d);
+        dibujarReferencias(g2d, colaDibujar);
         dibujarNodos(g2d);
 
         /*g.drawRect(x, y, ancho, alto); // dibujar rectangulo
         g.drawString("Dato Test", x + 15, y  + 25);*/
     }
 
-    private void dibujarReferencias(Graphics2D g) {
+    private void dibujarReferencias(Graphics2D g, Cola<String> cola) {
         // int xPunteros = 100;
         int lado = 50;
+
+        // Rectangulos con lados iguales
 
         // Referencia Fin
         int yFin = 250;
         g.drawString("Fin", 50 + 25, yFin - 10);
         g.drawRect(50 + 10, yFin, lado, lado); // rectangulo fin
-        g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal
-
+        //g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal
 
 
         // Referencia Principio
         int yPrincipio = 450;
-        g.drawRect(50, yPrincipio, lado, lado); // rectangulo principio
-        g.drawLine(50, yPrincipio + lado, (50) + lado, yPrincipio); // linea diagonal
-        g.drawString("Principio", 55, yPrincipio + lado + 20); // titulo principio
+        g.drawRect(50 + 10, yPrincipio, lado, lado); // rectangulo principio
+        //g.drawLine(50, yPrincipio + lado, (50) + lado, yPrincipio); // linea diagonal
+        g.drawString("Principio", 55 + 5, yPrincipio + lado + 20); // titulo principio
+
+        if(cola.colaVacia()){
+            g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal de fin
+            g.drawLine(50 + 10, yPrincipio + lado, (50 + 10) + lado, yPrincipio); // linea diagonal de principio
+        }
 
     }
 
@@ -68,8 +74,8 @@ public class PanelMemoria extends JPanel {
     private void dibujarNodos(Graphics2D g) {
 
         // Constantes para las cajas
-        int x = 50;
-        int y = 350;
+        int x = 200;
+        int y = 450;
         int ancho = 60;
         int alto = 40;
         int espacio = 40;
@@ -78,6 +84,7 @@ public class PanelMemoria extends JPanel {
 
         Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
+        int j = 0;
         int totalElementos = colaDibujar.numElemCola();
 
             /*int yFin = 250;
@@ -92,10 +99,9 @@ public class PanelMemoria extends JPanel {
                 String dato = colaDibujar.desencolar();
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
-                int xj = (x + i * (ancho + espacio)); // calcula la posicion x2 para el rectangulo de la referencia Fin
+                int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo de la referencia Fin
 
-                g.drawLine(75, 450, 75, 390); // puntero principio que apunta al primer elemento de la cola
-
+                g.drawLine(110, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
                 g.drawLine(xi + 45, y, xi + 45, y+40); // linea para la caja de referencia
 
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
@@ -103,29 +109,28 @@ public class PanelMemoria extends JPanel {
 
                 // if para dibujar puntero del siguiente nodo
                 if (i < (totalElementos - 1)) {
-                    int xSalida = xi + ancho; // inicio () -->
-                    int xLlegada = xSalida + espacio; // fin ()
+                    int xOrigen = xi + ancho; // inicio () -->
+                    int xLlegada = xOrigen + espacio; // fin ()
                     int yCentro = y + (alto / 2); // mitad del rectangulo arista lateral derecho
                     // int xCentro = xLlegada + (ancho / 2);
 
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
-                    g.drawLine(xSalida, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+                    g.drawLine(xOrigen, yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }else{
                     // repaint();
                     // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
-                    if(i == 0){
-                        g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50);
-                    }else {
+
                         g.drawLine(85 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
                         // g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
-                        g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
-                    }
+                        g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 150); // linea vertical que conecta el puntero fin con el nodo fin
+
 
                 }
 
                 colaAux.encolar(dato); // mandamos el dato a la cola de respaldo
                 i++; // avanzamos al siguiente nodo
+                j++; // avanzamos al siguiente nodo para la referencia fin
             }
 
             while (!colaAux.colaVacia()) {
