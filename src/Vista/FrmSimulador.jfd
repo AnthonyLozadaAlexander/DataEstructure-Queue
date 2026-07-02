@@ -4,14 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p::p, comp Botones:::p::p, space :p::p, comp Centro::::708:x, space :p::p, comp Derecha:::p::p, space :p::p}, comp Titulo:::::x}"
+			"$horizontalGroup": "par l {seq {space :p::p, comp Botones:::p::p, space :p::p, comp Centro:::::x, space :p::p, comp Derecha:::p::p, space :p::p}, comp Titulo:::::x}"
 			"$verticalGroup": "par l {seq l {comp Titulo:::p::p, space :p:4:p, par l {comp Botones::t:::x, comp Centro::l:::x, comp Derecha::l:::x}, space :p:0:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq t {space ::390:x, comp label1:::p::p, space :p:383:p}}"
-				"$verticalGroup": "par l {seq l {space :p:20:p, comp label1:::p::p, space ::24:x}}"
+				"$horizontalGroup": "par l {seq l {space :p:34:p, comp label1:::p::p, space ::739:x}}"
+				"$verticalGroup": "par l {seq t {space ::23:x, comp label1:::p::p, space :p:21:p}}"
 			} ) {
 				name: "Titulo"
 				"background": new java.awt.Color( 0, 0, 51, 255 )

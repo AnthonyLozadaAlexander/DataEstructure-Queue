@@ -90,7 +90,7 @@ public class ControladorSimulador {
             String dato = cola.desencolar();
             vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
-            this.vistaPrincipal.setTxtHistorial("Dato Desencolado: " + dato);
+            this.vistaPrincipal.setTxtHistorial("Dato Desencolado \u25BC"+ "\n" + dato);
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
         }catch(ColaVacia e){
@@ -117,7 +117,7 @@ public class ControladorSimulador {
             boolean encontrar = Algoritmos.buscarR(cola, dato);
 
             if (encontrar) {
-                vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
+                vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
             } else {
                 vistaPrincipal.setTxtHistorial("Dato No Encontrado");
             }
@@ -130,7 +130,7 @@ public class ControladorSimulador {
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
-            vistaPrincipal.setTxtHistorial("Error: Debe Ingresar Un Dato");
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
             return;
         }
 
@@ -138,7 +138,7 @@ public class ControladorSimulador {
         vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtValor("");
-        vistaPrincipal.setTxtHistorial("Dato Encolado: " + dato);
+        vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
 
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));

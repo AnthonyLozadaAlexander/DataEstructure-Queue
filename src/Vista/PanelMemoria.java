@@ -85,7 +85,7 @@ public class PanelMemoria extends JPanel {
         Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int j = 0;
-        int totalElementos = colaDibujar.numElemCola();
+        int totalElementos = colaDibujar.numElemCola(); // estado de la colaDibujar
 
             /*int yFin = 250;
             g.drawString("Fin", 50 + 15, yFin - 10); // titulo fin
@@ -117,7 +117,7 @@ public class PanelMemoria extends JPanel {
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.drawOval((xOrigen - 12), yCentro - 5, 10, 10);
-                    g.drawLine((xOrigen - 10), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+                    g.drawLine((xOrigen - 7), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }else{
                     // repaint();
                     // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
