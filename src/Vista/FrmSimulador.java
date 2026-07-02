@@ -164,16 +164,16 @@ public class FrmSimulador extends JFrame {
             TituloLayout.setHorizontalGroup(
                 TituloLayout.createParallelGroup()
                     .addGroup(GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap(390, Short.MAX_VALUE)
                         .addComponent(label1)
-                        .addGap(368, 368, 368))
+                        .addGap(383, 383, 383))
             );
             TituloLayout.setVerticalGroup(
                 TituloLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
-                        .addContainerGap(23, Short.MAX_VALUE)
+                    .addGroup(TituloLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(label1)
-                        .addGap(21, 21, 21))
+                        .addContainerGap(24, Short.MAX_VALUE))
             );
         }
 
@@ -410,7 +410,7 @@ public class FrmSimulador extends JFrame {
                 DerechaLayout.createParallelGroup()
                     .addComponent(scrollPane1)
                     .addGroup(GroupLayout.Alignment.TRAILING, DerechaLayout.createSequentialGroup()
-                        .addContainerGap(25, Short.MAX_VALUE)
+                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))
                     .addGroup(DerechaLayout.createSequentialGroup()
@@ -437,7 +437,7 @@ public class FrmSimulador extends JFrame {
                                     .addComponent(label9)
                                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                                     .addComponent(lblFrente, GroupLayout.PREFERRED_SIZE, 27, GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(23, Short.MAX_VALUE))
+                        .addContainerGap(9, Short.MAX_VALUE))
             );
             DerechaLayout.setVerticalGroup(
                 DerechaLayout.createParallelGroup()
@@ -465,7 +465,7 @@ public class FrmSimulador extends JFrame {
                         .addGap(53, 53, 53)
                         .addComponent(label7)
                         .addGap(18, 18, 18)
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 261, Short.MAX_VALUE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 243, Short.MAX_VALUE))
             );
         }
 
@@ -485,9 +485,10 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(Botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Centro, GroupLayout.PREFERRED_SIZE, 708, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Centro, GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap())
                 .addComponent(Titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
@@ -498,7 +499,7 @@ public class FrmSimulador extends JFrame {
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(Botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+                        .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(0, 0, 0))
         );
         pack();
