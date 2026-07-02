@@ -7,15 +7,15 @@ import Vista.FrmSimulador;
 
 public class ControladorSimulador {
 
-    private TadCola<String> modeloCola;
+    private TadCola<String> cola;
     private FrmSimulador vistaPrincipal;
 
-    public ControladorSimulador(TadCola<String> modeloCola, FrmSimulador vistaPrincipal){
-        this.modeloCola = modeloCola;
+    public ControladorSimulador(TadCola<String> cola, FrmSimulador vistaPrincipal){
+        this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
 
         // boton encolar
-        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> dibujarEncolar());
+        this.vistaPrincipal.getBtnEncolar().addActionListener(e -> Encolar());
         /*{
             @Override
             public void actionPerformed(ActionEvent e){
@@ -44,20 +44,20 @@ public class ControladorSimulador {
     }
 
     private String Elementos(){
-        return modeloCola.numElemCola() > 0 ? String.valueOf(modeloCola.numElemCola()) : "0";
+        return cola.numElemCola() > 0 ? String.valueOf(cola.numElemCola()) : "0";
     }
 
     private void invertirCola(){
         try {
-            modeloCola.invertirCola();
-            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con la cola invertida
+            cola.invertirCola();
+            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
             this.vistaPrincipal.setTxtHistorial("Cola Invertida");
             this.vistaPrincipal.setLblTamanio(Elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
-            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(modeloCola));
-            modeloCola.invertirCola();
-            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con la cola invertida
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
+            cola.invertirCola();
+            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
         }catch(ColaVacia e){
             this.etiquetasN();
@@ -65,8 +65,8 @@ public class ControladorSimulador {
     }
 
     private void vaciarCola(){
-        modeloCola.eliminarCola();
-        vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+        cola.eliminarCola();
+        vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
         vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
         this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
         this.vistaPrincipal.setLblTamanio(Elementos());
@@ -74,12 +74,12 @@ public class ControladorSimulador {
 
     private void quitarPrimero(){
         try {
-            modeloCola.quitarPrimero();
-            vistaPrincipal.getPanelMemoria().setCola(modeloCola); // manda la cola, con el primero quitado
+            cola.quitarPrimero();
+            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
             this.vistaPrincipal.setTxtHistorial("Primer Elemento Quitado");
             this.vistaPrincipal.setLblTamanio(Elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
         }catch (ColaVacia e){
             etiquetasN();
         }
@@ -87,12 +87,12 @@ public class ControladorSimulador {
 
     private void desencolar(){
         try {
-            String dato = modeloCola.desencolar();
-            vistaPrincipal.getPanelMemoria().setCola(modeloCola);
+            String dato = cola.desencolar();
+            vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
             this.vistaPrincipal.setTxtHistorial("Dato Desencolado: " + dato);
             this.vistaPrincipal.setLblTamanio(Elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
         }catch(ColaVacia e){
             etiquetasN();
         }
@@ -100,11 +100,11 @@ public class ControladorSimulador {
 
     private void crearCola(){
 
-        vistaPrincipal.getPanelMemoria().setCola(modeloCola);
+        vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
         try{
-            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
         } catch (ColaVacia e) {
             etiquetasN();
@@ -114,7 +114,7 @@ public class ControladorSimulador {
     private void buscar(){
         try {
             String dato = vistaPrincipal.getTxtBuscar();
-            boolean encontrar = Algoritmos.buscarR(modeloCola, dato);
+            boolean encontrar = Algoritmos.buscarR(cola, dato);
 
             if (encontrar) {
                 vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
@@ -126,7 +126,7 @@ public class ControladorSimulador {
         }
     }
 
-    private void dibujarEncolar(){
+    private void Encolar(){
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
@@ -134,14 +134,14 @@ public class ControladorSimulador {
             return;
         }
 
-        modeloCola.encolar(dato);
-        vistaPrincipal.getPanelMemoria().setCola(modeloCola);
+        cola.encolar(dato);
+        vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtValor("");
         vistaPrincipal.setTxtHistorial("Dato Encolado: " + dato);
 
         try{
-            this.vistaPrincipal.setLblFrente(String.valueOf(modeloCola.primero()));
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFin(dato);
         } catch (ColaVacia e) {
