@@ -101,8 +101,8 @@ public class ControladorSM {
     }
 
     private void crearCola(){
-        if(cola != null){
-            this.vistaPrincipal.setTxtHistorial("\nLa Cola Ya Se Encuentra Creada\n");
+        if(cola.numElemCola() > 0){
+            this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
             return;
         }
 
