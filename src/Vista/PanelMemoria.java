@@ -87,12 +87,6 @@ public class PanelMemoria extends JPanel {
         int j = 0;
         int totalElementos = colaDibujar.numElemCola(); // estado de la colaDibujar
 
-            /*int yFin = 250;
-            g.drawString("Fin", 50 + 15, yFin - 10); // titulo fin
-            g.drawRect(50, yFin, lado, lado); // rectangulo fin
-            g.drawLine(50, yFin + lado, 50 + lado, yFin); // linea diagonal*/
-
-
         try {
             while (!colaDibujar.colaVacia()) {
 
@@ -102,12 +96,13 @@ public class PanelMemoria extends JPanel {
                 int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo de la referencia Fin
 
                 g.drawLine(110, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
-                g.drawLine(xi + 45, y, xi + 45, y+40); // linea para la caja de referencia
+                g.drawLine(xi + 45, y, xi + 45, y+40); // linea para formar la caja de referencia del nodo
+
 
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
                 g.drawString(dato, xi + 8, y + 25); // texto del dato en la caja del nodo
 
-                // if para dibujar puntero del siguiente nodo
+                // identificar el penultimo de la cola y asi poder dibujar la flecha siguiente, sin dibujar la flecha en el ultimo elemento
                 if (i < (totalElementos - 1)) {
                     int xOrigen = xi + ancho; // inicio () -->
                     int xLlegada = xOrigen + espacio; // fin ()
@@ -118,13 +113,15 @@ public class PanelMemoria extends JPanel {
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.fillOval((xOrigen - 12), yCentro - 5, 10, 10);// dibujar circulo que conecta al nodo siguiente
                     g.drawLine((xOrigen - 7), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+
+                    // else para identificar el ultimo elemento de la  cola y dibujar la diagonal de null y conectar las flechas con el nodo fin
                 }else{
                     // repaint();
                     // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
-                        g.drawLine((xi + ancho), y + (alto/2), (xi + ancho) + espacio, y + (alto/2));
-                        g.drawLine((xi + ancho) + espacio, y + (alto/ 2), (xi + ancho) + espacio,  y + (alto/ 2) + 30);
+                        /*g.drawLine((xi + ancho), y + (alto/2), (xi + ancho) + espacio, y + (alto/2));
+                        g.drawLine((xi + ancho) + espacio, y + (alto/ 2), (xi + ancho) + espacio,  y + (alto/ 2) + 30);*/
+                        g.drawLine(xi + 45, y + 40, xi + 60, y); // linea diagonal de la caja del nodo siguiente para representar el null del ultimo elemento
                         g.drawLine(85 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
-                        // g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
                         g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 150); // linea vertical que conecta el puntero fin con el nodo fin
                 }
 
