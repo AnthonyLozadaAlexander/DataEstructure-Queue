@@ -5,12 +5,12 @@ import Modelo.Algoritmos;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
-public class ControladorSimulador {
+public class ControladorSM {
 
     private TadCola<String> cola;
     private FrmSimulador vistaPrincipal;
 
-    public ControladorSimulador(TadCola<String> cola, FrmSimulador vistaPrincipal){
+    public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal){
         this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
 
