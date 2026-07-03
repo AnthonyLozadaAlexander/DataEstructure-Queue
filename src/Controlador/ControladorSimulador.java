@@ -52,10 +52,12 @@ public class ControladorSimulador {
             cola.invertirCola();
             vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+
             this.vistaPrincipal.setTxtHistorial("Cola Invertida");
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
+
             cola.invertirCola();
             vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
