@@ -101,10 +101,16 @@ public class ControladorSM {
     }
 
     private void crearCola(){
+        if(cola != null){
+            this.vistaPrincipal.setTxtHistorial("\nLa Cola Ya Se Encuentra Creada\n");
+            return;
+        }
 
         vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
+
+
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
