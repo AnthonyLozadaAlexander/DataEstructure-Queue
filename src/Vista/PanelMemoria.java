@@ -67,10 +67,6 @@ public class PanelMemoria extends JPanel {
 
     }
 
-    /*private void punteroFin(Graphics g, int xi, int lado){
-
-    }*/
-
     private void dibujarNodos(Graphics2D g) {
 
         // Constantes para las cajas
@@ -92,8 +88,8 @@ public class PanelMemoria extends JPanel {
 
                 String dato = colaDibujar.desencolar();
 
-                int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual
-                int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo de la referencia Fin
+                int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual del nodo siguiente
+                int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo del nodo referencia Fin
 
                 g.drawLine(110, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
                 g.drawLine(xi + 45, y, xi + 45, y+40); // linea para formar la caja de referencia del nodo
