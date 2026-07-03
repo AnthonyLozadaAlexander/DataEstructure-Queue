@@ -116,17 +116,16 @@ public class PanelMemoria extends JPanel {
 
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
-                    g.drawOval((xOrigen - 12), yCentro - 5, 10, 10);
+                    g.fillOval((xOrigen - 12), yCentro - 5, 10, 10);// dibujar circulo que conecta al nodo siguiente
                     g.drawLine((xOrigen - 7), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
                 }else{
                     // repaint();
                     // redibujarFin(g, xi, lado); // redibujar el puntero fin en la nueva posición
-
+                        g.drawLine((xi + ancho), y + (alto/2), (xi + ancho) + espacio, y + (alto/2));
+                        g.drawLine((xi + ancho) + espacio, y + (alto/ 2), (xi + ancho) + espacio,  y + (alto/ 2) + 30);
                         g.drawLine(85 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
                         // g.drawLine(xi + (ancho / 2),  250 + 50, xi + (ancho / 2), (250 + 50) + 50); // linea vertical que conecta el puntero fin con el nodo fin
                         g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 150); // linea vertical que conecta el puntero fin con el nodo fin
-
-
                 }
 
                 colaAux.encolar(dato); // mandamos el dato a la cola de respaldo
