@@ -91,7 +91,8 @@ public class PanelMemoria extends JPanel {
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual del nodo siguiente
                 int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo del nodo referencia Fin
 
-                g.drawLine(110, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
+                g.fillOval(80, 450 + 15, 10, 10);
+                g.drawLine(80, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
                 g.drawLine(xi + 45, y, xi + 45, y+40); // linea para formar la caja de referencia del nodo
 
 
