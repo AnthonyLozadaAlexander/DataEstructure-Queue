@@ -38,7 +38,6 @@ public class FrmSimulador extends JFrame {
     public FrmSimulador() {
         initComponents();
 
-
         panel.setFont(new Font("Arial", Font.BOLD, 11));
         panel.setBackground(Color.white);
         Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
@@ -199,6 +198,15 @@ public class FrmSimulador extends JFrame {
      */
     public String getTxtBuscar(){
         return txtBuscar.getText();
+    }
+
+
+    public javax.swing.JButton getBtnVerPrimero(){
+        return btnVerPrimero;
+    }
+
+    public javax.swing.JButton getBtnVerUltimo(){
+        return btnVerUltimo;
     }
 
     private void btnCrear(ActionEvent e) {
