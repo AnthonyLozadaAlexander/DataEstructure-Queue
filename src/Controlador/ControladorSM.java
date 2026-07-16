@@ -66,6 +66,10 @@ public class ControladorSM {
         // boton Ascendente
         this.vistaPrincipal.getBtnAscendente().addActionListener(e -> Ascendente());
 
+        this.vistaPrincipal.getBtnVerPrimero().addActionListener(e -> verPrimero());
+
+        this.vistaPrincipal.getBtnVerUltimo().addActionListener(e -> verUltimo());
+
     }
 
     /**
@@ -266,5 +270,26 @@ public class ControladorSM {
         this.vistaPrincipal.setLblFin("N");
     }
 
+    private void verPrimero(){
+
+        if(cola.colaVacia()){
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+            return;
+        }
+
+        vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
+        vistaPrincipal.getPanelMemoria().repaint();
+    }
+
+    private void verUltimo(){
+
+        if(cola.colaVacia()){
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+            return;
+        }
+
+        vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
+        vistaPrincipal.getPanelMemoria().repaint();
+    }
 
 }

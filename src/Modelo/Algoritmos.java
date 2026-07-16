@@ -76,16 +76,6 @@ public class Algoritmos {
      * @throws ColaVacia si ocurre algún problema al operar con la cola
      */
 
-    /**
-     * Implementación recursiva del algoritmo QuickSort para ordenar una cola de forma descendente.
-     * Selecciona el primer elemento como pivote, distribuye los demás elementos en dos subcolas
-     * (mayores y menores al pivote), ordena cada subcola recursivamente y las concatena.
-     *
-     * @param <T>      tipo de los elementos; debe implementar {@link Comparable}
-     * @param original la cola a ordenar (se modifica en el lugar)
-     * @throws ColaVacia si ocurre algún problema al desencolar elementos
-     */
-
     public static <T> void QuickSortDescendente(Cola<T> original) throws ColaVacia{
         ordenarQuickSortDescendente(original);
     }
