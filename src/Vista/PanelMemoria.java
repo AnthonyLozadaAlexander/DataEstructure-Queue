@@ -12,6 +12,9 @@ public class PanelMemoria extends JPanel {
     /** La cola auxiliar de Strings que se representará gráficamente en este panel. */
     private Cola<String> colaDibujar;
 
+    private boolean remarcarPrimero = false;
+    private boolean remarcarUltimo = false;
+
     /**
      * Establece la cola que debe dibujarse en el panel.
      * Debe llamarse antes de invocar {@code repaint()} para que la visualización sea correcta.
@@ -20,6 +23,18 @@ public class PanelMemoria extends JPanel {
      */
     public void setCola(Cola<String> colaDibujar) { // setter para la cola de Dibujos
         this.colaDibujar = colaDibujar;
+        this.remarcarPrimero = false;
+        this.remarcarUltimo = false;
+    }
+
+    public void setRemarcarPrimero(boolean remarcar){
+        this.remarcarPrimero = remarcar;
+        this.remarcarUltimo = false;
+    }
+
+    public void setRemarcarUltimo(boolean remarcar){
+        this.remarcarUltimo = remarcar;
+        this.remarcarPrimero = false;
     }
 
     /**
@@ -126,17 +141,33 @@ public class PanelMemoria extends JPanel {
             while (!colaDibujar.colaVacia()) {
 
                 String dato = colaDibujar.desencolar();
+                Color colorOriginal = g.getColor(); // Guardar el color original
 
-                int xi = (x + i * (ancho + espacio)); // calcular la posición x para el rectángulo actual del nodo siguiente
+                int xi = (x + i * (ancho + espacio)); // calcular la posición x1 para el rectángulo actual del nodo siguiente
                 int xj = (x + j * (ancho + espacio)); // calcula la posicion x2 para el rectangulo del nodo referencia Fin
 
-                g.fillOval(80, 450 + 15, 10, 10);
-                g.drawLine(80, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
-                g.drawLine(xi + 45, y, xi + 45, y+40); // linea para formar la caja de referencia del nodo
+                //g.fillOval(80, 450 + 15, 10, 10);
+                g.drawLine(85, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
+                g.drawLine(xi + 45, y, xi + 45, y+40); // diagonal para formar la caja de referencia del nodo
 
+                if(remarcarPrimero && i == 0){
+                    g.setColor(new Color(255, 243, 176, 150));
+                    g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
+                    g.setColor(colorOriginal); // Restaurar el color original
+
+                }else if(remarcarUltimo && i == (totalElementos - 1)){
+
+                    g.setColor(new Color(255, 243, 176, 150));
+                    g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
+                    g.drawLine(xi + 45, y, xi + 45, y+40); // diagonal para formar la caja de referencia del nodo
+                    g.setColor(colorOriginal); // Restaurar el color original
+                }
+
+                g.drawLine(xi + 45, y, xi + 45, y+40); // diagonal para formar la caja de referencia del nodo
 
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
-                g.drawString(dato, xi + 8, y + 25); // texto del dato en la caja del nodo
+                g.setColor(colorOriginal); // Restaurar el color original
+                g.drawString(dato, xi +10, y + 25); // texto del dato en la caja del nodo
 
                 // identificar el penultimo de la cola y asi poder dibujar la flecha siguiente, sin dibujar la flecha en el ultimo elemento
                 if (i < (totalElementos - 1)) {
@@ -147,7 +178,7 @@ public class PanelMemoria extends JPanel {
 
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.fillOval((xOrigen - 12), yCentro - 5, 10, 10);// dibujar circulo que conecta al nodo siguiente
-                    g.drawLine((xOrigen - 7), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+                    g.drawLine((xOrigen - 10), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
 
                     // else para identificar el ultimo elemento de la  cola y dibujar la diagonal de null y conectar las flechas con el nodo fin
                 }else{
@@ -156,7 +187,7 @@ public class PanelMemoria extends JPanel {
                         /*g.drawLine((xi + ancho), y + (alto/2), (xi + ancho) + espacio, y + (alto/2));
                         g.drawLine((xi + ancho) + espacio, y + (alto/ 2), (xi + ancho) + espacio,  y + (alto/ 2) + 30);*/
                         g.drawLine(xi + 45, y + 40, xi + 60, y); // linea diagonal de la caja del nodo siguiente para representar el null del ultimo elemento
-                        g.drawLine(85 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
+                        g.drawLine(65 + 25, 275, xj + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
                         g.drawLine(xi + (ancho / 2), 225 + 50, xi + (ancho / 2), (250 + 50) + 150); // linea vertical que conecta el puntero fin con el nodo fin
                 }
 
