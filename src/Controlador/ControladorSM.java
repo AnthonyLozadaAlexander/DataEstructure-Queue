@@ -5,11 +5,30 @@ import Modelo.Algoritmos;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
+/**
+ * Controlador principal de la aplicación siguiendo el patrón MVC.
+ * Actúa como intermediario entre el modelo ({@link TadCola}) y la vista ({@link FrmSimulador}),
+ * registrando los listeners de los botones de la interfaz y delegando las acciones
+ * correspondientes sobre la cola.
+ *
+ * @author Grupo-02
+ */
+
 public class ControladorSM {
 
+    /** Referencia al modelo: la cola de cadenas que se gestiona en la aplicación. */
     private TadCola<String> cola;
+
+    /** Referencia a la vista principal de la aplicación. */
     private FrmSimulador vistaPrincipal;
 
+    /**
+     * Crea el controlador, inyectando el modelo y la vista, y registra los
+     * {@code ActionListener} de todos los botones de la interfaz gráfica.
+     *
+     * @param cola          la cola de Strings que actúa como modelo de datos
+     * @param vistaPrincipal la ventana principal de la aplicación
+     */
     public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal){
         this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
@@ -49,10 +68,22 @@ public class ControladorSM {
 
     }
 
+    /**
+     * Retorna el número de elementos de la cola como cadena de texto.
+     * Si la cola está vacía retorna {@code "0"}.
+     *
+     * @return número de elementos como {@code String}
+     */
     private String Elementos(){
         return cola.numElemCola() > 0 ? String.valueOf(cola.numElemCola()) : "0";
     }
 
+    /**
+     * Invierte el orden de los elementos de la cola y actualiza la vista.
+     * Realiza la inversión, refresca el panel gráfico y las etiquetas de información,
+     * y luego vuelve a invertir para dejar la cola en su estado original visualmente.
+     * Si la cola está vacía, muestra las etiquetas en estado nulo.
+     */
     private void invertirCola(){
         try {
             cola.invertirCola();
@@ -73,6 +104,10 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Vacía completamente la cola y actualiza la vista para reflejar el estado vacío.
+     * Registra la acción en el historial y actualiza la etiqueta de tamaño.
+     */
     private void vaciarCola(){
         cola.eliminarCola();
         vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
@@ -81,6 +116,11 @@ public class ControladorSM {
         this.vistaPrincipal.setLblTamanio(Elementos());
     }
 
+    /**
+     * Elimina el primer elemento de la cola sin retornar su valor y actualiza la vista.
+     * Refresca el panel gráfico, el historial, el tamaño y la etiqueta del frente.
+     * Si la cola está vacía, muestra las etiquetas en estado nulo.
+     */
     private void quitarPrimero(){
         try {
             cola.quitarPrimero();
@@ -94,6 +134,11 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Extrae y muestra el primer elemento de la cola, actualizando la vista completa.
+     * El dato extraído se registra en el historial. Si la cola está vacía,
+     * muestra las etiquetas en estado nulo.
+     */
     private void desencolar(){
         try {
             String dato = cola.desencolar();
@@ -107,6 +152,11 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Inicializa la visualización de la cola en el panel gráfico.
+     * Si la cola ya tiene elementos, notifica al usuario que ya fue creada
+     * y no realiza ninguna acción adicional.
+     */
     private void crearCola(){
         if(cola.numElemCola() > 0){
             this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
@@ -126,6 +176,11 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Busca un elemento en la cola usando el valor ingresado en el campo de búsqueda
+     * de la vista, e informa el resultado en el historial.
+     * Utiliza el algoritmo recursivo {@link Algoritmos#buscarR}.
+     */
     private void buscar(){
         try {
             String dato = vistaPrincipal.getTxtBuscar();
@@ -141,6 +196,11 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Lee el valor del campo de texto de la vista, valida que no esté vacío,
+     * lo encola en el modelo y actualiza la vista: panel gráfico, historial,
+     * tamaño, frente y fin de la cola.
+     */
     private void Encolar(){
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
@@ -165,6 +225,11 @@ public class ControladorSM {
 
     }
 
+    /**
+     * Ordena los elementos de la cola de forma descendente usando QuickSort
+     * y actualiza el panel gráfico con el nuevo orden.
+     * Registra la acción en el historial.
+     */
     private void Descendente(){
         try {
             Algoritmos.ordenarQuickSortDescendente(cola);
@@ -176,6 +241,11 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Ordena los elementos de la cola de forma ascendente usando QuickSort
+     * y actualiza el panel gráfico con el nuevo orden.
+     * Registra la acción en el historial.
+     */
     private void Ascendente(){
         try {
             Algoritmos.ordenarQuickSortAscendente(cola);
@@ -187,6 +257,10 @@ public class ControladorSM {
         }
     }
 
+    /**
+     * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
+     * indicando que la cola está vacía o que ocurrió un error.
+     */
     public void etiquetasN(){
         this.vistaPrincipal.setLblFrente("N");
         this.vistaPrincipal.setLblFin("N");

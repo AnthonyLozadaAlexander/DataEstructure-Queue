@@ -19,18 +19,26 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle;
 
 /**
- * @author USUARIO
+ * Ventana principal del simulador gráfico de la estructura Cola<String>
+ * Extiende {@link javax.swing.JFrame} y contiene todos los componentes visuales:
+ * panel de botones, panel gráfico central de memoria y panel de información lateral.
+ * Diseñado con JFormDesigner y adaptada para el patrón MVC.
+ *
+ * @author Grupo-02
  */
 public class FrmSimulador extends JFrame {
+
+    /** Panel gráfico personalizado que dibuja visualmente los nodos de la cola. */
     PanelMemoria panel = new PanelMemoria();
 
+    /**
+     * Crea e inicializa la ventana del simulador.
+     * Configura el {@link PanelMemoria} y lo agrega al panel central de la interfaz.
+     */
     public FrmSimulador() {
         initComponents();
-        // java.awt.Dimension tamanioOriginal = Centro.getPreferredSize();
-        // Centro.setLayout(new java.awt.BorderLayout());
-        // panel.setPreferredSize(tamanioOriginal);
 
-        // agregamos al panel centro el panelMemoria
+
         panel.setFont(new Font("Arial", Font.BOLD, 11));
         panel.setBackground(Color.white);
         Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
@@ -40,76 +48,158 @@ public class FrmSimulador extends JFrame {
         Centro.repaint();
     }
 
+    /**
+     * Retorna el panel de memoria que dibuja visualmente la cola.
+     *
+     * @return el {@link PanelMemoria} embebido en la vista
+     */
     public PanelMemoria getPanelMemoria(){
         return panel;
     }
 
+    /**
+     * Retorna el botón para ordenar la cola de forma descendente.
+     *
+     * @return botón "Descendente"
+     */
     public javax.swing.JButton getBtnDescendente(){
         return btnDescendente;
     }
 
+    /**
+     * Retorna el botón para ordenar la cola de forma ascendente.
+     *
+     * @return botón "Ascendente"
+     */
     public javax.swing.JButton getBtnAscendente(){
         return btnAscendente;
     }
 
-
+    /**
+     * Retorna el botón de búsqueda de elementos en la cola.
+     *
+     * @return botón "Buscar"
+     */
     public javax.swing.JButton getBtnBuscar(){
         return btnBuscar;
     }
 
+    /**
+     * Retorna el botón para encolar un nuevo elemento.
+     *
+     * @return botón "Encolar"
+     */
     public javax.swing.JButton getBtnEncolar(){
         return btnEncolar;
     }
 
+    /**
+     * Retorna el botón para crear/mostrar la cola en el panel gráfico.
+     *
+     * @return botón "Crear Cola"
+     */
     public javax.swing.JButton getBtnCrear(){
         return btnCrear;
     }
 
+    /**
+     * Retorna el botón para desencolar (extraer) el primer elemento.
+     *
+     * @return botón "Desencolar"
+     */
     public javax.swing.JButton getBtnDesencolar(){
         return btnDesencolar;
     }
 
+    /**
+     * Retorna el botón para invertir el orden de la cola.
+     *
+     * @return botón "Invertir Cola"
+     */
     public javax.swing.JButton getBtnInvertirCola(){
         return btnInvertir;
     }
 
+    /**
+     * Retorna el botón para vaciar completamente la cola.
+     *
+     * @return botón "Vaciar Cola"
+     */
     public javax.swing.JButton getBtnVaciarCola(){
         return btnVaciarCola;
     }
 
+    /**
+     * Actualiza la etiqueta que muestra el tamaño actual de la cola.
+     *
+     * @param dato texto con el número de elementos a mostrar
+     */
     public void setLblTamanio(String dato){
         lblTamanio.setText(dato);
     }
 
+    /**
+     * Retorna el campo de texto donde el usuario ingresa el valor a encolar.
+     *
+     * @return campo de texto {@code txtValor}
+     */
     public javax.swing.JTextField getTxtValorEncolar(){
         return txtValor;
     }
 
+    /**
+     * Limpia o establece el valor del campo de texto de inserción.
+     *
+     * @param dato texto a colocar en el campo (generalmente cadena vacía para limpiar)
+     */
     public void setTxtValor(String dato){
         txtValor.setText(dato);
     }
 
+    /**
+     * Actualiza la etiqueta que muestra el elemento del frente de la cola.
+     *
+     * @param dato texto con el valor del elemento frente
+     */
     public void setLblFrente(String dato){
         lblFrente.setText(dato);
     }
 
+    /**
+     * Agrega una línea de texto al historial de operaciones de la vista.
+     *
+     * @param dato mensaje a registrar en el historial
+     */
     public void setTxtHistorial(String dato){
         txtHistorial.append(dato + "\n");
     }
 
+    /**
+     * Actualiza la etiqueta que muestra el elemento del final de la cola.
+     *
+     * @param dato texto con el valor del elemento final
+     */
     public void setLblFin(String dato){
         lblFIn.setText(dato);
     }
 
+    /**
+     * Retorna el botón para eliminar el primer elemento sin retornar su valor.
+     *
+     * @return botón "Eliminar Primero"
+     */
     public javax.swing.JButton getBtnEliminarPrimero(){
         return btnEliminarPrimero;
     }
 
+    /**
+     * Retorna el texto ingresado en el campo de búsqueda.
+     *
+     * @return cadena de texto a buscar en la cola
+     */
     public String getTxtBuscar(){
         return txtBuscar.getText();
     }
-
-
 
     private void btnCrear(ActionEvent e) {
 
