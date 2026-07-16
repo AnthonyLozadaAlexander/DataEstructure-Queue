@@ -9,7 +9,7 @@ import java.awt.*;
 
 public class PanelMemoria extends JPanel {
 
-    /** La cola auxiliar de Strings que se representará gráficamente en este panel. */
+    /** La cola de Strings que se representará gráficamente en este panel. */
     private Cola<String> colaDibujar;
 
     private boolean remarcarPrimero = false;
@@ -82,7 +82,7 @@ public class PanelMemoria extends JPanel {
 
 
         // Referencia Principio
-        int yPrincipio = 450;
+        int yPrincipio = 445;
         g.drawRect(50 + 10, yPrincipio, lado, lado); // rectangulo principio
         //g.drawLine(50, yPrincipio + lado, (50) + lado, yPrincipio); // linea diagonal
         g.drawString("Principio", 55 + 5, yPrincipio + lado + 20); // titulo principio
