@@ -4,8 +4,22 @@ import Controlador.ControladorSM;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
-
+/**
+ * Clase principal de arranque del Simulador Gráfico de Cola.
+ * Configura el Look and Feel de la interfaz, instancia el modelo, la vista y el controlador,
+ * y lanza la ventana principal de la aplicación.
+ *
+ * @author Grupo-02
+ */
 public class Main {
+
+    /**
+     * Punto de entrada de la aplicación.
+     * Inicializa el tema visual FlatIntelliJLaf, crea la cola de datos, la vista principal
+     * y el controlador que los enlaza; finalmente hace visible la ventana centrada en pantalla.
+     *
+     * @param args argumentos de línea de comandos (no utilizados)
+     */
     public static void main(String[] args) {
         FlatIntelliJLaf.setup();
         TadCola<String> Cola = new TadCola<>("Cola Principal");
