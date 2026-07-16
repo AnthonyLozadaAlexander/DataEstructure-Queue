@@ -8,13 +8,27 @@ import javax.swing.*;
 import java.awt.*;
 
 public class PanelMemoria extends JPanel {
+
+    /** La cola auxiliar de Strings que se representará gráficamente en este panel. */
     private Cola<String> colaDibujar;
 
+    /**
+     * Establece la cola que debe dibujarse en el panel.
+     * Debe llamarse antes de invocar {@code repaint()} para que la visualización sea correcta.
+     *
+     * @param colaDibujar la cola de Strings a representar gráficamente
+     */
     public void setCola(Cola<String> colaDibujar) { // setter para la cola de Dibujos
         this.colaDibujar = colaDibujar;
     }
 
-
+    /**
+     * Método sobrescrito que dibuja el estado actual de la cola en el panel.
+     * Limpia el lienzo, traslada el origen y delega el dibujo a los métodos auxiliares.
+     * Si la cola aún no ha sido asignada, no dibuja nada.
+     *
+     * @param g el contexto gráfico proporcionado por Swing
+     */
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g); // limpiamos la pizarra de dibujo primero
@@ -32,6 +46,13 @@ public class PanelMemoria extends JPanel {
         g.drawString("Dato Test", x + 15, y  + 25);*/
     }
 
+    /**
+     * Dibuja las cajas gráficas de las referencias {@code principio} y {@code fin} de la cola.
+     * Si la cola está vacía, dibuja una línea diagonal sobre cada caja indicando valor {@code null}.
+     *
+     * @param g    el contexto gráfico 2D
+     * @param cola la cola cuyo estado de vacío se verifica para dibujar las diagonales
+     */
     private void dibujarReferencias(Graphics2D g, Cola<String> cola) {
         // int xPunteros = 100;
         int lado = 50;
@@ -58,6 +79,15 @@ public class PanelMemoria extends JPanel {
 
     }
 
+    /**
+     * Redibuja la caja de referencia {@code fin} en la posición horizontal indicada.
+     * Se utiliza para actualizar la posición del puntero fin cuando cambia la cola.
+     *
+     * @param g    el contexto gráfico 2D
+     * @param xi   posición horizontal base donde se dibujará la caja fin
+     * @param lado tamaño del lado del cuadrado que representa la caja fin
+     */
+
     private void redibujarFin(Graphics2D g, int xi, int lado){
 
         int yFin = 250;
@@ -67,6 +97,15 @@ public class PanelMemoria extends JPanel {
 
     }
 
+    /**
+     * Recorre todos los elementos de la cola y los dibuja como nodos enlazados en el panel.
+     * Cada nodo se representa como un rectángulo con su dato; los nodos intermedios incluyen
+     * un círculo y una flecha apuntando al siguiente nodo, mientras que el último nodo
+     * muestra una diagonal indicando referencia {@code null} y conecta con el puntero fin.
+     * La cola se restaura completamente al finalizar el dibujo usando una cola auxiliar.
+     *
+     * @param g el contexto gráfico 2D
+     */
     private void dibujarNodos(Graphics2D g) {
 
         // Constantes para las cajas
