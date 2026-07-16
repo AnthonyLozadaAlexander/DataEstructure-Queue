@@ -44,6 +44,15 @@ public class FrmSimulador extends JFrame {
         return panel;
     }
 
+    public javax.swing.JButton getBtnDescendente(){
+        return btnDescendente;
+    }
+
+    public javax.swing.JButton getBtnAscendente(){
+        return btnAscendente;
+    }
+
+
     public javax.swing.JButton getBtnBuscar(){
         return btnBuscar;
     }
@@ -163,17 +172,17 @@ public class FrmSimulador extends JFrame {
             Titulo.setLayout(TituloLayout);
             TituloLayout.setHorizontalGroup(
                 TituloLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
-                        .addContainerGap(390, Short.MAX_VALUE)
+                    .addGroup(TituloLayout.createSequentialGroup()
+                        .addGap(34, 34, 34)
                         .addComponent(label1)
-                        .addGap(383, 383, 383))
+                        .addContainerGap(739, Short.MAX_VALUE))
             );
             TituloLayout.setVerticalGroup(
                 TituloLayout.createParallelGroup()
-                    .addGroup(TituloLayout.createSequentialGroup()
-                        .addGap(20, 20, 20)
+                    .addGroup(GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
+                        .addContainerGap(23, Short.MAX_VALUE)
                         .addComponent(label1)
-                        .addContainerGap(24, Short.MAX_VALUE))
+                        .addGap(21, 21, 21))
             );
         }
 
@@ -485,7 +494,7 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(Botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(Centro, GroupLayout.DEFAULT_SIZE, 708, Short.MAX_VALUE)
+                    .addComponent(Centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(Derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addContainerGap())

@@ -5,12 +5,12 @@ import Modelo.Algoritmos;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
-public class ControladorSimulador {
+public class ControladorSM {
 
     private TadCola<String> cola;
     private FrmSimulador vistaPrincipal;
 
-    public ControladorSimulador(TadCola<String> cola, FrmSimulador vistaPrincipal){
+    public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal){
         this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
 
@@ -41,6 +41,12 @@ public class ControladorSimulador {
         // boton invertirCola
         this.vistaPrincipal.getBtnInvertirCola().addActionListener(e -> invertirCola());
 
+        // boton Descendente
+        this.vistaPrincipal.getBtnDescendente().addActionListener(e -> Descendente());
+
+        // boton Ascendente
+        this.vistaPrincipal.getBtnAscendente().addActionListener(e -> Ascendente());
+
     }
 
     private String Elementos(){
@@ -52,13 +58,16 @@ public class ControladorSimulador {
             cola.invertirCola();
             vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+
             this.vistaPrincipal.setTxtHistorial("Cola Invertida");
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
+
             cola.invertirCola();
             vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+
         }catch(ColaVacia e){
             this.etiquetasN();
         }
@@ -90,7 +99,7 @@ public class ControladorSimulador {
             String dato = cola.desencolar();
             vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
-            this.vistaPrincipal.setTxtHistorial("Dato Desencolado: " + dato);
+            this.vistaPrincipal.setTxtHistorial("Dato Desencolado \u25BC"+ "\n" + dato);
             this.vistaPrincipal.setLblTamanio(Elementos());
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
         }catch(ColaVacia e){
@@ -99,10 +108,16 @@ public class ControladorSimulador {
     }
 
     private void crearCola(){
+        if(cola.numElemCola() > 0){
+            this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
+            return;
+        }
 
         vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
+
+
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblTamanio(Elementos());
@@ -117,7 +132,7 @@ public class ControladorSimulador {
             boolean encontrar = Algoritmos.buscarR(cola, dato);
 
             if (encontrar) {
-                vistaPrincipal.setTxtHistorial("Dato Encontrado: " + dato);
+                vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
             } else {
                 vistaPrincipal.setTxtHistorial("Dato No Encontrado");
             }
@@ -130,7 +145,7 @@ public class ControladorSimulador {
 
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
-            vistaPrincipal.setTxtHistorial("Error: Debe Ingresar Un Dato");
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
             return;
         }
 
@@ -138,7 +153,7 @@ public class ControladorSimulador {
         vistaPrincipal.getPanelMemoria().setCola(cola);
         vistaPrincipal.getPanelMemoria().repaint();
         vistaPrincipal.setTxtValor("");
-        vistaPrincipal.setTxtHistorial("Dato Encolado: " + dato);
+        vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
 
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
@@ -148,6 +163,28 @@ public class ControladorSimulador {
             etiquetasN();
         }
 
+    }
+
+    private void Descendente(){
+        try {
+            Algoritmos.ordenarQuickSortDescendente(cola);
+            this.vistaPrincipal.getPanelMemoria().setCola(cola);
+            this.vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
+        }catch(ColaVacia e){
+            etiquetasN();
+        }
+    }
+
+    private void Ascendente(){
+        try {
+            Algoritmos.ordenarQuickSortAscendente(cola);
+            this.vistaPrincipal.getPanelMemoria().setCola(cola);
+            this.vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+        }catch(ColaVacia e){
+            etiquetasN();
+        }
     }
 
     public void etiquetasN(){

@@ -1,7 +1,6 @@
 package main;
 
-import Controlador.ControladorSimulador;
-import Modelo.ColaVacia;
+import Controlador.ControladorSM;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
@@ -12,10 +11,13 @@ public class Main {
         TadCola<String> Cola = new TadCola<>("Cola Principal");
         FrmSimulador vista = new FrmSimulador();
 
-        ControladorSimulador controlador = new ControladorSimulador(Cola, vista);
-        vista.setVisible(true);
-        vista.setResizable(true);
-        vista.setLocationRelativeTo(null);
+        // Controlador
+        ControladorSM controlador = new ControladorSM(Cola, vista);
+
+        // Metodos para la vista
+        vista.setVisible(true); // ver la vista
+        vista.setResizable(true); // que sea minimizable y maximizable
+        vista.setLocationRelativeTo(null); // que se centre en el monitor
 
     }
 }
