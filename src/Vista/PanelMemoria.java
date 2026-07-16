@@ -106,7 +106,6 @@ public class PanelMemoria extends JPanel {
                     int yCentro = y + (alto / 2); // mitad del rectangulo arista lateral derecho
 
 
-
                     // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                     g.fillOval((xOrigen - 12), yCentro - 5, 10, 10);// dibujar circulo que conecta al nodo siguiente
                     g.drawLine((xOrigen - 7), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente

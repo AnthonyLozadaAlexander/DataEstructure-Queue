@@ -44,6 +44,15 @@ public class FrmSimulador extends JFrame {
         return panel;
     }
 
+    public javax.swing.JButton getBtnDescendente(){
+        return btnDescendente;
+    }
+
+    public javax.swing.JButton getBtnAscendente(){
+        return btnAscendente;
+    }
+
+
     public javax.swing.JButton getBtnBuscar(){
         return btnBuscar;
     }

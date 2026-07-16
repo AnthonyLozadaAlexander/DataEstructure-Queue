@@ -41,6 +41,12 @@ public class ControladorSM {
         // boton invertirCola
         this.vistaPrincipal.getBtnInvertirCola().addActionListener(e -> invertirCola());
 
+        // boton Descendente
+        this.vistaPrincipal.getBtnDescendente().addActionListener(e -> Descendente());
+
+        // boton Ascendente
+        this.vistaPrincipal.getBtnAscendente().addActionListener(e -> Ascendente());
+
     }
 
     private String Elementos(){
@@ -61,6 +67,7 @@ public class ControladorSM {
             cola.invertirCola();
             vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
             vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+
         }catch(ColaVacia e){
             this.etiquetasN();
         }
@@ -156,6 +163,28 @@ public class ControladorSM {
             etiquetasN();
         }
 
+    }
+
+    private void Descendente(){
+        try {
+            Algoritmos.ordenarQuickSortDescendente(cola);
+            this.vistaPrincipal.getPanelMemoria().setCola(cola);
+            this.vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
+        }catch(ColaVacia e){
+            etiquetasN();
+        }
+    }
+
+    private void Ascendente(){
+        try {
+            Algoritmos.ordenarQuickSortAscendente(cola);
+            this.vistaPrincipal.getPanelMemoria().setCola(cola);
+            this.vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+        }catch(ColaVacia e){
+            etiquetasN();
+        }
     }
 
     public void etiquetasN(){
