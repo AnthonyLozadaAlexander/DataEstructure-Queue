@@ -1,7 +1,7 @@
 package Controlador;
 
 import Modelo.ColaVacia;
-import Modelo.Algoritmos;
+import main.Algoritmos;
 import Modelo.TadCola;
 import Vista.FrmSimulador;
 
@@ -18,7 +18,6 @@ public class ControladorSM {
 
     /** Referencia al modelo: la cola de cadenas que se gestiona en la aplicación. */
     private TadCola<String> cola;
-
     /** Referencia a la vista principal de la aplicación. */
     private FrmSimulador vistaPrincipal;
 
@@ -29,18 +28,13 @@ public class ControladorSM {
      * @param cola          la cola de Strings que actúa como modelo de datos
      * @param vistaPrincipal la ventana principal de la aplicación
      */
+
     public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal){
         this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
 
         // boton encolar
         this.vistaPrincipal.getBtnEncolar().addActionListener(e -> Encolar());
-        /*{
-            @Override
-            public void actionPerformed(ActionEvent e){
-                ejecutarEncolar();
-            }
-        });*/
 
         // boton crear cola
         this.vistaPrincipal.getBtnCrear().addActionListener(e -> crearCola());
@@ -66,8 +60,10 @@ public class ControladorSM {
         // boton Ascendente
         this.vistaPrincipal.getBtnAscendente().addActionListener(e -> Ascendente());
 
+        // boton ver Primero
         this.vistaPrincipal.getBtnVerPrimero().addActionListener(e -> verPrimero());
 
+        // boton ver Ultimo
         this.vistaPrincipal.getBtnVerUltimo().addActionListener(e -> verUltimo());
 
     }
@@ -164,13 +160,12 @@ public class ControladorSM {
     private void crearCola(){
         if(cola.numElemCola() > 0){
             this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
-            return;
+        }else {
+
+            vistaPrincipal.getPanelMemoria().setCola(cola);
+            vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
         }
-
-        vistaPrincipal.getPanelMemoria().setCola(cola);
-        vistaPrincipal.getPanelMemoria().repaint();
-        vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
-
 
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
@@ -210,14 +205,14 @@ public class ControladorSM {
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
-            return;
-        }
+        }else {
 
-        cola.encolar(dato);
-        vistaPrincipal.getPanelMemoria().setCola(cola);
-        vistaPrincipal.getPanelMemoria().repaint();
-        vistaPrincipal.setTxtValor("");
-        vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
+            cola.encolar(dato);
+            vistaPrincipal.getPanelMemoria().setCola(cola);
+            vistaPrincipal.getPanelMemoria().repaint();
+            vistaPrincipal.setTxtValor("");
+            vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
+        }
 
         try{
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
@@ -274,22 +269,20 @@ public class ControladorSM {
 
         if(cola.colaVacia()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-            return;
+        }else {
+            vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
+            vistaPrincipal.getPanelMemoria().repaint();
         }
-
-        vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
-        vistaPrincipal.getPanelMemoria().repaint();
     }
 
     private void verUltimo(){
 
         if(cola.colaVacia()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-            return;
+        }else {
+            vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
+            vistaPrincipal.getPanelMemoria().repaint();
         }
-
-        vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
-        vistaPrincipal.getPanelMemoria().repaint();
     }
 
 }

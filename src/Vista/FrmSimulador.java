@@ -465,7 +465,7 @@ public class FrmSimulador extends JFrame {
             lblTamanio.setName("lblTamanio");
 
             //---- label9 ----
-            label9.setText("[ FRENTE ]:");
+            label9.setText("[ PRIMERO ]:");
             label9.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             label9.setBackground(Color.white);
             label9.setName("label9");
@@ -477,7 +477,7 @@ public class FrmSimulador extends JFrame {
             lblFrente.setName("lblFrente");
 
             //---- label11 ----
-            label11.setText("[ FINAL  ]:");
+            label11.setText("[ ULTIMO  ]:");
             label11.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             label11.setBackground(Color.white);
             label11.setName("label11");
