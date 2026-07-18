@@ -1,8 +1,8 @@
 package main;
 
-import Modelo.Cola;
-import Modelo.ColaVacia;
-import Modelo.TadCola;
+import tadCola.Cola;
+import tadCola.ColaVacia;
+import tadCola.TadCola;
 
 /**
  * Clase de utilidades con algoritmos genéricos aplicables sobre la estructura {@link Cola}.

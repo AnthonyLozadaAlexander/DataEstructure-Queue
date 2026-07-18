@@ -1,4 +1,4 @@
-package Modelo;
+package tadCola;
 
 @SuppressWarnings("serial")
 public class ColaVacia extends Exception {

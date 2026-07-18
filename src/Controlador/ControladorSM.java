@@ -1,8 +1,8 @@
 package Controlador;
 
-import Modelo.ColaVacia;
+import tadCola.ColaVacia;
 import main.Algoritmos;
-import Modelo.TadCola;
+import tadCola.TadCola;
 import Vista.FrmSimulador;
 
 /**

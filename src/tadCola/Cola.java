@@ -1,4 +1,4 @@
-package Modelo;
+package tadCola;
 
 public interface Cola<T> {
 	boolean colaVacia ();

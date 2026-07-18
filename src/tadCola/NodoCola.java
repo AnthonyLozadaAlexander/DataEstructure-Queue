@@ -1,4 +1,4 @@
-package Modelo;
+package tadCola;
 
 public class NodoCola <T>{
 	
