@@ -1,8 +1,8 @@
 package Vista;
 
-import Modelo.Cola;
-import Modelo.ColaVacia;
-import Modelo.TadCola;
+import tadCola.Cola;
+import tadCola.ColaVacia;
+import tadCola.TadCola;
 
 import javax.swing.*;
 import java.awt.*;
