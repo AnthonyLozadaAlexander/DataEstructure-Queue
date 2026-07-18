@@ -1,7 +1,7 @@
 package main;
 
 import Controlador.ControladorSM;
-import Modelo.TadCola;
+import tadCola.TadCola;
 import Vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 /**
