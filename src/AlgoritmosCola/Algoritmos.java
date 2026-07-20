@@ -1,4 +1,4 @@
-package main;
+package AlgoritmosCola;
 
 import tadCola.Cola;
 import tadCola.ColaVacia;

@@ -1,7 +1,7 @@
 package Controlador;
 
 import tadCola.ColaVacia;
-import main.Algoritmos;
+import AlgoritmosCola.Algoritmos;
 import tadCola.TadCola;
 import Vista.FrmSimulador;
 
