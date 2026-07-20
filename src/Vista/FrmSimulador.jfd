@@ -144,7 +144,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label9"
-					"text": "[ FRENTE ]:"
+					"text": "[ PRIMERO ]:"
 					"font": #Font1
 					"background": #Color0
 				} )
@@ -156,7 +156,7 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label11"
-					"text": "[ FINAL  ]:"
+					"text": "[ ULTIMO  ]:"
 					"font": #Font1
 					"background": #Color0
 				} )
@@ -196,7 +196,7 @@ new FormModel {
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 			} )
 		}, new FormLayoutConstraints( null ) {
-			"location": new java.awt.Point( 6, 0 )
+			"location": new java.awt.Point( 26, 0 )
 			"size": new java.awt.Dimension( 905, 650 )
 		} )
 	}

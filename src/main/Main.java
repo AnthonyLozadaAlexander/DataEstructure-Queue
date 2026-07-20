@@ -1,7 +1,7 @@
 package main;
 
 import Controlador.ControladorSM;
-import Modelo.TadCola;
+import tadCola.TadCola;
 import Vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 /**
@@ -20,6 +20,7 @@ public class Main {
      *
      * @param args argumentos de línea de comandos (no utilizados)
      */
+
     public static void main(String[] args) {
         FlatIntelliJLaf.setup();
         TadCola<String> Cola = new TadCola<>("Cola Principal");

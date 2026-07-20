@@ -38,7 +38,6 @@ public class FrmSimulador extends JFrame {
     public FrmSimulador() {
         initComponents();
 
-
         panel.setFont(new Font("Arial", Font.BOLD, 11));
         panel.setBackground(Color.white);
         Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
@@ -199,6 +198,14 @@ public class FrmSimulador extends JFrame {
      */
     public String getTxtBuscar(){
         return txtBuscar.getText();
+    }
+
+    public javax.swing.JButton getBtnVerPrimero(){
+        return btnVerPrimero;
+    }
+
+    public javax.swing.JButton getBtnVerUltimo(){
+        return btnVerUltimo;
     }
 
     private void btnCrear(ActionEvent e) {
@@ -457,7 +464,7 @@ public class FrmSimulador extends JFrame {
             lblTamanio.setName("lblTamanio");
 
             //---- label9 ----
-            label9.setText("[ FRENTE ]:");
+            label9.setText("[ PRIMERO ]:");
             label9.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             label9.setBackground(Color.white);
             label9.setName("label9");
@@ -469,7 +476,7 @@ public class FrmSimulador extends JFrame {
             lblFrente.setName("lblFrente");
 
             //---- label11 ----
-            label11.setText("[ FINAL  ]:");
+            label11.setText("[ ULTIMO  ]:");
             label11.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             label11.setBackground(Color.white);
             label11.setName("label11");
