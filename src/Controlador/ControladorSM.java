@@ -75,7 +75,14 @@ public class ControladorSM {
      * @return número de elementos como {@code String}
      */
     private String Elementos(){
-        return cola.numElemCola() > 0 ? String.valueOf(cola.numElemCola()) : "0";
+        String info = "";
+        if(cola.numElemCola() > 0){
+            info = String.valueOf(cola.numElemCola());
+        }else{
+            info = "0";
+        }
+
+        return info;
     }
 
     /**
@@ -114,6 +121,7 @@ public class ControladorSM {
         vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
         this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
         this.vistaPrincipal.setLblTamanio(Elementos());
+        etiquetasN();
     }
 
     /**

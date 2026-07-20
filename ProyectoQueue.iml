@@ -7,15 +7,15 @@
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/src/flatlaf-demo-3.6.2.jar!/" />
+          <root url="jar://$MODULE_DIR$/src/Tema/flatlaf-demo-3.6.2.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="inheritedJdk" />
   </component>
 </module>

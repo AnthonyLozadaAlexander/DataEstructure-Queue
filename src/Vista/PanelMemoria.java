@@ -193,7 +193,7 @@ public class PanelMemoria extends JPanel {
             }
 
             while (!colaAux.colaVacia()) {
-                colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la colaDibujar
+                colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la cola
             }
 
         } catch (ColaVacia e) {
