@@ -206,21 +206,22 @@ public class ControladorSM {
         if(dato.equals("") || dato.isEmpty()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
         }else {
-
             cola.encolar(dato);
             vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtValor("");
             vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
+
+            try{
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                this.vistaPrincipal.setLblTamanio(Elementos());
+                this.vistaPrincipal.setLblFin(dato);
+            } catch (ColaVacia e) {
+                etiquetasN();
+            }
         }
 
-        try{
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            this.vistaPrincipal.setLblTamanio(Elementos());
-            this.vistaPrincipal.setLblFin(dato);
-        } catch (ColaVacia e) {
-            etiquetasN();
-        }
+
 
     }
 

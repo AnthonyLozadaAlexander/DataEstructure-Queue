@@ -50,15 +50,11 @@ public class PanelMemoria extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
-        if (colaDibujar == null) { // si la cola aun no esta creada
-            return;
+        if (colaDibujar != null) { // si la cola aun no esta creada
+            dibujarReferencias(g2d, colaDibujar);
+            dibujarNodos(g2d);
         }
 
-        dibujarReferencias(g2d, colaDibujar);
-        dibujarNodos(g2d);
-
-        /*g.drawRect(x, y, ancho, alto); // dibujar rectangulo
-        g.drawString("Dato Test", x + 15, y  + 25);*/
     }
 
     /**

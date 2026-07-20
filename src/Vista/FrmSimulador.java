@@ -200,7 +200,6 @@ public class FrmSimulador extends JFrame {
         return txtBuscar.getText();
     }
 
-
     public javax.swing.JButton getBtnVerPrimero(){
         return btnVerPrimero;
     }
