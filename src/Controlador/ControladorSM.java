@@ -81,7 +81,6 @@ public class ControladorSM {
         }else{
             info = "0";
         }
-
         return info;
     }
 
@@ -213,7 +212,9 @@ public class ControladorSM {
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
-        }else {
+        }else if(dato.length() > 7) {
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener Mas De 7 Caracteres");
+        }else{
             cola.encolar(dato);
             vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint();
@@ -228,9 +229,6 @@ public class ControladorSM {
                 etiquetasN();
             }
         }
-
-
-
     }
 
     /**
