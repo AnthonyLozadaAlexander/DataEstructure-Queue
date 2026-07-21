@@ -10,7 +10,7 @@ import java.awt.*;
 public class PanelMemoria extends JPanel {
 
     /** La cola de Strings que se representará gráficamente en este panel. */
-    private Cola<String> colaDibujar;
+    private Cola<String> colaGraficos;
 
     private boolean remarcarPrimero = false;
     private boolean remarcarUltimo = false;
@@ -19,10 +19,10 @@ public class PanelMemoria extends JPanel {
      * Establece la cola que debe dibujarse en el panel.
      * Debe llamarse antes de invocar {@code repaint()} para que la visualización sea correcta.
      *
-     * @param colaDibujar la cola de Strings a representar gráficamente
+     * @param colaGraficos la cola de Strings a representar gráficamente
      */
-    public void setCola(Cola<String> colaDibujar) { // setter para la cola de Dibujos
-        this.colaDibujar = colaDibujar;
+    public void setCola(Cola<String> colaGraficos) { // setter para la cola de Graficos
+        this.colaGraficos = colaGraficos;
         this.remarcarPrimero = false;
         this.remarcarUltimo = false;
     }
@@ -50,8 +50,8 @@ public class PanelMemoria extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
-        if (colaDibujar != null) { // si la cola aun no esta creada
-            dibujarReferencias(g2d, colaDibujar);
+        if (colaGraficos != null) { // si la cola aun no esta creada
+            dibujarReferencias(g2d, colaGraficos);
             dibujarNodos(g2d);
         }
 
@@ -88,6 +88,23 @@ public class PanelMemoria extends JPanel {
             g.drawLine(50 + 10, yPrincipio + lado, (50 + 10) + lado, yPrincipio); // linea diagonal de principio
         }
 
+    }
+
+    public void actualizarTamanioPanel(){
+        int total = 0;
+        int anchoBase = 245;
+        int anchoPorNodo = 100;
+        int anchoTotal = 0;
+
+        if(colaGraficos == null){
+            setPreferredSize(new Dimension(800, 700));
+            revalidate();
+        }else{
+            total = colaGraficos.numElemCola();
+            anchoTotal = anchoBase + (total * anchoPorNodo);
+            setPreferredSize(new Dimension(anchoTotal, 700));
+            revalidate();
+        }
     }
 
     /**
@@ -131,12 +148,16 @@ public class PanelMemoria extends JPanel {
         Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int j = 0;
-        int totalElementos = colaDibujar.numElemCola(); // estado de la colaDibujar
+        int totalElementos = colaGraficos.numElemCola(); // estado de la colaDibujar
 
         try {
-            while (!colaDibujar.colaVacia()) {
+            while (!colaGraficos.colaVacia()) {
 
-                String dato = colaDibujar.desencolar();
+                if(i >= 5){
+
+                }
+
+                String dato = colaGraficos.desencolar();
                 Color colorOriginal = g.getColor(); // Guardar el color original
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x1 para el rectángulo actual del nodo siguiente
@@ -160,7 +181,6 @@ public class PanelMemoria extends JPanel {
                 }
 
                 g.drawLine(xi + 45, y, xi + 45, y+40); // diagonal para formar la caja de referencia del nodo
-
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
                 g.drawString(dato, xi +10, y + 25); // texto del dato en la caja del nodo
@@ -193,14 +213,12 @@ public class PanelMemoria extends JPanel {
             }
 
             while (!colaAux.colaVacia()) {
-                colaDibujar.encolar(colaAux.desencolar()); // encolamos datos a la cola
+                colaGraficos.encolar(colaAux.desencolar()); // encolamos datos a la cola
             }
 
         } catch (ColaVacia e) {
             System.out.println("Error: " + e.getMessage());
         }
-
-
 
     }
 

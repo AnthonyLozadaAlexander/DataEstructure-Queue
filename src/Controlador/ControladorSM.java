@@ -217,6 +217,7 @@ public class ControladorSM {
         }else{
             cola.encolar(dato);
             vistaPrincipal.getPanelMemoria().setCola(cola);
+            vistaPrincipal.getPanelMemoria().actualizarTamanioPanel();
             vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtValor("");
             vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);

@@ -4,19 +4,9 @@
 
 package Vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Font;
+import java.awt.*;
 import java.awt.event.ActionEvent;
-import javax.swing.GroupLayout;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextArea;
-import javax.swing.JTextField;
-import javax.swing.LayoutStyle;
+import javax.swing.*;
 
 /**
  * Ventana principal del simulador gráfico de la estructura Cola<String>
@@ -37,10 +27,15 @@ public class FrmSimulador extends JFrame {
      */
     public FrmSimulador() {
         initComponents();
-
         panel.setFont(new Font("Arial", Font.BOLD, 11));
         panel.setBackground(Color.white);
-        Centro.add(panel, java.awt.BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
+
+        JScrollPane scrollCentro = new JScrollPane(panel);
+        scrollCentro.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        scrollCentro.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
+
+        Centro.removeAll();
+        Centro.add(scrollCentro, BorderLayout.CENTER); // agregamos al panel centro el panelMemoria
 
         // reactualizamos la memoria visual
         Centro.revalidate();
