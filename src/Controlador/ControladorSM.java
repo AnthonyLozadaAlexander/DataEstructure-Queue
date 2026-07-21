@@ -212,8 +212,8 @@ public class ControladorSM {
         String dato = vistaPrincipal.getTxtValorEncolar().getText();
         if(dato.equals("") || dato.isEmpty()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
-        }else if(dato.length() > 7) {
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener Mas De 7 Caracteres");
+        }else if(dato.length() > 6) {
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener \nMas De 7 Caracteres");
         }else{
             cola.encolar(dato);
             vistaPrincipal.getPanelMemoria().setCola(cola);
@@ -243,6 +243,9 @@ public class ControladorSM {
             this.vistaPrincipal.getPanelMemoria().setCola(cola);
             this.vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
+            Algoritmos.ordenarQuickSortDescendente(cola); // para que la cola quede en su orden original
         }catch(ColaVacia e){
             etiquetasN();
         }
@@ -259,6 +262,9 @@ public class ControladorSM {
             this.vistaPrincipal.getPanelMemoria().setCola(cola);
             this.vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
+            Algoritmos.ordenarQuickSortAscendente(cola); // para que la cola quede en su orden original
         }catch(ColaVacia e){
             etiquetasN();
         }

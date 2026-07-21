@@ -50,11 +50,11 @@ public class PanelMemoria extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
-        if (colaGraficos != null) { // si la cola aun no esta creada
+        if (colaGraficos == null) { // si la cola aun no esta creada
+        }else{  // si la cola fue creada
             dibujarReferencias(g2d, colaGraficos);
             dibujarNodos(g2d);
         }
-
     }
 
     /**
@@ -153,10 +153,6 @@ public class PanelMemoria extends JPanel {
         try {
             while (!colaGraficos.colaVacia()) {
 
-                if(i >= 5){
-
-                }
-
                 String dato = colaGraficos.desencolar();
                 Color colorOriginal = g.getColor(); // Guardar el color original
 
@@ -183,7 +179,7 @@ public class PanelMemoria extends JPanel {
                 g.drawLine(xi + 45, y, xi + 45, y+40); // diagonal para formar la caja de referencia del nodo
                 g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
-                g.drawString(dato, xi +10, y + 25); // texto del dato en la caja del nodo
+                g.drawString(dato, xi + 7, y + 25); // texto del dato en la caja del nodo
 
                 // identificar el penultimo de la cola y asi poder dibujar la flecha siguiente, sin dibujar la flecha en el ultimo elemento
                 if (i < (totalElementos - 1)) {
