@@ -9,14 +9,14 @@ import java.awt.*;
 
 public class PanelMemoria extends JPanel {
 
-    /** La cola de Strings que se representará gráficamente en este panel. */
+    /** La referencia a la cola de Strings que se representará gráficamente en este panel. */
     private Cola<String> colaGraficos;
 
     private boolean remarcarPrimero = false;
     private boolean remarcarUltimo = false;
 
     /**
-     * Establece la cola que debe dibujarse en el panel.
+     * Establece la cola que debe graficarse en el panel.
      * Debe llamarse antes de invocar {@code repaint()} para que la visualización sea correcta.
      *
      * @param colaGraficos la cola de Strings a representar gráficamente
@@ -27,11 +27,23 @@ public class PanelMemoria extends JPanel {
         this.remarcarUltimo = false;
     }
 
+    /**
+     * Define si se debe resaltar visualmente el primer elemento de la cola.
+     * Cuando se establece en {@code true}, solo el primer elemento será resaltado.
+     *
+     * @param remarcar {@code true} para resaltar el primer elemento; {@code false} en caso contrario
+     */
     public void setRemarcarPrimero(boolean remarcar){
         this.remarcarPrimero = remarcar;
         this.remarcarUltimo = false;
     }
 
+    /**
+     * Define si se debe resaltar visualmente el último elemento de la cola.
+     * Cuando se establece en {@code true}, solo el último elemento será resaltado.
+     *
+     * @param remarcar {@code true} para resaltar el último elemento; {@code false} en caso contrario
+     */
     public void setRemarcarUltimo(boolean remarcar){
         this.remarcarUltimo = remarcar;
         this.remarcarPrimero = false;
@@ -90,6 +102,11 @@ public class PanelMemoria extends JPanel {
 
     }
 
+    /**
+     * Actualiza el tamaño del panel basado en la cantidad de elementos en la cola.
+     * Calcula el ancho dinámicamente: ancho base + (número de elementos × ancho por nodo).
+     * Luego revalida y repinta el panel para reflejar los cambios.
+     */
     public void actualizarTamanioPanel(){
         int total = 0;
         int anchoBase = 245;

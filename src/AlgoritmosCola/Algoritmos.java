@@ -37,7 +37,7 @@ public class Algoritmos {
      * @throws ColaVacia si ocurre algún problema al desencolar elementos
      */
 
-    public static <T> void ordenarQuickSortAscendente(Cola<T> original) throws ColaVacia {
+    private static <T> void ordenarQuickSortAscendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
         TadCola<T> menor =  new TadCola<>("Menor");
         TadCola<T> mayor =  new TadCola<>("Mayor");
@@ -93,8 +93,7 @@ public class Algoritmos {
      * @param original la cola a ordenar (se modifica en el lugar)
      * @throws ColaVacia si ocurre algún problema al desencolar elementos
      */
-
-    public static <T> void ordenarQuickSortDescendente(Cola<T> original) throws ColaVacia {
+    private static <T> void ordenarQuickSortDescendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
         TadCola<T> menor =  new TadCola<>("Menor");
         TadCola<T> mayor =  new TadCola<>("Mayor");

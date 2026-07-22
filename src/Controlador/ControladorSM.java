@@ -239,13 +239,13 @@ public class ControladorSM {
      */
     private void Descendente(){
         try {
-            Algoritmos.ordenarQuickSortDescendente(cola);
+            Algoritmos.QuickSortDescendente(cola);
             this.vistaPrincipal.getPanelMemoria().setCola(cola);
             this.vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
-            Algoritmos.ordenarQuickSortDescendente(cola); // para que la cola quede en su orden original
+            Algoritmos.QuickSortAscendente(cola); // para que la cola quede en su orden original
         }catch(ColaVacia e){
             etiquetasN();
         }
@@ -258,45 +258,54 @@ public class ControladorSM {
      */
     private void Ascendente(){
         try {
-            Algoritmos.ordenarQuickSortAscendente(cola);
+            Algoritmos.QuickSortAscendente(cola);
             this.vistaPrincipal.getPanelMemoria().setCola(cola);
             this.vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
-            Algoritmos.ordenarQuickSortAscendente(cola); // para que la cola quede en su orden original
+            Algoritmos.QuickSortAscendente(cola); // para que la cola quede en su orden original
         }catch(ColaVacia e){
             etiquetasN();
         }
     }
 
-    /**
-     * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
-     * indicando que la cola está vacía o que ocurrió un error.
-     */
-    public void etiquetasN(){
-        this.vistaPrincipal.setLblFrente("N");
-        this.vistaPrincipal.setLblFin("N");
-    }
+     /**
+      * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
+      * indicando que la cola está vacía o que ocurrió un error.
+      */
+     public void etiquetasN(){
+         this.vistaPrincipal.setLblFrente("N");
+         this.vistaPrincipal.setLblFin("N");
+     }
 
-    private void verPrimero(){
+     /**
+      * Resalta visualmente el primer elemento de la cola en el panel gráfico.
+      * Si la cola está vacía, muestra un mensaje de error en el historial.
+      */
+     private void verPrimero(){
 
-        if(cola.colaVacia()){
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-        }else {
-            vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
-            vistaPrincipal.getPanelMemoria().repaint();
-        }
-    }
+         if(cola.colaVacia()){
+             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+         }else {
+             vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
+             vistaPrincipal.getPanelMemoria().repaint();
+         }
+     }
 
-    private void verUltimo(){
+     /**
+      * Resalta visualmente el último elemento de la cola en el panel gráfico.
+      * Si la cola está vacía, muestra un mensaje de error en el historial.
+      */
+     private void verUltimo(){
 
-        if(cola.colaVacia()){
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-        }else {
-            vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
-            vistaPrincipal.getPanelMemoria().repaint();
-        }
-    }
+         if(cola.colaVacia()){
+             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+         }else {
+             vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
+             vistaPrincipal.getPanelMemoria().repaint();
+         }
+     }
 
-}
+ }
+
