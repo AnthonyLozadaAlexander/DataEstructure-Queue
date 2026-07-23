@@ -174,7 +174,6 @@ public class ControladorSM {
         if(cola.numElemCola() > 0){
             this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
         }else {
-
             vistaPrincipal.getPanelMemoria().setCola(cola);
             vistaPrincipal.getPanelMemoria().repaint();
             vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");

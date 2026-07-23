@@ -39,7 +39,7 @@ public class PanelMemoria extends JPanel {
      *
      * @param cola la cola de Strings a representar visualmente
      */
-    public void setCola(Cola<String> cola) { // setter para la cola de Graficos
+    public void setCola(Cola<String> cola) { // setter para extraer los datos de la cola para los graficos
         this.datosGraficos = new ArrayList<>();
         this.remarcarPrimero = false;
         this.remarcarUltimo = false;
@@ -58,7 +58,6 @@ public class PanelMemoria extends JPanel {
             } catch (ColaVacia e) {
                 System.out.println("Error: " + e.getMessage());
             }
-
         }
     }
 
