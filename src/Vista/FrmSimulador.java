@@ -459,6 +459,8 @@ public class FrmSimulador extends JFrame {
                 //---- txtHistorial ----
                 txtHistorial.setFont(new Font("Cascadia Code", Font.BOLD, 14));
                 txtHistorial.setName("txtHistorial");
+                txtHistorial.setLineWrap(true);
+                txtHistorial.setWrapStyleWord(true);
                 scrollPane1.setViewportView(txtHistorial);
             }
 
@@ -614,7 +616,7 @@ public class FrmSimulador extends JFrame {
                     .addComponent(Titulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(4, 4, 4)
                     .addGroup(contentPaneLayout.createParallelGroup()
-                        .addComponent(Botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Botones, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(Derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(0, 0, 0))
