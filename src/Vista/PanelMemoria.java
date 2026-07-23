@@ -6,25 +6,54 @@ import tadCola.TadCola;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
+/**
+ * Componente gráfico personalizado que extiende {@link JPanel} para representar
+ * visualmente la estructura de datos Cola y sus referencias (Principio y Fin).
+ *
+ * @author Grupo-02
+ * @version 1.0
+ * @see JPanel
+ * @see Cola
+ */
 public class PanelMemoria extends JPanel {
 
-    /** La referencia a la cola de Strings que se representará gráficamente en este panel. */
-    private Cola<String> colaGraficos;
+    /** La lista con los datos en formato de texto a representar gráficamente. */
+    private ArrayList<String> datosGraficos;
 
+    /** Indicador para resaltar visualmente el nodo del principio. */
     private boolean remarcarPrimero = false;
+    /** Indicador para resaltar visualmente el nodo del final. */
     private boolean remarcarUltimo = false;
 
     /**
-     * Establece la cola que debe graficarse en el panel.
-     * Debe llamarse antes de invocar {@code repaint()} para que la visualización sea correcta.
+     * Establece la cola que debe graficarse en el panel extrayendo sus datos a una lista interna.
+     * Debe llamarse antes de invocar {@code repaint()} para actualizar la representación gráfica.
      *
-     * @param colaGraficos la cola de Strings a representar gráficamente
+     * @param cola la cola de Strings a representar visualmente
      */
-    public void setCola(Cola<String> colaGraficos) { // setter para la cola de Graficos
-        this.colaGraficos = colaGraficos;
+    public void setCola(Cola<String> cola) { // setter para la cola de Graficos
+        this.datosGraficos = new ArrayList<>();
         this.remarcarPrimero = false;
         this.remarcarUltimo = false;
+
+        if(cola != null && !cola.colaVacia()){
+            Cola<String> aux = new TadCola<>("Aux");
+            try {
+                while(!cola.colaVacia()){
+                    String dato = cola.desencolar(); // extraer los datos para los graficos
+                    this.datosGraficos.add(dato);
+                    aux.encolar(dato);
+                }
+                while(!aux.colaVacia()){
+                    cola.encolar(aux.desencolar()); // regresar la cola a su estado original
+                }
+            }catch(ColaVacia e){
+                System.out.println("Error: " + e.getMessage());
+            }
+
+        }
     }
 
     /**
@@ -62,9 +91,9 @@ public class PanelMemoria extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
-        if (colaGraficos == null) { // si la cola aun no esta creada
+        if (datosGraficos == null) { // si la cola aun no esta creada
         }else{  // si la cola fue creada
-            dibujarReferencias(g2d, colaGraficos);
+            dibujarReferencias(g2d);
             dibujarNodos(g2d);
         }
     }
@@ -73,10 +102,9 @@ public class PanelMemoria extends JPanel {
      * Dibuja las cajas gráficas de las referencias {@code principio} y {@code fin} de la cola.
      * Si la cola está vacía, dibuja una línea diagonal sobre cada caja indicando valor {@code null}.
      *
-     * @param g    el contexto gráfico 2D
-     * @param cola la cola cuyo estado de vacío se verifica para dibujar las diagonales
+     *
      */
-    private void dibujarReferencias(Graphics2D g, Cola<String> cola) {
+    private void dibujarReferencias(Graphics2D g) {
         // int xPunteros = 100;
         int lado = 50;
 
@@ -95,7 +123,7 @@ public class PanelMemoria extends JPanel {
         //g.drawLine(50, yPrincipio + lado, (50) + lado, yPrincipio); // linea diagonal
         g.drawString("Principio", 55 + 5, yPrincipio + lado + 20); // titulo principio
 
-        if(cola.colaVacia()){
+        if(datosGraficos.isEmpty()){ // si la cola esta vacia dibujar las diagonales de null
             g.drawLine(50 + 10, yFin + lado, (50 + 10) + lado, yFin); // linea diagonal de fin
             g.drawLine(50 + 10, yPrincipio + lado, (50 + 10) + lado, yPrincipio); // linea diagonal de principio
         }
@@ -113,34 +141,17 @@ public class PanelMemoria extends JPanel {
         int anchoPorNodo = 100;
         int anchoTotal = 0;
 
-        if(colaGraficos == null){
+        if(datosGraficos == null){
             setPreferredSize(new Dimension(800, 700));
             revalidate();
         }else{
-            total = colaGraficos.numElemCola();
+            total = datosGraficos.size();
             anchoTotal = anchoBase + (total * anchoPorNodo);
             setPreferredSize(new Dimension(anchoTotal, 700));
             revalidate();
         }
     }
 
-    /**
-     * Redibuja la caja de referencia {@code fin} en la posición horizontal indicada.
-     * Se utiliza para actualizar la posición del puntero fin cuando cambia la cola.
-     *
-     * @param g    el contexto gráfico 2D
-     * @param xi   posición horizontal base donde se dibujará la caja fin
-     * @param lado tamaño del lado del cuadrado que representa la caja fin
-     */
-
-    private void redibujarFin(Graphics2D g, int xi, int lado){
-
-        int yFin = 250;
-        g.drawString("Fin", xi + 25, yFin - 10); // titulo fin
-        g.drawRect(xi + 10, yFin, lado, lado); // rectangulo fin
-        g.drawLine(xi + 10, yFin + lado, (xi+10) + lado, yFin); // linea diagonal
-
-    }
 
     /**
      * Recorre todos los elementos de la cola y los dibuja como nodos enlazados en el panel.
@@ -165,12 +176,11 @@ public class PanelMemoria extends JPanel {
         Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int j = 0;
-        int totalElementos = colaGraficos.numElemCola(); // estado de la colaDibujar
+        int totalElementos = datosGraficos.size(); // estado de la colaDibujar
 
-        try {
-            while (!colaGraficos.colaVacia()) {
 
-                String dato = colaGraficos.desencolar();
+        for(i = 0; i < datosGraficos.size(); i++){
+                String dato = datosGraficos.get(i);
                 Color colorOriginal = g.getColor(); // Guardar el color original
 
                 int xi = (x + i * (ancho + espacio)); // calcular la posición x1 para el rectángulo actual del nodo siguiente
@@ -225,13 +235,6 @@ public class PanelMemoria extends JPanel {
                 j++; // avanzamos al siguiente nodo para la referencia fin
             }
 
-            while (!colaAux.colaVacia()) {
-                colaGraficos.encolar(colaAux.desencolar()); // encolamos datos a la cola
-            }
-
-        } catch (ColaVacia e) {
-            System.out.println("Error: " + e.getMessage());
-        }
 
     }
 

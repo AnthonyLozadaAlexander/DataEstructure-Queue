@@ -6,17 +6,23 @@ import tadCola.TadCola;
 import Vista.FrmSimulador;
 
 /**
- * Controlador principal de la aplicación siguiendo el patrón MVC.
- * Actúa como intermediario entre el modelo ({@link TadCola}) y la vista ({@link FrmSimulador}),
- * registrando los listeners de los botones de la interfaz y delegando las acciones
- * correspondientes sobre la cola.
+ * Controlador principal de la aplicación siguiendo el patrón Arquitectónico Model-View-Controller (MVC).
+ * <p>
+ * Se encarga de capturar las acciones del usuario desde la vista {@link FrmSimulador},
+ * invocar las operaciones sobre el modelo {@link TadCola} y los algoritmos de {@link Algoritmos},
+ * y actualizar la interfaz gráfica correspondiente.
+ * </p>
  *
  * @author Grupo-02
+ * @version 1.0
+ * @see TadCola
+ * @see FrmSimulador
+ * @see Algoritmos
  */
 
 public class ControladorSM {
 
-    /** Referencia al modelo: la cola de cadenas que se gestiona en la aplicación. */
+    /** Referencia a la cola de cadenas que se gestiona en la aplicación. */
     private TadCola<String> cola;
     /** Referencia a la vista principal de la aplicación. */
     private FrmSimulador vistaPrincipal;
@@ -25,7 +31,7 @@ public class ControladorSM {
      * Crea el controlador, inyectando el modelo y la vista, y registra los
      * {@code ActionListener} de todos los botones de la interfaz gráfica.
      *
-     * @param cola          la cola de Strings que actúa como modelo de datos
+     * @param cola          la cola de Strings que actúa como referencia de datos
      * @param vistaPrincipal la ventana principal de la aplicación
      */
 
@@ -204,7 +210,7 @@ public class ControladorSM {
 
     /**
      * Lee el valor del campo de texto de la vista, valida que no esté vacío,
-     * lo encola en el modelo y actualiza la vista: panel gráfico, historial,
+     * lo encola en la Cola y actualiza la vista: panel gráfico, historial,
      * tamaño, frente y fin de la cola.
      */
     private void Encolar(){
@@ -213,7 +219,7 @@ public class ControladorSM {
         if(dato.equals("") || dato.isEmpty()){
             vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
         }else if(dato.length() > 6) {
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener \nMas De 7 Caracteres");
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener \nMas De 6 Caracteres");
         }else{
             cola.encolar(dato);
             vistaPrincipal.getPanelMemoria().setCola(cola);
@@ -237,6 +243,7 @@ public class ControladorSM {
      * y actualiza el panel gráfico con el nuevo orden.
      * Registra la acción en el historial.
      */
+
     private void Descendente(){
         try {
             Algoritmos.QuickSortDescendente(cola);
@@ -245,7 +252,7 @@ public class ControladorSM {
             vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblFin(Algoritmos.ultimoElementoDeLaCola(cola));
-            Algoritmos.QuickSortAscendente(cola); // para que la cola quede en su orden original
+            Algoritmos.QuickSortDescendente(cola); // para que la cola quede en su orden original
         }catch(ColaVacia e){
             etiquetasN();
         }
