@@ -1,5 +1,6 @@
 package Controlador;
 
+import tadCola.Cola;
 import tadCola.ColaVacia;
 import AlgoritmosCola.Algoritmos;
 import tadCola.TadCola;
@@ -196,7 +197,6 @@ public class ControladorSM {
         try {
             String dato = vistaPrincipal.getTxtBuscar();
             boolean encontrar = Algoritmos.buscarR(cola, dato);
-
             if (encontrar) {
                 vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
             } else {
@@ -290,12 +290,16 @@ public class ControladorSM {
       * Si la cola está vacía, muestra un mensaje de error en el historial.
       */
      private void verPrimero(){
+         try {
+             if (cola.colaVacia()) {
+                 vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+             } else {
+                 vistaPrincipal.setTxtHistorial("Primer Elemento \u25BC \n" + cola.primero());
+                 vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
+                 vistaPrincipal.getPanelMemoria().repaint();
+             }
+         }catch(ColaVacia e){
 
-         if(cola.colaVacia()){
-             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-         }else {
-             vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
-             vistaPrincipal.getPanelMemoria().repaint();
          }
      }
 
@@ -303,13 +307,17 @@ public class ControladorSM {
       * Resalta visualmente el último elemento de la cola en el panel gráfico.
       * Si la cola está vacía, muestra un mensaje de error en el historial.
       */
-     private void verUltimo(){
+     private void verUltimo() {
+         try {
+             if (cola.colaVacia()) {
+                 vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+             } else {
+                     vistaPrincipal.setTxtHistorial("Último Elemento \u25BC \n" + Algoritmos.ultimoElementoDeLaCola(cola));
+                     vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
+                     vistaPrincipal.getPanelMemoria().repaint();
+             }
+         } catch (ColaVacia e) {
 
-         if(cola.colaVacia()){
-             vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-         }else {
-             vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
-             vistaPrincipal.getPanelMemoria().repaint();
          }
      }
 
