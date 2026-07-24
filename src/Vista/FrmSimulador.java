@@ -9,7 +9,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
- * Ventana principal del simulador gráfico de la estructura Cola<String>
+ * Ventana principal del simulador gráfico de la estructura {@code cola<String>}
  * Extiende {@link javax.swing.JFrame} y contiene todos los componentes visuales:
  * panel de botones, panel gráfico central de memoria y panel de información lateral.
  * Diseñado con JFormDesigner y adaptada para el patrón MVC.
@@ -186,26 +186,42 @@ public class FrmSimulador extends JFrame {
         return btnEliminarPrimero;
     }
 
-    /**
-     * Retorna el texto ingresado en el campo de búsqueda.
-     *
-     * @return cadena de texto a buscar en la cola
-     */
-    public String getTxtBuscar(){
-        return txtBuscar.getText();
-    }
+     /**
+      * Retorna el texto ingresado en el campo de búsqueda.
+      *
+      * @return cadena de texto a buscar en la cola
+      */
+     public String getTxtBuscar(){
+         return txtBuscar.getText();
+     }
 
-    public javax.swing.JButton getBtnVerPrimero(){
-        return btnVerPrimero;
-    }
+     /**
+      * Retorna el botón para resaltar/ver el primer elemento de la cola.
+      *
+      * @return botón "Ver Primero"
+      */
+     public javax.swing.JButton getBtnVerPrimero(){
+         return btnVerPrimero;
+     }
 
-    public javax.swing.JButton getBtnVerUltimo(){
+     /**
+      * Retorna el botón para resaltar/ver el último elemento de la cola.
+      *
+      * @return botón "Ver Ultimo"
+      */
+     public javax.swing.JButton getBtnVerUltimo(){
         return btnVerUltimo;
-    }
+     }
 
-    private void btnCrear(ActionEvent e) {
+     /**
+      * Manejador de eventos para el botón Crear.
+      * Método generado automáticamente por JFormDesigner.
+      *
+      * @param e el evento de acción del botón
+      */
+     private void btnCrear(ActionEvent e) {
 
-    }
+     }
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off

@@ -5,22 +5,29 @@ import tadCola.ColaVacia;
 import tadCola.TadCola;
 
 /**
- * Clase de utilidades con algoritmos genéricos aplicables sobre la estructura {@link Cola}.
- * Proporciona métodos estáticos para ordenamiento (QuickSort ascendente y descendente),
- * búsqueda recursiva y obtención del último elemento.
+ * Clase de utilidades que contiene algoritmos genéricos de ordenamiento y búsqueda
+ * sobre la estructura de datos {@link Cola}.
+ * <p>
+ * Proporciona métodos estáticos recursivos para el ordenamiento QuickSort (ascendente y descendente),
+ * la búsqueda recursiva de elementos y la localización del último elemento sin destruir la cola.
+ * </p>
  *
  * @author Grupo-02
+ * @version 1.0
+ * @see Cola
+ * @see TadCola
+ * @see ColaVacia
  */
 
 public class Algoritmos {
 
     /**
-     * Punto de entrada para ordenar los elementos de una cola de forma ascendente
+     * Punto de entrada público para ordenar los elementos de una cola de forma ascendente
      * utilizando el algoritmo QuickSort adaptado para colas.
      *
-     * @param <T>      tipo de los elementos de la cola; debe implementar {@link Comparable}
-     * @param original la cola cuyos elementos se ordenarán de menor a mayor
-     * @throws ColaVacia si ocurre algún problema al operar con la cola
+     * @param <T>      tipo de los elementos contenidos en la cola; debe implementar {@link Comparable}
+     * @param original la cola cuyos elementos se ordenarán de menor a mayor (se modifica en el lugar)
+     * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
     public static <T> void QuickSortAscendente(Cola<T> original) throws ColaVacia{
@@ -28,16 +35,16 @@ public class Algoritmos {
     }
 
     /**
-     * Implementación recursiva del algoritmo QuickSort para ordenar una cola de forma ascendente.
-     * Selecciona el primer elemento como pivote, distribuye los demás elementos en dos subcolas
-     * (menores y mayores al pivote), ordena cada subcola recursivamente y las concatena.
+     * Implementación recursiva interna del algoritmo QuickSort para ordenamiento ascendente.
+     * Selecciona el primer elemento como pivote, particiona los elementos restantes en dos
+     * subcolas (menores y mayores o iguales al pivote), las ordena recursivamente y las reconcatena.
      *
      * @param <T>      tipo de los elementos; debe implementar {@link Comparable}
-     * @param original la cola a ordenar (se modifica en el lugar)
-     * @throws ColaVacia si ocurre algún problema al desencolar elementos
+     * @param original la cola a ordenar en la llamada recursiva actual
+     * @throws ColaVacia si ocurre un error al desencolar durante la partición o reconcatenación
      */
 
-    public static <T> void ordenarQuickSortAscendente(Cola<T> original) throws ColaVacia {
+    private static <T> void ordenarQuickSortAscendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
         TadCola<T> menor =  new TadCola<>("Menor");
         TadCola<T> mayor =  new TadCola<>("Mayor");
@@ -72,12 +79,12 @@ public class Algoritmos {
     }
 
     /**
-     * Punto de entrada para ordenar los elementos de una cola de forma descendente
+     * Punto de entrada público para ordenar los elementos de una cola de forma descendente
      * utilizando el algoritmo QuickSort adaptado para colas.
      *
-     * @param <T>      tipo de los elementos de la cola; debe implementar {@link Comparable}
-     * @param original la cola cuyos elementos se ordenarán de mayor a menor
-     * @throws ColaVacia si ocurre algún problema al operar con la cola
+     * @param <T>      tipo de los elementos contenidos en la cola; debe implementar {@link Comparable}
+     * @param original la cola cuyos elementos se ordenarán de mayor a menor (se modifica en el lugar)
+     * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
     public static <T> void QuickSortDescendente(Cola<T> original) throws ColaVacia{
@@ -85,16 +92,15 @@ public class Algoritmos {
     }
 
     /**
-     * Implementación recursiva del algoritmo QuickSort para ordenar una cola de forma descendente.
-     * Selecciona el primer elemento como pivote, distribuye los demás elementos en dos subcolas
-     * (mayores y menores al pivote), ordena cada subcola recursivamente y las concatena.
+     * Implementación recursiva interna del algoritmo QuickSort para ordenamiento descendente.
+     * Selecciona el primer elemento como pivote, particiona los elementos restantes en dos
+     * subcolas (mayores y menores o iguales al pivote), las ordena recursivamente y las reconcatena.
      *
      * @param <T>      tipo de los elementos; debe implementar {@link Comparable}
-     * @param original la cola a ordenar (se modifica en el lugar)
-     * @throws ColaVacia si ocurre algún problema al desencolar elementos
+     * @param original la cola a ordenar en la llamada recursiva actual
+     * @throws ColaVacia si ocurre un error al desencolar durante el proceso
      */
-
-    public static <T> void ordenarQuickSortDescendente(Cola<T> original) throws ColaVacia {
+    private static <T> void ordenarQuickSortDescendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
         TadCola<T> menor =  new TadCola<>("Menor");
         TadCola<T> mayor =  new TadCola<>("Mayor");
@@ -130,15 +136,15 @@ public class Algoritmos {
 
 
     /**
-     * Busca recursivamente un elemento dentro de la cola sin destruirla.
-     * Extrae los elementos uno a uno comparándolos con el buscado y los reencola
-     * al final para restaurar la cola original al terminar la búsqueda.
+     * Busca recursivamente la existencia de un elemento dentro de la cola sin destruir su estructura.
+     * Extrae los elementos uno a uno comparándolos con el buscado y los vuelve a encolar
+     * en el retorno de la pila recursiva para restaurar el estado original de la cola.
      *
-     * @param <T>      tipo de los elementos de la cola
-     * @param cola     la cola donde se realizará la búsqueda
-     * @param elemento el elemento a buscar
+     * @param <T>      tipo de los elementos contenidos en la cola
+     * @param cola     la cola en la que se realizará la búsqueda
+     * @param elemento el objeto a buscar dentro de la cola
      * @return {@code true} si el elemento fue encontrado; {@code false} en caso contrario
-     * @throws ColaVacia si ocurre un error al operar con la cola
+     * @throws ColaVacia si ocurre un error inesperado al operar con la cola
      */
 
     public static <T> boolean buscarR(Cola<T> cola, T elemento) throws ColaVacia {
@@ -160,13 +166,13 @@ public class Algoritmos {
     }
 
     /**
-     * Obtiene el último elemento de la cola de forma recursiva sin destruirla.
-     * Extrae elementos sucesivamente hasta llegar al final, identificando el último,
-     * y luego los reencola para restaurar el estado original de la cola.
+     * Obtiene de forma recursiva el último elemento (ubicado al final) de la cola sin destruirla.
+     * Extrae elementos sucesivamente hasta llegar al final para identificar el último dato,
+     * reencolando los elementos en el retorno de las llamadas recursivas para mantener el orden.
      *
      * @param <T>  tipo de los elementos de la cola
      * @param cola la cola de la que se desea obtener el último elemento
-     * @return el último elemento de la cola, o {@code null} si la cola está vacía
+     * @return el elemento situado al final de la cola, o {@code null} si la cola está vacía
      * @throws ColaVacia si ocurre un error al desencolar elementos
      */
 

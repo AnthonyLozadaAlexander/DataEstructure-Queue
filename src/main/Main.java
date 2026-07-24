@@ -6,10 +6,17 @@ import Vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 /**
  * Clase principal de arranque del Simulador Gráfico de Cola.
- * Configura el Look and Feel de la interfaz, instancia el modelo, la vista y el controlador,
- * y lanza la ventana principal de la aplicación.
+ * <p>
+ * Configura el Look and Feel de FlatLaf, instancia el modelo de datos,
+ * la vista principal y el controlador enlazador, y despliega la ventana centrada en pantalla.
+ * </p>
  *
  * @author Grupo-02
+ * @version 1.0
+ * @see com.formdev.flatlaf.FlatIntelliJLaf
+ * @see TadCola
+ * @see FrmSimulador
+ * @see ControladorSM
  */
 public class Main {
 
