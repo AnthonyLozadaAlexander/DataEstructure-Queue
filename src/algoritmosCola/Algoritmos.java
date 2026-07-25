@@ -1,4 +1,4 @@
-package AlgoritmosCola;
+package algoritmosCola;
 
 import tadCola.Cola;
 import tadCola.ColaVacia;
@@ -30,7 +30,7 @@ public class Algoritmos {
      * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
-    public static <T> void QuickSortAscendente(Cola<T> original) throws ColaVacia{
+    public static <T> void quickSortAscendente(Cola<T> original) throws ColaVacia{
         ordenarQuickSortAscendente(original);
     }
 
@@ -87,7 +87,7 @@ public class Algoritmos {
      * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
-    public static <T> void QuickSortDescendente(Cola<T> original) throws ColaVacia{
+    public static <T> void quickSortDescendente(Cola<T> original) throws ColaVacia{
         ordenarQuickSortDescendente(original);
     }
 
@@ -135,62 +135,77 @@ public class Algoritmos {
     }
 
 
-    /**
-     * Busca recursivamente la existencia de un elemento dentro de la cola sin destruir su estructura.
-     * Extrae los elementos uno a uno comparándolos con el buscado y los vuelve a encolar
-     * en el retorno de la pila recursiva para restaurar el estado original de la cola.
-     *
-     * @param <T>      tipo de los elementos contenidos en la cola
-     * @param cola     la cola en la que se realizará la búsqueda
-     * @param elemento el objeto a buscar dentro de la cola
-     * @return {@code true} si el elemento fue encontrado; {@code false} en caso contrario
-     * @throws ColaVacia si ocurre un error inesperado al operar con la cola
-     */
+    public static <T> boolean buscar(Cola<T> cola, T elemento) {
+        boolean encontrado = false;
+        if (!cola.colaVacia()) {
+            encontrado = buscarR(cola, elemento);
+            cola.invertirCola(); // restaurar el orden original de la cola
+        }
 
-    public static <T> boolean buscarR(Cola<T> cola, T elemento) throws ColaVacia {
-        boolean encontrado;
-        if(cola.colaVacia()){
-            encontrado = false;
-        }else{
-            T dato = cola.desencolar();
-            if(dato.equals(elemento)){ // encontro el elemento
-                encontrado = true;
-            }else{
-                encontrado = buscarR(cola, elemento);
+        return encontrado;
+
+    }
+
+    private static <T> boolean buscarR(Cola<T> cola, T elemento) {
+        boolean encontrado = false;
+        try {
+            if (cola.colaVacia()) {
+                encontrado = false;
+            } else {
+                T dato = cola.desencolar();
+                if (dato.equals(elemento)) { // encontro el elemento
+                    encontrado = true;
+                } else {
+                    encontrado = buscarR(cola, elemento);
+                }
+
+                cola.encolar(dato); // restaurar cola
             }
 
-            cola.encolar(dato); // restaurar cola
+        } catch (ColaVacia e) {
         }
 
         return encontrado;
     }
 
     /**
-     * Obtiene de forma recursiva el último elemento (ubicado al final) de la cola sin destruirla.
-     * Extrae elementos sucesivamente hasta llegar al final para identificar el último dato,
-     * reencolando los elementos en el retorno de las llamadas recursivas para mantener el orden.
+     * Obtiene de forma recursiva el último elemento (ubicado al final) de la cola
+     * sin destruirla.
+     * Extrae elementos sucesivamente hasta llegar al final para identificar el
+     * último dato,
+     * reencolando los elementos en el retorno de las llamadas recursivas para
+     * mantener el orden.
      *
      * @param <T>  tipo de los elementos de la cola
      * @param cola la cola de la que se desea obtener el último elemento
-     * @return el elemento situado al final de la cola, o {@code null} si la cola está vacía
+     * @return el elemento situado al final de la cola, o {@code null} si la cola
+     *         está vacía
      * @throws ColaVacia si ocurre un error al desencolar elementos
      */
 
-    public static <T> T ultimoElementoDeLaCola(Cola<T> cola) throws ColaVacia{
+    public static <T> T ultimoElemento(Cola<T> cola) throws ColaVacia {
+        T ultimo = null;
+        if (!cola.colaVacia()) {
+            ultimo = ultimoElementoDeLaColaR(cola);
+            cola.invertirCola();
+        }
+
+        return ultimo;
+    }
+
+    private static <T> T ultimoElementoDeLaColaR(Cola<T> cola) throws ColaVacia {
         T ultimoElemento = null;
         T guardar = null;
 
-        if(!cola.colaVacia()) {
+        if (!cola.colaVacia()) {
             guardar = cola.desencolar();
-            ultimoElemento = ultimoElementoDeLaCola(cola);
+            ultimoElemento = ultimoElementoDeLaColaR(cola);
             if (cola.colaVacia()) {
                 ultimoElemento = guardar;
-
             }
             cola.encolar(guardar); // restaurar cola
         }
 
         return ultimoElemento;
     }
-
 }
