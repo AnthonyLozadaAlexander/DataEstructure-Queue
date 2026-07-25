@@ -238,11 +238,10 @@ public class ControladorSM {
                 boolean encontrar = Algoritmos.buscar(cola, dato);
 
                 if (encontrar) {
-                    this.vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
+                    this.vistaPrincipal.setTxtHistorial("Dato Existente: \u25BC" + "\n" + dato);
                     this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
                     this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
                     this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
-
                     this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
                     this.vistaPrincipal.getPanelMemoria().repaint();
 
@@ -327,7 +326,7 @@ public class ControladorSM {
                 Algoritmos.quickSortAscendente(cola);
                 this.vistaPrincipal.getPanelMemoria().setCola(cola);
                 this.vistaPrincipal.getPanelMemoria().repaint();
-                vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+                this.vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
                 this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
                 this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
