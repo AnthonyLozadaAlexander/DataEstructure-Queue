@@ -284,10 +284,10 @@ public class FrmSimulador extends JFrame {
             titulo.setLayout(tituloLayout);
             tituloLayout.setHorizontalGroup(
                 tituloLayout.createParallelGroup()
-                    .addGroup(tituloLayout.createSequentialGroup()
-                        .addGap(383, 383, 383)
+                    .addGroup(GroupLayout.Alignment.TRAILING, tituloLayout.createSequentialGroup()
+                        .addContainerGap(396, Short.MAX_VALUE)
                         .addComponent(label1)
-                        .addContainerGap(390, Short.MAX_VALUE))
+                        .addGap(377, 377, 377))
             );
             tituloLayout.setVerticalGroup(
                 tituloLayout.createParallelGroup()
@@ -491,7 +491,7 @@ public class FrmSimulador extends JFrame {
             lblFrente.setName("lblFrente");
 
             //---- label11 ----
-            label11.setText("[ ULTIMO  ]:");
+            label11.setText("[ ULTIMO ]:");
             label11.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             label11.setBackground(Color.white);
             label11.setName("label11");
@@ -530,21 +530,17 @@ public class FrmSimulador extends JFrame {
             derechaLayout.setHorizontalGroup(
                 derechaLayout.createParallelGroup()
                     .addComponent(scrollPane1)
-                    .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                        .addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-                        .addGap(24, 24, 24))
                     .addGroup(derechaLayout.createSequentialGroup()
                         .addGap(20, 20, 20)
                         .addGroup(derechaLayout.createParallelGroup()
                             .addGroup(derechaLayout.createSequentialGroup()
                                 .addGap(29, 29, 29)
                                 .addComponent(label13, GroupLayout.PREFERRED_SIZE, 87, GroupLayout.PREFERRED_SIZE))
-                            .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING)
-                                .addComponent(btnInvertir, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
-                                .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnAscendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDescendente)))
+                            .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(btnAscendente, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(label7, GroupLayout.PREFERRED_SIZE, 144, GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnInvertir, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                 .addGroup(derechaLayout.createSequentialGroup()
                                     .addComponent(label6)

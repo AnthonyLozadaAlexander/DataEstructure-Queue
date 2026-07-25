@@ -74,6 +74,7 @@ public class panelMemoria extends JPanel {
     public void setRemarcarPrimero(boolean remarcar) {
         this.remarcarPrimero = remarcar;
         this.remarcarUltimo = false;
+        this.remarcarBuscado = false;
     }
 
     /**
@@ -85,6 +86,7 @@ public class panelMemoria extends JPanel {
     public void setRemarcarUltimo(boolean remarcar) {
         this.remarcarUltimo = remarcar;
         this.remarcarPrimero = false;
+        this.remarcarBuscado = false;
     }
 
     public void setRemarcarBuscado(boolean buscado){
@@ -191,8 +193,6 @@ public class panelMemoria extends JPanel {
         int lado = 50;
         int indexBuscado = 0;
 
-
-        Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int totalElementos = datosGraficos.size(); // Elementos Actuales De La Cola
 

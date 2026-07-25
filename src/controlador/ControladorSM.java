@@ -22,20 +22,26 @@ import vista.FrmSimulador;
 
 public class ControladorSM {
 
-    /** Referencia a la cola de cadenas que se gestiona en la aplicación. */
+    /**
+     * Referencia a la cola de cadenas que se gestiona en la aplicación.
+     */
     private TadCola<String> cola;
-    /** Referencia a la vista principal de la aplicación. */
+    /**
+     * Referencia a la vista principal de la aplicación.
+     */
     private FrmSimulador vistaPrincipal;
+
+    private boolean colaCreada = false;
 
     /**
      * Crea el controlador, inyectando el modelo y la vista, y registra los
      * {@code ActionListener} de todos los botones de la interfaz gráfica.
      *
-     * @param cola          la cola de Strings que actúa como referencia de datos
+     * @param cola           la cola de Strings que actúa como referencia de datos
      * @param vistaPrincipal la ventana principal de la aplicación
      */
 
-    public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal){
+    public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal) {
         this.cola = cola;
         this.vistaPrincipal = vistaPrincipal;
 
@@ -49,7 +55,7 @@ public class ControladorSM {
         this.vistaPrincipal.getBtnBuscar().addActionListener(e -> buscar());
 
         // boton desencolar
-        this.vistaPrincipal.getBtnDesencolar().addActionListener(e  -> desencolar());
+        this.vistaPrincipal.getBtnDesencolar().addActionListener(e -> desencolar());
 
         // boton eliminar primero
         this.vistaPrincipal.getBtnEliminarPrimero().addActionListener(e -> quitarPrimero());
@@ -61,10 +67,10 @@ public class ControladorSM {
         this.vistaPrincipal.getBtnInvertirCola().addActionListener(e -> invertirCola());
 
         // boton Descendente
-        this.vistaPrincipal.getBtnDescendente().addActionListener(e -> descendente());
+        this.vistaPrincipal.getBtnDescendente().addActionListener(e -> descendentes());
 
         // boton Ascendente
-        this.vistaPrincipal.getBtnAscendente().addActionListener(e -> ascendente());
+        this.vistaPrincipal.getBtnAscendente().addActionListener(e -> ascendentes());
 
         // boton ver Primero
         this.vistaPrincipal.getBtnVerPrimero().addActionListener(e -> verPrimero());
@@ -80,11 +86,11 @@ public class ControladorSM {
      *
      * @return número de elementos como {@code String}
      */
-    private String elementos(){
+    private String elementos() {
         String info = "";
-        if(cola.numElemCola() > 0){
+        if (cola.numElemCola() > 0) {
             info = String.valueOf(cola.numElemCola());
-        }else{
+        } else {
             info = "0";
         }
         return info;
@@ -96,23 +102,28 @@ public class ControladorSM {
      * y luego vuelve a invertir para dejar la cola en su estado original visualmente.
      * Si la cola está vacía, muestra las etiquetas en estado nulo.
      */
-    private void invertirCola(){
-        try {
-            cola.invertirCola();
-            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
-            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+    private void invertirCola() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                cola.invertirCola();
+                this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
+                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
 
-            this.vistaPrincipal.setTxtHistorial("Cola Invertida");
-            this.vistaPrincipal.setLblTamanio(elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
+                this.vistaPrincipal.setTxtHistorial("Cola Invertida");
+                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
 
-            vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
-            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
-            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+                this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
+                this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
+                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
 
-        }catch(ColaVacia e){
-            this.etiquetasN();
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                this.etiquetasN();
+            }
         }
     }
 
@@ -120,13 +131,21 @@ public class ControladorSM {
      * Vacía completamente la cola y actualiza la vista para reflejar el estado vacío.
      * Registra la acción en el historial y actualiza la etiqueta de tamaño.
      */
-    private void vaciarCola(){
-        cola.eliminarCola();
-        vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
-        vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
-        this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
-        this.vistaPrincipal.setLblTamanio(elementos());
-        etiquetasN();
+    private void vaciarCola() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            if (cola.colaVacia()) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+            } else {
+                cola.eliminarCola();
+                this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
+                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+                this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
+                this.vistaPrincipal.setLblTamanio(elementos());
+                etiquetasN();
+            }
+        }
     }
 
     /**
@@ -134,18 +153,22 @@ public class ControladorSM {
      * Refresca el panel gráfico, el historial, el tamaño y la etiqueta del frente.
      * Si la cola está vacía, muestra las etiquetas en estado nulo.
      */
-    private void quitarPrimero(){
-        try {
-            cola.quitarPrimero();
-            vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
-            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
-            this.vistaPrincipal.setTxtHistorial("Primer Elemento Quitado");
-            this.vistaPrincipal.setLblTamanio(elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
+    private void quitarPrimero() {
+        if(!colaCreada){
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        }else {
+            try {
+                cola.quitarPrimero();
+                this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
+                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
+                this.vistaPrincipal.setTxtHistorial("Primer Elemento Quitado");
+                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
 
-        }catch (ColaVacia e){
-            etiquetasN();
+            } catch (ColaVacia e) {
+                etiquetasN();
+            }
         }
     }
 
@@ -154,16 +177,22 @@ public class ControladorSM {
      * El dato extraído se registra en el historial. Si la cola está vacía,
      * muestra las etiquetas en estado nulo.
      */
-    private void desencolar(){
-        try {
-            String dato = cola.desencolar();
-            vistaPrincipal.getPanelMemoria().setCola(cola);
-            vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
-            this.vistaPrincipal.setTxtHistorial("Dato Desencolado \u25BC"+ "\n" + dato);
-            this.vistaPrincipal.setLblTamanio(elementos());
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-        }catch(ColaVacia e){
-            etiquetasN();
+    private void desencolar() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                String dato = cola.desencolar();
+                this.vistaPrincipal.getPanelMemoria().setCola(cola);
+                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
+                this.vistaPrincipal.setTxtHistorial("Dato Desencolado \u25BC" + "\n" + dato);
+                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                etiquetasN();
+            }
         }
     }
 
@@ -172,16 +201,16 @@ public class ControladorSM {
      * Si la cola ya tiene elementos, notifica al usuario que ya fue creada
      * y no realiza ninguna acción adicional.
      */
-    private void crearCola(){
-        if(cola.numElemCola() > 0){
-            this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada");
-        }else {
-            vistaPrincipal.getPanelMemoria().setCola(cola);
-            vistaPrincipal.getPanelMemoria().repaint();
-            vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
-        }
-
-        try{
+    private void crearCola() {
+        try {
+            if (colaCreada) {
+                this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada\n");
+            } else {
+                colaCreada = true;
+                vistaPrincipal.getPanelMemoria().setCola(cola);
+                vistaPrincipal.getPanelMemoria().repaint();
+                vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
+            }
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
             this.vistaPrincipal.setLblTamanio(elementos());
         } catch (ColaVacia e) {
@@ -194,22 +223,30 @@ public class ControladorSM {
      * de la vista, e informa el resultado en el historial.
      * Utiliza el algoritmo recursivo {@link Algoritmos#buscar}.
      */
-    private void buscar(){
-
-            String dato = this.vistaPrincipal.getTxtBuscar();
-            boolean encontrar = Algoritmos.buscar(cola, dato);
-            if (encontrar) {
-                this.vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
-                this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
-                this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
-                this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
-                
-                this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
-                this.vistaPrincipal.getPanelMemoria().repaint();
-
+    private void buscar() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            if (cola.colaVacia()) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
             } else {
-                vistaPrincipal.setTxtHistorial("Dato No Existente");
+                String dato = this.vistaPrincipal.getTxtBuscar();
+                boolean encontrar = Algoritmos.buscar(cola, dato);
+
+                if (encontrar) {
+                    this.vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
+                    this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
+                    this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
+                    this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
+
+                    this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
+                    this.vistaPrincipal.getPanelMemoria().repaint();
+
+                } else {
+                    vistaPrincipal.setTxtHistorial("Dato No Existente");
+                }
             }
+        }
 
     }
 
@@ -218,22 +255,26 @@ public class ControladorSM {
      * lo encola en la Cola y actualiza la vista: panel gráfico, historial,
      * tamaño, frente y fin de la cola.
      */
-    private void encolar(){
+    private void encolar() {
+        if (!colaCreada) {
+            vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
+        } else {
 
-        String dato = vistaPrincipal.getTxtValorEncolar().getText();
-        if(dato.equals("") || dato.isEmpty()){
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
-        }else if(dato.length() > 6) {
-            vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener \nMas De 6 Caracteres");
-        }else{
-            cola.encolar(dato);
-            vistaPrincipal.getPanelMemoria().setCola(cola);
-            vistaPrincipal.getPanelMemoria().actualizarTamanioPanel();
-            vistaPrincipal.getPanelMemoria().repaint();
-            vistaPrincipal.setTxtValor("");
-            vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
+            String dato = vistaPrincipal.getTxtValorEncolar().getText();
+            if (dato.equals("") || dato.isEmpty()) {
+                vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
+            } else if (dato.length() > 6) {
+                vistaPrincipal.setTxtHistorial("Error \u25BC \nEl Dato No Puede Tener \nMas De 6 Caracteres");
+            } else {
+                cola.encolar(dato);
+                vistaPrincipal.getPanelMemoria().setCola(cola);
+                vistaPrincipal.getPanelMemoria().actualizarTamanioPanel();
+                vistaPrincipal.getPanelMemoria().repaint();
+                vistaPrincipal.setTxtValor("");
+                vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
 
-            try{
+            }
+            try {
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
                 this.vistaPrincipal.setLblTamanio(elementos());
                 this.vistaPrincipal.setLblFin(dato);
@@ -249,18 +290,24 @@ public class ControladorSM {
      * Registra la acción en el historial.
      */
 
-    private void descendente(){
-        try {
-            Algoritmos.quickSortDescendente(cola);
-            this.vistaPrincipal.getPanelMemoria().setCola(cola);
-            this.vistaPrincipal.getPanelMemoria().repaint();
-            vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
+    private void descendentes() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                Algoritmos.quickSortDescendente(cola);
+                this.vistaPrincipal.getPanelMemoria().setCola(cola);
+                this.vistaPrincipal.getPanelMemoria().repaint();
+                vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
 
-        }catch(ColaVacia e){
-            etiquetasN();
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                etiquetasN();
+            }
         }
+
     }
 
     /**
@@ -268,65 +315,79 @@ public class ControladorSM {
      * y actualiza el panel gráfico con el nuevo orden.
      * Registra la acción en el historial.
      */
-    private void ascendente(){
-        try {
-            Algoritmos.quickSortAscendente(cola);
-            this.vistaPrincipal.getPanelMemoria().setCola(cola);
-            this.vistaPrincipal.getPanelMemoria().repaint();
-            vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
-            this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
-            this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
-            Algoritmos.quickSortAscendente(cola); // para que la cola quede en su orden original
-        }catch(ColaVacia e){
-            etiquetasN();
+    private void ascendentes() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                Algoritmos.quickSortAscendente(cola);
+                this.vistaPrincipal.getPanelMemoria().setCola(cola);
+                this.vistaPrincipal.getPanelMemoria().repaint();
+                vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
+                this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
+
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                etiquetasN();
+            }
+        }
+
+    }
+
+    /**
+     * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
+     * indicando que la cola está vacía o que ocurrió un error.
+     */
+    public void etiquetasN() {
+        this.vistaPrincipal.setLblFrente("N");
+        this.vistaPrincipal.setLblFin("N");
+    }
+
+    /**
+     * Resalta visualmente el primer elemento de la cola en el panel gráfico.
+     * Si la cola está vacía, muestra un mensaje de error en el historial.
+     */
+    private void verPrimero() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                if (cola.colaVacia()) {
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia\n");
+                } else {
+                    vistaPrincipal.setTxtHistorial("Primer Elemento \u25BC \n" + cola.primero());
+                    vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
+                    vistaPrincipal.getPanelMemoria().repaint();
+                }
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
+            }
         }
     }
 
-     /**
-      * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
-      * indicando que la cola está vacía o que ocurrió un error.
-      */
-     public void etiquetasN(){
-         this.vistaPrincipal.setLblFrente("N");
-         this.vistaPrincipal.setLblFin("N");
-     }
+    /**
+     * Resalta visualmente el último elemento de la cola en el panel gráfico.
+     * Si la cola está vacía, muestra un mensaje de error en el historial.
+     */
+    private void verUltimo() {
+        if (!colaCreada) {
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+        } else {
+            try {
+                if(cola.colaVacia()){
+                    this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Esta Vacia\n");
+                }else {
+                    vistaPrincipal.setTxtHistorial("Último Elemento \u25BC \n" + Algoritmos.ultimoElemento(cola));
+                    vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
+                    vistaPrincipal.getPanelMemoria().repaint();
+                }
+            } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Esta Vacia");
+            }
+        }
+    }
 
-     /**
-      * Resalta visualmente el primer elemento de la cola en el panel gráfico.
-      * Si la cola está vacía, muestra un mensaje de error en el historial.
-      */
-     private void verPrimero(){
-         try {
-             if (cola.colaVacia()) {
-                 vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-             } else {
-                 vistaPrincipal.setTxtHistorial("Primer Elemento \u25BC \n" + cola.primero());
-                 vistaPrincipal.getPanelMemoria().setRemarcarPrimero(true);
-                 vistaPrincipal.getPanelMemoria().repaint();
-             }
-         }catch(ColaVacia e){
-
-         }
-     }
-
-     /**
-      * Resalta visualmente el último elemento de la cola en el panel gráfico.
-      * Si la cola está vacía, muestra un mensaje de error en el historial.
-      */
-     private void verUltimo() {
-         try {
-             if (cola.colaVacia()) {
-                 vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
-             } else {
-                     vistaPrincipal.setTxtHistorial("Último Elemento \u25BC \n" + Algoritmos.ultimoElemento(cola));
-                     vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
-                     vistaPrincipal.getPanelMemoria().repaint();
-             }
-         } catch (ColaVacia e) {
-
-         }
-     }
-
- }
+}
 
