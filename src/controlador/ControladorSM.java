@@ -31,6 +31,10 @@ public class ControladorSM {
      */
     private FrmSimulador vistaPrincipal;
 
+    /**
+     * Bandera que indica si la cola ha sido inicializada gráficamente mediante el botón "Crear Cola".
+     * Se utiliza para validar que la cola exista antes de ejecutar cualquier operación.
+     */
     private boolean colaCreada = false;
 
     /**
@@ -98,9 +102,9 @@ public class ControladorSM {
 
     /**
      * Invierte el orden de los elementos de la cola y actualiza la vista.
-     * Realiza la inversión, refresca el panel gráfico y las etiquetas de información,
-     * y luego vuelve a invertir para dejar la cola en su estado original visualmente.
-     * Si la cola está vacía, muestra las etiquetas en estado nulo.
+     * Realiza la inversión, refresca el panel gráfico y las etiquetas de información
+     * (tamaño, frente y fin). Si la cola está vacía, muestra un mensaje de error
+     * en el historial y restablece las etiquetas en estado nulo.
      */
     private void invertirCola() {
         if (!colaCreada) {

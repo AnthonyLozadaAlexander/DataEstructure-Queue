@@ -33,8 +33,14 @@ public class panelMemoria extends JPanel {
      */
     private boolean remarcarUltimo = false;
 
+    /**
+     * Indicador para resaltar visualmente el nodo del elemento buscado.
+     */
     private boolean remarcarBuscado  = false;
 
+    /**
+     * Dato del elemento buscado que se utilizará para localizar y resaltar su nodo gráfico.
+     */
     private String datoBuscado;
 
     /**
@@ -89,12 +95,25 @@ public class panelMemoria extends JPanel {
         this.remarcarBuscado = false;
     }
 
+    /**
+     * Define si se debe resaltar visualmente el nodo del elemento buscado.
+     * Cuando se establece en {@code true}, solo el nodo buscado será resaltado.
+     *
+     * @param buscado {@code true} para resaltar el nodo buscado; {@code false} en caso contrario
+     */
     public void setRemarcarBuscado(boolean buscado){
         this.remarcarBuscado = buscado;
         this.remarcarPrimero = false;
         this.remarcarUltimo = false;
     }
 
+    /**
+     * Establece el valor del dato que se desea resaltar visualmente en el panel gráfico.
+     * Este valor se utiliza junto con {@link #setRemarcarBuscado(boolean)} para identificar
+     * y colorear el nodo correspondiente durante el dibujado.
+     *
+     * @param dato el valor del elemento a resaltar en la cola
+     */
     public void setDatoBuscado(String dato){
         this.datoBuscado = dato;
     }

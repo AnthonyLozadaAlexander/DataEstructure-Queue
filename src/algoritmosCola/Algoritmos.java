@@ -135,6 +135,16 @@ public class Algoritmos {
     }
 
 
+    /**
+     * Busca un elemento dentro de la cola de forma recursiva sin destruirla.
+     * Delega la búsqueda al método recursivo {@link #buscarR} y restaura
+     * el orden original de la cola mediante {@code invertirCola()} al finalizar.
+     *
+     * @param <T>      tipo de los elementos de la cola
+     * @param cola     la cola en la que se realizará la búsqueda
+     * @param elemento el elemento a buscar dentro de la cola
+     * @return {@code true} si el elemento existe en la cola; {@code false} en caso contrario
+     */
     public static <T> boolean buscar(Cola<T> cola, T elemento) {
         boolean encontrado = false;
         if (!cola.colaVacia()) {
@@ -146,6 +156,16 @@ public class Algoritmos {
 
     }
 
+    /**
+     * Método recursivo interno que recorre la cola desencolando elementos uno a uno
+     * y comparándolos con el elemento buscado. Restaura cada elemento en la cola
+     * al retornar de la recursión.
+     *
+     * @param <T>      tipo de los elementos de la cola
+     * @param cola     la cola que se recorre recursivamente
+     * @param elemento el elemento a buscar
+     * @return {@code true} si el elemento fue encontrado; {@code false} en caso contrario
+     */
     private static <T> boolean buscarR(Cola<T> cola, T elemento) {
         boolean encontrado = false;
         try {
@@ -193,6 +213,17 @@ public class Algoritmos {
         return ultimo;
     }
 
+    /**
+     * Método recursivo interno que recorre la cola desencolando elementos hasta
+     * encontrar el último (cuando la cola queda vacía tras desencolar).
+     * Restaura cada elemento reencolándolo en el retorno de la recursión
+     * para mantener la cola intacta.
+     *
+     * @param <T>  tipo de los elementos de la cola
+     * @param cola la cola que se recorre recursivamente
+     * @return el último elemento de la cola
+     * @throws ColaVacia si ocurre un error al desencolar elementos
+     */
     private static <T> T ultimoElementoDeLaColaR(Cola<T> cola) throws ColaVacia {
         T ultimoElemento = null;
         T guardar = null;
