@@ -1,4 +1,4 @@
-package Vista;
+package vista;
 
 import tadCola.Cola;
 import tadCola.ColaVacia;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * @see JPanel
  * @see Cola
  */
-public class PanelMemoria extends JPanel {
+public class panelMemoria extends JPanel {
 
     /**
      * La lista con los datos en formato de texto a representar gráficamente.
@@ -32,6 +32,16 @@ public class PanelMemoria extends JPanel {
      * Indicador para resaltar visualmente el nodo del final.
      */
     private boolean remarcarUltimo = false;
+
+    /**
+     * Indicador para resaltar visualmente el nodo del elemento buscado.
+     */
+    private boolean remarcarBuscado  = false;
+
+    /**
+     * Dato del elemento buscado que se utilizará para localizar y resaltar su nodo gráfico.
+     */
+    private String datoBuscado;
 
     /**
      * Establece la cola que debe graficarse en el panel extrayendo sus datos a una lista interna.
@@ -70,6 +80,7 @@ public class PanelMemoria extends JPanel {
     public void setRemarcarPrimero(boolean remarcar) {
         this.remarcarPrimero = remarcar;
         this.remarcarUltimo = false;
+        this.remarcarBuscado = false;
     }
 
     /**
@@ -81,6 +92,30 @@ public class PanelMemoria extends JPanel {
     public void setRemarcarUltimo(boolean remarcar) {
         this.remarcarUltimo = remarcar;
         this.remarcarPrimero = false;
+        this.remarcarBuscado = false;
+    }
+
+    /**
+     * Define si se debe resaltar visualmente el nodo del elemento buscado.
+     * Cuando se establece en {@code true}, solo el nodo buscado será resaltado.
+     *
+     * @param buscado {@code true} para resaltar el nodo buscado; {@code false} en caso contrario
+     */
+    public void setRemarcarBuscado(boolean buscado){
+        this.remarcarBuscado = buscado;
+        this.remarcarPrimero = false;
+        this.remarcarUltimo = false;
+    }
+
+    /**
+     * Establece el valor del dato que se desea resaltar visualmente en el panel gráfico.
+     * Este valor se utiliza junto con {@link #setRemarcarBuscado(boolean)} para identificar
+     * y colorear el nodo correspondiente durante el dibujado.
+     *
+     * @param dato el valor del elemento a resaltar en la cola
+     */
+    public void setDatoBuscado(String dato){
+        this.datoBuscado = dato;
     }
 
     /**
@@ -175,23 +210,28 @@ public class PanelMemoria extends JPanel {
         int alto = 40;
         int espacio = 40;
         int lado = 50;
+        int indexBuscado = 0;
 
-
-        Cola<String> colaAux = new TadCola<>("Aux");
         int i = 0;
         int totalElementos = datosGraficos.size(); // Elementos Actuales De La Cola
 
+        if(datosGraficos.contains(datoBuscado)){
+            indexBuscado = datosGraficos.indexOf(datoBuscado);
+        }
 
         for (i = 0; i < datosGraficos.size(); i++) {
             String dato = datosGraficos.get(i);
+
             Color colorOriginal = g.getColor(); // Guardar el color original
 
             int xi = (x + i * (ancho + espacio)); // calcular la posición x1 para el rectángulo actual del nodo siguiente
 
 
+
             //g.fillOval(80, 450 + 15, 10, 10);
             g.drawLine(85, 470, 200, 470); // puntero principio que apunta al primer elemento de la cola
             g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
+
 
             if (remarcarPrimero && i == 0) {
                 g.setColor(new Color(255, 243, 176, 150));
@@ -199,12 +239,17 @@ public class PanelMemoria extends JPanel {
                 g.setColor(colorOriginal); // Restaurar el color original
 
             } else if (remarcarUltimo && i == (totalElementos - 1)) {
-
                 g.setColor(new Color(255, 243, 176, 150));
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
+            }else if(remarcarBuscado && i == indexBuscado){
+                g.setColor(new Color(255, 243, 176, 150));
+                g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
+                g.setColor(colorOriginal); // Restaurar el color original
             }
+
+
 
             g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
             g.drawRect(xi, y, ancho, alto); // dibujar caja del nodo

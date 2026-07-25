@@ -1,8 +1,8 @@
 package main;
 
-import Controlador.ControladorSM;
+import controlador.ControladorSM;
 import tadCola.TadCola;
-import Vista.FrmSimulador;
+import vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 /**
  * Clase principal de arranque del Simulador Gráfico de Cola.
@@ -30,11 +30,11 @@ public class Main {
 
     public static void main(String[] args) {
         FlatIntelliJLaf.setup();
-        TadCola<String> Cola = new TadCola<>("Cola Principal");
+        TadCola<String> cola = new TadCola<>("Cola Principal");
         FrmSimulador vista = new FrmSimulador();
 
         // Controlador
-        ControladorSM controlador = new ControladorSM(Cola, vista);
+        ControladorSM controlador = new ControladorSM(cola, vista);
 
         // Metodos para la vista
         vista.setVisible(true); // ver la vista
