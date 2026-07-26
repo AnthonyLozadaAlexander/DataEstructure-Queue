@@ -273,30 +273,16 @@ public class FrmSimulador extends JFrame {
         {
             titulo.setBackground(new Color(0x2203bd));
             titulo.setName("titulo");
+            titulo.setLayout(new BorderLayout());
 
             //---- lblTitulo ----
             lblTitulo.setText("Simulador Grafico - Cola <String> ");
             lblTitulo.setFont(new Font("Cascadia Code", Font.BOLD, 18));
             lblTitulo.setBackground(Color.white);
             lblTitulo.setForeground(Color.white);
+            lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
             lblTitulo.setName("lblTitulo");
-
-            GroupLayout tituloLayout = new GroupLayout(titulo);
-            titulo.setLayout(tituloLayout);
-            tituloLayout.setHorizontalGroup(
-                tituloLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, tituloLayout.createSequentialGroup()
-                        .addContainerGap(396, Short.MAX_VALUE)
-                        .addComponent(lblTitulo)
-                        .addGap(377, 377, 377))
-            );
-            tituloLayout.setVerticalGroup(
-                tituloLayout.createParallelGroup()
-                    .addGroup(GroupLayout.Alignment.TRAILING, tituloLayout.createSequentialGroup()
-                        .addContainerGap(24, Short.MAX_VALUE)
-                        .addComponent(lblTitulo)
-                        .addGap(20, 20, 20))
-            );
+            titulo.add(lblTitulo, BorderLayout.CENTER);
         }
 
         //======== botones ========
@@ -441,7 +427,7 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(63, Short.MAX_VALUE))
+                        .addContainerGap(67, Short.MAX_VALUE))
             );
         }
 
@@ -469,7 +455,7 @@ public class FrmSimulador extends JFrame {
 
             //---- label7 ----
             label7.setText("[HISTORIAL]");
-            label7.setFont(new Font("Cascadia Code", Font.BOLD, 20));
+            label7.setFont(new Font("Cascadia Code", Font.BOLD, 19));
             label7.setBackground(Color.white);
             label7.setName("label7");
 
@@ -505,7 +491,7 @@ public class FrmSimulador extends JFrame {
 
             //---- lblOrdenamiento ----
             lblOrdenamiento.setText("[ORDENAMIENTO]");
-            lblOrdenamiento.setFont(new Font("Cascadia Code", Font.BOLD, 21));
+            lblOrdenamiento.setFont(new Font("Cascadia Code", Font.BOLD, 19));
             lblOrdenamiento.setBackground(Color.white);
             lblOrdenamiento.setName("lblOrdenamiento");
 
@@ -528,7 +514,7 @@ public class FrmSimulador extends JFrame {
 
             //---- lblEstado ----
             lblEstado.setText("[ESTADO]");
-            lblEstado.setFont(new Font("Cascadia Code", Font.BOLD, 21));
+            lblEstado.setFont(new Font("Cascadia Code", Font.BOLD, 19));
             lblEstado.setBackground(Color.white);
             lblEstado.setName("lblEstado");
 
@@ -538,23 +524,9 @@ public class FrmSimulador extends JFrame {
                 derechaLayout.createParallelGroup()
                     .addComponent(scrollPane1)
                     .addGroup(derechaLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addContainerGap()
                         .addGroup(derechaLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                                .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(btnAscendente, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnInvertir, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE))
-                                .addGap(12, 12, 12))
-                            .addComponent(lblOrdenamiento, GroupLayout.Alignment.TRAILING)
-                            .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                                .addComponent(label7)
-                                .addGap(25, 25, 25)))
-                        .addGap(0, 40, Short.MAX_VALUE))
-                    .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                        .addContainerGap(18, Short.MAX_VALUE)
-                        .addGroup(derechaLayout.createParallelGroup()
-                            .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
+                            .addGroup(derechaLayout.createSequentialGroup()
                                 .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.LEADING, false)
                                     .addGroup(derechaLayout.createSequentialGroup()
                                         .addComponent(lblTamano)
@@ -563,15 +535,29 @@ public class FrmSimulador extends JFrame {
                                     .addGroup(derechaLayout.createSequentialGroup()
                                         .addComponent(lblUltimo)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblFIn, GroupLayout.PREFERRED_SIZE, 127, GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblFIn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(derechaLayout.createSequentialGroup()
                                         .addComponent(lblPrimero)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblFrente, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap())
+                                        .addComponent(lblFrente, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 17, Short.MAX_VALUE))
                             .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                                .addComponent(lblEstado)
-                                .addGap(70, 70, 70))))
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(derechaLayout.createParallelGroup()
+                                    .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
+                                        .addComponent(label7)
+                                        .addGap(58, 58, 58))
+                                    .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
+                                        .addComponent(lblEstado)
+                                        .addGap(76, 76, 76))
+                                    .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
+                                        .addGroup(derechaLayout.createParallelGroup()
+                                            .addComponent(lblOrdenamiento)
+                                            .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(btnAscendente, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(btnInvertir, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(39, 39, 39))))))
             );
             derechaLayout.setVerticalGroup(
                 derechaLayout.createParallelGroup()
@@ -590,7 +576,7 @@ public class FrmSimulador extends JFrame {
                         .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUltimo)
                             .addComponent(lblFIn))
-                        .addGap(33, 33, 33)
+                        .addGap(34, 34, 34)
                         .addComponent(lblOrdenamiento)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnAscendente)
@@ -598,10 +584,10 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnDescendente)
                         .addGap(18, 18, 18)
                         .addComponent(btnInvertir)
-                        .addGap(29, 29, 29)
+                        .addGap(28, 28, 28)
                         .addComponent(label7)
                         .addGap(18, 18, 18)
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
             );
         }
 
@@ -621,21 +607,21 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap())
+                    .addGap(6, 6, 6))
                 .addComponent(titulo, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addComponent(titulo, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                    .addGap(4, 4, 4)
+                    .addComponent(titulo, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(centro, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(derecha, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGap(0, 0, 0))
         );
         pack();
@@ -644,7 +630,7 @@ public class FrmSimulador extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner - Grupo 02
+    // Generated using JFormDesigner Educational license - Daniel Sanchez (Anthony Lozada)
     private JPanel titulo;
     private JLabel lblTitulo;
     private JPanel botones;
