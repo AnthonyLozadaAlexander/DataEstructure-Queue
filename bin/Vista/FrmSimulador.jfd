@@ -10,11 +10,11 @@ new FormModel {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {seq l {space :p:383:p, comp label1:::p::p, space ::390:x}}"
+				"$horizontalGroup": "par l {seq t {space ::396:x, comp label1:::p::p, space :p:377:p}}"
 				"$verticalGroup": "par l {seq t {space ::24:x, comp label1:::p::p, space :p:20:p}}"
 			} ) {
 				name: "titulo"
-				"background": new java.awt.Color( 0, 0, 51, 255 )
+				"background": new java.awt.Color( 34, 3, 189, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "Simulador Grafico - Cola <String> "

@@ -36,7 +36,7 @@ public class panelMemoria extends JPanel {
     /**
      * Indicador para resaltar visualmente el nodo del elemento buscado.
      */
-    private boolean remarcarBuscado  = false;
+    private boolean remarcarBuscado = false;
 
     /**
      * Dato del elemento buscado que se utilizará para localizar y resaltar su nodo gráfico.
@@ -101,7 +101,7 @@ public class panelMemoria extends JPanel {
      *
      * @param buscado {@code true} para resaltar el nodo buscado; {@code false} en caso contrario
      */
-    public void setRemarcarBuscado(boolean buscado){
+    public void setRemarcarBuscado(boolean buscado) {
         this.remarcarBuscado = buscado;
         this.remarcarPrimero = false;
         this.remarcarUltimo = false;
@@ -114,7 +114,7 @@ public class panelMemoria extends JPanel {
      *
      * @param dato el valor del elemento a resaltar en la cola
      */
-    public void setDatoBuscado(String dato){
+    public void setDatoBuscado(String dato) {
         this.datoBuscado = dato;
     }
 
@@ -215,7 +215,7 @@ public class panelMemoria extends JPanel {
         int i = 0;
         int totalElementos = datosGraficos.size(); // Elementos Actuales De La Cola
 
-        if(datosGraficos.contains(datoBuscado)){
+        if (datosGraficos.contains(datoBuscado)) {
             indexBuscado = datosGraficos.indexOf(datoBuscado);
         }
 
@@ -223,9 +223,15 @@ public class panelMemoria extends JPanel {
             String dato = datosGraficos.get(i);
 
             Color colorOriginal = g.getColor(); // Guardar el color original
-
             int xi = (x + i * (ancho + espacio)); // calcular la posición x1 para el rectángulo actual del nodo siguiente
 
+            if (i == 0) {
+                g.drawLine(85, 470, 200, 470); // puntero principio que apunta
+                // Punta de flecha (triángulo) apuntando al primer elemento (x = 200, y = 470)
+                int[] xPointsPrincipio = {200, 200 - 8, 200 - 8};
+                int[] yPointsPrincipio = {470, 470 - 4, 470 + 4};
+                g.fillPolygon(xPointsPrincipio, yPointsPrincipio, 3);
+            }
 
 
             //g.fillOval(80, 450 + 15, 10, 10);
@@ -243,12 +249,11 @@ public class panelMemoria extends JPanel {
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
-            }else if(remarcarBuscado && i == indexBuscado){
+            } else if (remarcarBuscado && i == indexBuscado) {
                 g.setColor(new Color(255, 243, 176, 150));
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
             }
-
 
 
             g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
@@ -262,10 +267,13 @@ public class panelMemoria extends JPanel {
                 int xLlegada = xOrigen + espacio; // fin ()
                 int yCentro = y + (alto / 2); // mitad del rectangulo arista lateral derecho
 
-
                 // g.drawLine(xCentro, 450, xSalida, yCentro); // flecha que conecta al nodo fin con el puntero fin
                 g.fillOval((xOrigen - 12), yCentro - 5, 10, 10);// dibujar circulo que conecta al nodo siguiente
                 g.drawLine((xOrigen - 10), yCentro, xLlegada, yCentro); // flecha que conecta al nodo siguiente
+
+                int[] xPoints = {xLlegada, xLlegada - 8, xLlegada - 8};
+                int[] yPoints = {yCentro, yCentro - 4, yCentro + 4};
+                g.fillPolygon(xPoints, yPoints, 3);
 
                 // else para identificar el ultimo elemento de la  cola y dibujar la diagonal de null y conectar las flechas con el nodo fin
             } else {
@@ -273,6 +281,12 @@ public class panelMemoria extends JPanel {
                 g.drawLine(xi + 45, y + 40, xi + 60, y); // linea diagonal de la caja del nodo siguiente para representar el null del ultimo elemento
                 g.drawLine(65 + 25, 275, xi + (ancho / 2), 275); // linea horizontal que conecta el puntero fin con el nodo fin
                 g.drawLine(xi + (ancho / 2), 275, xi + (ancho / 2), y); // linea vertical que conecta el puntero fin con el nodo fin
+
+                int xFinArrow = xi + (ancho / 2);             // Calculamos el centro en X
+                int[] xPointsFin = {xFinArrow, xFinArrow - 4, xFinArrow + 4}; // Centro,
+                int[] yPointsFin = {y, y - 8, y - 8};         // Punta en el techo (y) y
+                g.fillPolygon(xPointsFin, yPointsFin, 3);     // Dibujamos el triángulo
+
             }
 
         }

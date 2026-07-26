@@ -90,7 +90,7 @@ public class ControladorSM {
      *
      * @return número de elementos como {@code String}
      */
-    private String elementos() {
+    private String tamanio() {
         String info = "";
         if (cola.numElemCola() > 0) {
             info = String.valueOf(cola.numElemCola());
@@ -116,7 +116,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
 
                 this.vistaPrincipal.setTxtHistorial("Cola Invertida");
-                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblTamanio(tamanio());
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
                 this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
 
@@ -146,7 +146,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
                 this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
                 this.vistaPrincipal.setTxtHistorial("Cola Vaciada");
-                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblTamanio(tamanio());
                 etiquetasN();
             }
         }
@@ -166,7 +166,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
                 this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
                 this.vistaPrincipal.setTxtHistorial("Primer Elemento Quitado");
-                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblTamanio(tamanio());
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
 
@@ -190,7 +190,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setCola(cola);
                 this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar la cola
                 this.vistaPrincipal.setTxtHistorial("Dato Desencolado \u25BC" + "\n" + dato);
-                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblTamanio(tamanio());
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
 
             } catch (ColaVacia e) {
@@ -216,7 +216,7 @@ public class ControladorSM {
                 vistaPrincipal.setTxtHistorial("Cola Creada Con Exito");
             }
             this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-            this.vistaPrincipal.setLblTamanio(elementos());
+            this.vistaPrincipal.setLblTamanio(tamanio());
         } catch (ColaVacia e) {
             etiquetasN();
         }
@@ -235,23 +235,24 @@ public class ControladorSM {
                 this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
             } else {
                 String dato = this.vistaPrincipal.getTxtBuscar();
-                boolean encontrar = Algoritmos.buscar(cola, dato);
+                if(dato.isEmpty() || dato.equals("")){
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
+                }else {
+                    boolean encontrar = Algoritmos.buscar(cola, dato);
+                    if (encontrar) {
+                        this.vistaPrincipal.setTxtHistorial("Dato Existente: \u25BC" + "\n" + dato);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
+                        this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
+                        this.vistaPrincipal.getPanelMemoria().repaint();
 
-                if (encontrar) {
-                    this.vistaPrincipal.setTxtHistorial("Dato Encontrado \u25BC" + "\n" + dato);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
-
-                    this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
-                    this.vistaPrincipal.getPanelMemoria().repaint();
-
-                } else {
-                    vistaPrincipal.setTxtHistorial("Dato No Existente");
+                    } else {
+                        vistaPrincipal.setTxtHistorial("Dato No Existente");
+                    }
                 }
             }
         }
-
     }
 
     /**
@@ -276,11 +277,10 @@ public class ControladorSM {
                 vistaPrincipal.getPanelMemoria().repaint();
                 vistaPrincipal.setTxtValor("");
                 vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
-
             }
             try {
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-                this.vistaPrincipal.setLblTamanio(elementos());
+                this.vistaPrincipal.setLblTamanio(tamanio());
                 this.vistaPrincipal.setLblFin(dato);
             } catch (ColaVacia e) {
                 etiquetasN();
@@ -327,7 +327,7 @@ public class ControladorSM {
                 Algoritmos.quickSortAscendente(cola);
                 this.vistaPrincipal.getPanelMemoria().setCola(cola);
                 this.vistaPrincipal.getPanelMemoria().repaint();
-                vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+                this.vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
                 this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
                 this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));

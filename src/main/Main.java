@@ -4,6 +4,7 @@ import controlador.ControladorSM;
 import tadCola.TadCola;
 import vista.FrmSimulador;
 import com.formdev.flatlaf.FlatIntelliJLaf;
+
 /**
  * Clase principal de arranque del Simulador Gráfico de Cola.
  * <p>
