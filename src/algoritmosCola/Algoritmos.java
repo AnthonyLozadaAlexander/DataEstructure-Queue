@@ -30,7 +30,7 @@ public class Algoritmos {
      * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
-    public static <T> void quickSortAscendente(Cola<T> original) throws ColaVacia{
+    public static <T> void quickSortAscendente(Cola<T> original) throws ColaVacia {
         ordenarQuickSortAscendente(original);
     }
 
@@ -46,10 +46,10 @@ public class Algoritmos {
 
     private static <T> void ordenarQuickSortAscendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
-        TadCola<T> menor =  new TadCola<>("Menor");
-        TadCola<T> mayor =  new TadCola<>("Mayor");
+        TadCola<T> menor = new TadCola<>("Menor");
+        TadCola<T> mayor = new TadCola<>("Mayor");
 
-        if(original.numElemCola() > 1) {
+        if (original.numElemCola() > 1) {
             pivot = original.desencolar(); // toma el pivote
 
             while (!(original.colaVacia())) {
@@ -71,7 +71,7 @@ public class Algoritmos {
 
             original.encolar(pivot);
 
-            while(!mayor.colaVacia()){
+            while (!mayor.colaVacia()) {
                 original.encolar(mayor.desencolar());
             }
 
@@ -87,7 +87,7 @@ public class Algoritmos {
      * @throws ColaVacia si la cola se encuentra vacía o si ocurre un error al desencolar elementos
      */
 
-    public static <T> void quickSortDescendente(Cola<T> original) throws ColaVacia{
+    public static <T> void quickSortDescendente(Cola<T> original) throws ColaVacia {
         ordenarQuickSortDescendente(original);
     }
 
@@ -102,10 +102,10 @@ public class Algoritmos {
      */
     private static <T> void ordenarQuickSortDescendente(Cola<T> original) throws ColaVacia {
         T pivot = null;
-        TadCola<T> menor =  new TadCola<>("Menor");
-        TadCola<T> mayor =  new TadCola<>("Mayor");
+        TadCola<T> menor = new TadCola<>("Menor");
+        TadCola<T> mayor = new TadCola<>("Mayor");
 
-        if(original.numElemCola() > 1) {
+        if (original.numElemCola() > 1) {
             pivot = original.desencolar(); // toma el pivote
 
             while (!(original.colaVacia())) {
@@ -127,7 +127,7 @@ public class Algoritmos {
 
             original.encolar(pivot);
 
-            while(!menor.colaVacia()){
+            while (!menor.colaVacia()) {
                 original.encolar(menor.desencolar());
             }
 
@@ -199,14 +199,14 @@ public class Algoritmos {
      * @param <T>  tipo de los elementos de la cola
      * @param cola la cola de la que se desea obtener el último elemento
      * @return el elemento situado al final de la cola, o {@code null} si la cola
-     *         está vacía
+     * está vacía
      * @throws ColaVacia si ocurre un error al desencolar elementos
      */
 
     public static <T> T ultimoElemento(Cola<T> cola) throws ColaVacia {
         T ultimo = null;
         if (!cola.colaVacia()) {
-            ultimo = ultimoElementoDeLaColaR(cola);
+            ultimo = ultimoElementoR(cola);
             cola.invertirCola();
         }
 
@@ -224,13 +224,13 @@ public class Algoritmos {
      * @return el último elemento de la cola
      * @throws ColaVacia si ocurre un error al desencolar elementos
      */
-    private static <T> T ultimoElementoDeLaColaR(Cola<T> cola) throws ColaVacia {
+    private static <T> T ultimoElementoR(Cola<T> cola) throws ColaVacia {
         T ultimoElemento = null;
         T guardar = null;
 
         if (!cola.colaVacia()) {
             guardar = cola.desencolar();
-            ultimoElemento = ultimoElementoDeLaColaR(cola);
+            ultimoElemento = ultimoElementoR(cola);
             if (cola.colaVacia()) {
                 ultimoElemento = guardar;
             }
