@@ -171,6 +171,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
 
             } catch (ColaVacia e) {
+                this.vistaPrincipal.setTxtHistorial("\u25BC \nLa Cola Se Encuentra Vacia\n");
                 etiquetasN();
             }
         }
@@ -194,7 +195,7 @@ public class ControladorSM {
                 this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
 
             } catch (ColaVacia e) {
-                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                this.vistaPrincipal.setTxtHistorial("\n \u25BC \nLa Cola Se Encuentra Vacia\n");
                 etiquetasN();
             }
         }
@@ -277,13 +278,14 @@ public class ControladorSM {
                 vistaPrincipal.getPanelMemoria().repaint();
                 vistaPrincipal.setTxtValor("");
                 vistaPrincipal.setTxtHistorial("Dato Encolado \u25BC" + "\n" + dato);
-            }
-            try {
-                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-                this.vistaPrincipal.setLblTamanio(tamanio());
-                this.vistaPrincipal.setLblFin(dato);
-            } catch (ColaVacia e) {
-                etiquetasN();
+
+                try {
+                    this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                    this.vistaPrincipal.setLblTamanio(tamanio());
+                    this.vistaPrincipal.setLblFin(dato);
+                } catch (ColaVacia e) {
+                    etiquetasN();
+                }
             }
         }
     }
