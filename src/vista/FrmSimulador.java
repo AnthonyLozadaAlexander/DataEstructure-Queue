@@ -644,7 +644,7 @@ public class FrmSimulador extends JFrame {
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables  @formatter:off
-    // Generated using JFormDesigner Educational license - Daniel Sanchez (Anthony Lozada)
+    // Generated using JFormDesigner - Grupo 02
     private JPanel titulo;
     private JLabel lblTitulo;
     private JPanel botones;
