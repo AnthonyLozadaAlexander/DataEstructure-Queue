@@ -14,7 +14,7 @@ new FormModel {
 				"$verticalGroup": "par l {seq t {space ::24:x, comp label1:::p::p, space :p:20:p}}"
 			} ) {
 				name: "titulo"
-				"background": new java.awt.Color( 44, 5, 242, 255 )
+				"background": new java.awt.Color( 34, 3, 189, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label1"
 					"text": "Simulador Grafico - Cola <String> "

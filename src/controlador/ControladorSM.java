@@ -235,18 +235,22 @@ public class ControladorSM {
                 this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
             } else {
                 String dato = this.vistaPrincipal.getTxtBuscar();
-                boolean encontrar = Algoritmos.buscar(cola, dato);
+                if(dato.isEmpty() || dato.equals("")){
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
+                }else {
+                    boolean encontrar = Algoritmos.buscar(cola, dato);
 
-                if (encontrar) {
-                    this.vistaPrincipal.setTxtHistorial("Dato Existente: \u25BC" + "\n" + dato);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
-                    this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
-                    this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
-                    this.vistaPrincipal.getPanelMemoria().repaint();
+                    if (encontrar) {
+                        this.vistaPrincipal.setTxtHistorial("Dato Existente: \u25BC" + "\n" + dato);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarPrimero(false);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarUltimo(false);
+                        this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(true);
+                        this.vistaPrincipal.getPanelMemoria().setDatoBuscado(dato);
+                        this.vistaPrincipal.getPanelMemoria().repaint();
 
-                } else {
-                    vistaPrincipal.setTxtHistorial("Dato No Existente");
+                    } else {
+                        vistaPrincipal.setTxtHistorial("Dato No Existente");
+                    }
                 }
             }
         }

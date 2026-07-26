@@ -270,7 +270,7 @@ public class FrmSimulador extends JFrame {
 
         //======== titulo ========
         {
-            titulo.setBackground(new Color(0x2c05f2));
+            titulo.setBackground(new Color(0x2203bd));
             titulo.setName("titulo");
 
             //---- label1 ----
