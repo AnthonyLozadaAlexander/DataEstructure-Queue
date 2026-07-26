@@ -292,9 +292,10 @@ public class FrmSimulador extends JFrame {
             botones.setName("botones");
 
             //---- btnCrear ----
-            btnCrear.setText("+ Crear Cola");
+            btnCrear.setText(" Crear Cola");
             btnCrear.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnCrear.setForeground(new Color(0x5e9900));
+            btnCrear.setIcon(new ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\icons8-add-pequenio.png"));
             btnCrear.setName("btnCrear");
             btnCrear.addActionListener(e -> btnCrear(e));
 
@@ -311,9 +312,10 @@ public class FrmSimulador extends JFrame {
             lblInsertar.setName("lblInsertar");
 
             //---- btnEncolar ----
-            btnEncolar.setText("+ Encolar");
+            btnEncolar.setText(" Encolar");
             btnEncolar.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnEncolar.setForeground(new Color(0x0033ff));
+            btnEncolar.setIcon(new ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\masAzul.png"));
             btnEncolar.setName("btnEncolar");
 
             //---- txtValor ----
@@ -427,7 +429,7 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(67, Short.MAX_VALUE))
+                        .addContainerGap(45, Short.MAX_VALUE))
             );
         }
 
@@ -607,7 +609,7 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
+                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(6, 6, 6))
@@ -616,7 +618,7 @@ public class FrmSimulador extends JFrame {
         contentPaneLayout.setVerticalGroup(
             contentPaneLayout.createParallelGroup()
                 .addGroup(contentPaneLayout.createSequentialGroup()
-                    .addComponent(titulo, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+                    .addComponent(titulo, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addGroup(contentPaneLayout.createParallelGroup()
                         .addComponent(botones, GroupLayout.Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
