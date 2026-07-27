@@ -219,7 +219,7 @@ public class FrmSimulador extends JFrame {
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
-        // Generated using JFormDesigner Educational license - Daniel Sanchez (Anthony Lozada)
+        // Generated using JFormDesigner
         titulo = new JPanel();
         lblTitulo = new JLabel();
         botones = new JPanel();
