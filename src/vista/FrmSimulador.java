@@ -28,6 +28,7 @@ public class FrmSimulador extends JFrame {
     public FrmSimulador() {
         initComponents();
         txtHistorial.setEditable(false);
+        txtHistorial.setBackground(Color.WHITE);
         txtHistorial.setWrapStyleWord(true);
         txtHistorial.setLineWrap(true);
         

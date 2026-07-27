@@ -313,7 +313,6 @@ public class ControladorSM {
                 etiquetasN();
             }
         }
-
     }
 
     /**
