@@ -36,8 +36,7 @@ new FormModel {
 					"font": &Font0 new java.awt.Font( "Cascadia Code", 1, 16 )
 					"foreground": new java.awt.Color( 94, 153, 0, 255 )
 					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
-					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCrear", true ) )
-				} )
+					} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "label2"
 					"text": "COLA"

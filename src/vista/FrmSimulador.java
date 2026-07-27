@@ -5,7 +5,6 @@
 package vista;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import javax.swing.*;
 
 /**
@@ -218,16 +217,6 @@ public class FrmSimulador extends JFrame {
         return btnVerUltimo;
      }
 
-     /**
-      * Manejador de eventos para el botón Crear.
-      * Método generado automáticamente por JFormDesigner.
-      *
-      * @param e el evento de acción del botón
-      */
-     private void btnCrear(ActionEvent e) {
-
-     }
-
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner Educational license - Daniel Sanchez (Anthony Lozada)
@@ -298,7 +287,6 @@ public class FrmSimulador extends JFrame {
             btnCrear.setForeground(new Color(0x5e9900));
             btnCrear.setIcon(null);
             btnCrear.setName("btnCrear");
-            btnCrear.addActionListener(e -> btnCrear(e));
 
             //---- label2 ----
             label2.setText("COLA");

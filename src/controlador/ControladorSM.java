@@ -173,6 +173,7 @@ public class ControladorSM {
 
             } catch (ColaVacia e) {
                 this.vistaPrincipal.setTxtHistorial("\u25BC \nLa Cola Se Encuentra Vacia");
+                this.vistaPrincipal.setLblTamanio("0");
                 etiquetasN();
             }
         }
@@ -197,6 +198,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
             } catch (ColaVacia e) {
                 this.vistaPrincipal.setTxtHistorial("\n \u25BC \nLa Cola Se Encuentra Vacia");
+                this.vistaPrincipal.setLblTamanio("0");
                 etiquetasN();
             }
         }
