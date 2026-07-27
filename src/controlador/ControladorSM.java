@@ -302,13 +302,16 @@ public class ControladorSM {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
         } else {
             try {
-                Algoritmos.quickSortDescendente(cola);
-                this.vistaPrincipal.getPanelMemoria().setCola(cola);
-                this.vistaPrincipal.getPanelMemoria().repaint();
-                vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
-                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-                this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
-
+                if(cola.colaVacia()) {
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                }else {
+                    Algoritmos.quickSortDescendente(cola);
+                    this.vistaPrincipal.getPanelMemoria().setCola(cola);
+                    this.vistaPrincipal.getPanelMemoria().repaint();
+                    vistaPrincipal.setTxtHistorial("Cola Ordenada Descendentemente");
+                    this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                    this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
+                }
             } catch (ColaVacia e) {
                 this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
                 etiquetasN();
@@ -326,14 +329,17 @@ public class ControladorSM {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
         } else {
             try {
-                Algoritmos.quickSortAscendente(cola);
-                this.vistaPrincipal.getPanelMemoria().setCola(cola);
-                this.vistaPrincipal.getPanelMemoria().repaint();
-                this.vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
-                this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
-                this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
-                this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
-
+                if(cola.colaVacia()) {
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                }else {
+                    Algoritmos.quickSortAscendente(cola);
+                    this.vistaPrincipal.getPanelMemoria().setCola(cola);
+                    this.vistaPrincipal.getPanelMemoria().repaint();
+                    this.vistaPrincipal.setTxtHistorial("Cola Ordenada Ascendente");
+                    this.vistaPrincipal.setLblFrente(String.valueOf(cola.primero()));
+                    this.vistaPrincipal.setLblTamanio(String.valueOf(cola.numElemCola()));
+                    this.vistaPrincipal.setLblFin(Algoritmos.ultimoElemento(cola));
+                }
             } catch (ColaVacia e) {
                 this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
                 etiquetasN();

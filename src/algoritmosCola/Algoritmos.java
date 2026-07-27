@@ -130,7 +130,6 @@ public class Algoritmos {
             while (!menor.colaVacia()) {
                 original.encolar(menor.desencolar());
             }
-
         }
     }
 
