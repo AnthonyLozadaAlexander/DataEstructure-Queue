@@ -9,7 +9,7 @@ import vista.FrmSimulador;
  * Controlador principal de la aplicación siguiendo el patrón Arquitectónico Model-View-Controller (MVC).
  * <p>
  * Se encarga de capturar las acciones del usuario desde la vista {@link FrmSimulador},
- * invocar las operaciones sobre el modelo {@link TadCola} y los algoritmos de {@link Algoritmos},
+ * invocar las operaciones sobre el {@link TadCola} y los algoritmos de {@link Algoritmos},
  * y actualizar la interfaz gráfica correspondiente.
  * </p>
  *
