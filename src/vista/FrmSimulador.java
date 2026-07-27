@@ -160,8 +160,8 @@ public class FrmSimulador extends JFrame {
      *
      * @param dato texto con el valor del elemento frente
      */
-    public void setLblFrente(String dato){
-        lblFrente.setText(dato);
+    public void setLblPrincipio(String dato){
+        lblPrincipio.setText(dato);
     }
 
     /**
@@ -178,8 +178,8 @@ public class FrmSimulador extends JFrame {
      *
      * @param dato texto con el valor del elemento final
      */
-    public void setLblFin(String dato){
-        lblFIn.setText(dato);
+    public void setLblUltimo(String dato){
+        lblFin.setText(dato);
     }
 
     /**
@@ -255,9 +255,9 @@ public class FrmSimulador extends JFrame {
         label7 = new JLabel();
         lblTamanio = new JLabel();
         lblPrimero = new JLabel();
-        lblFrente = new JLabel();
+        lblPrincipio = new JLabel();
         lblUltimo = new JLabel();
-        lblFIn = new JLabel();
+        lblFin = new JLabel();
         lblOrdenamiento = new JLabel();
         btnAscendente = new JButton();
         btnDescendente = new JButton();
@@ -293,10 +293,10 @@ public class FrmSimulador extends JFrame {
             botones.setName("botones");
 
             //---- btnCrear ----
-            btnCrear.setText(" Crear Cola");
+            btnCrear.setText("+ Crear Cola");
             btnCrear.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnCrear.setForeground(new Color(0x5e9900));
-            btnCrear.setIcon(new ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\icons8-add-pequenio.png"));
+            btnCrear.setIcon(null);
             btnCrear.setName("btnCrear");
             btnCrear.addActionListener(e -> btnCrear(e));
 
@@ -313,10 +313,9 @@ public class FrmSimulador extends JFrame {
             lblInsertar.setName("lblInsertar");
 
             //---- btnEncolar ----
-            btnEncolar.setText(" Encolar");
+            btnEncolar.setText("+ Encolar");
             btnEncolar.setFont(new Font("Cascadia Code", Font.BOLD, 16));
             btnEncolar.setForeground(new Color(0x0033ff));
-            btnEncolar.setIcon(new ImageIcon("C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\masAzul.png"));
             btnEncolar.setName("btnEncolar");
 
             //---- txtValor ----
@@ -430,7 +429,7 @@ public class FrmSimulador extends JFrame {
                         .addComponent(btnBuscar, GroupLayout.PREFERRED_SIZE, 30, GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txtBuscar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(45, Short.MAX_VALUE))
+                        .addContainerGap(49, Short.MAX_VALUE))
             );
         }
 
@@ -474,11 +473,11 @@ public class FrmSimulador extends JFrame {
             lblPrimero.setBackground(Color.white);
             lblPrimero.setName("lblPrimero");
 
-            //---- lblFrente ----
-            lblFrente.setFont(new Font("Cascadia Code", Font.BOLD, 14));
-            lblFrente.setBackground(Color.white);
-            lblFrente.setText("N");
-            lblFrente.setName("lblFrente");
+            //---- lblPrincipio ----
+            lblPrincipio.setFont(new Font("Cascadia Code", Font.BOLD, 14));
+            lblPrincipio.setBackground(Color.white);
+            lblPrincipio.setText("N");
+            lblPrincipio.setName("lblPrincipio");
 
             //---- lblUltimo ----
             lblUltimo.setText("[ULTIMO]:");
@@ -486,11 +485,11 @@ public class FrmSimulador extends JFrame {
             lblUltimo.setBackground(Color.white);
             lblUltimo.setName("lblUltimo");
 
-            //---- lblFIn ----
-            lblFIn.setText("N");
-            lblFIn.setFont(new Font("Cascadia Code", Font.BOLD, 14));
-            lblFIn.setBackground(Color.white);
-            lblFIn.setName("lblFIn");
+            //---- lblFin ----
+            lblFin.setText("N");
+            lblFin.setFont(new Font("Cascadia Code", Font.BOLD, 14));
+            lblFin.setBackground(Color.white);
+            lblFin.setName("lblFin");
 
             //---- lblOrdenamiento ----
             lblOrdenamiento.setText("[ORDENAMIENTO]");
@@ -538,11 +537,11 @@ public class FrmSimulador extends JFrame {
                                     .addGroup(derechaLayout.createSequentialGroup()
                                         .addComponent(lblUltimo)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblFIn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(lblFin, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(derechaLayout.createSequentialGroup()
                                         .addComponent(lblPrimero)
                                         .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblFrente, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(lblPrincipio, GroupLayout.PREFERRED_SIZE, 105, GroupLayout.PREFERRED_SIZE)))
                                 .addGap(0, 17, Short.MAX_VALUE))
                             .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -554,12 +553,11 @@ public class FrmSimulador extends JFrame {
                                         .addComponent(lblEstado)
                                         .addGap(76, 76, 76))
                                     .addGroup(GroupLayout.Alignment.TRAILING, derechaLayout.createSequentialGroup()
-                                        .addGroup(derechaLayout.createParallelGroup()
-                                            .addComponent(lblOrdenamiento)
-                                            .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(btnAscendente, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnInvertir, GroupLayout.Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 150, GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(btnDescendente, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnInvertir, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(lblOrdenamiento, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnAscendente, GroupLayout.Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addGap(39, 39, 39))))))
             );
             derechaLayout.setVerticalGroup(
@@ -574,11 +572,11 @@ public class FrmSimulador extends JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblPrimero)
-                            .addComponent(lblFrente, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPrincipio, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(derechaLayout.createParallelGroup(GroupLayout.Alignment.BASELINE)
                             .addComponent(lblUltimo)
-                            .addComponent(lblFIn))
+                            .addComponent(lblFin))
                         .addGap(34, 34, 34)
                         .addComponent(lblOrdenamiento)
                         .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
@@ -610,7 +608,7 @@ public class FrmSimulador extends JFrame {
                     .addContainerGap()
                     .addComponent(botones, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 647, Short.MAX_VALUE)
+                    .addComponent(centro, GroupLayout.DEFAULT_SIZE, 648, Short.MAX_VALUE)
                     .addPreferredGap(LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(derecha, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
                     .addGap(6, 6, 6))
@@ -658,9 +656,9 @@ public class FrmSimulador extends JFrame {
     private JLabel label7;
     private JLabel lblTamanio;
     private JLabel lblPrimero;
-    private JLabel lblFrente;
+    private JLabel lblPrincipio;
     private JLabel lblUltimo;
-    private JLabel lblFIn;
+    private JLabel lblFin;
     private JLabel lblOrdenamiento;
     private JButton btnAscendente;
     private JButton btnDescendente;

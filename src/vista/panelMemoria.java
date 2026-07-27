@@ -131,8 +131,8 @@ public class panelMemoria extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
-        if (datosGraficos == null) { // si la cola aun no esta creada
-        } else {  // si la cola fue creada
+        if (datosGraficos != null) { // si la cola aun no esta creada
+          // si la cola fue creada
             dibujarReferencias(g2d);
             dibujarNodos(g2d);
         }

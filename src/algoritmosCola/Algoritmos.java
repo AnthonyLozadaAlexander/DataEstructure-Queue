@@ -150,9 +150,7 @@ public class Algoritmos {
             encontrado = buscarR(cola, elemento);
             cola.invertirCola(); // restaurar el orden original de la cola
         }
-
         return encontrado;
-
     }
 
     /**
@@ -208,7 +206,6 @@ public class Algoritmos {
             ultimo = ultimoElementoR(cola);
             cola.invertirCola();
         }
-
         return ultimo;
     }
 
@@ -235,7 +232,6 @@ public class Algoritmos {
             }
             cola.encolar(guardar); // restaurar cola
         }
-
         return ultimoElemento;
     }
 }

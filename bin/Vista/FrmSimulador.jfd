@@ -4,14 +4,14 @@ new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
 		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-			"$horizontalGroup": "par l {seq {space :p::p, comp botones:::p::p, space :p::p, comp centro::::647:x, space :p::p, comp derecha:::p::p, space :6:6:p}, comp titulo::l:::x}"
+			"$horizontalGroup": "par l {seq {space :p::p, comp botones:::p::p, space :p::p, comp centro::::648:x, space :p::p, comp derecha:::p::p, space :6:6:p}, comp titulo::l:::x}"
 			"$verticalGroup": "par l {seq l {comp titulo:::p:81:p, space :::p, par l {comp botones::t:::x, comp centro::l:::x, comp derecha::l:::x}, space :p:0:p}}"
 		} ) {
 			name: "this"
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "titulo"
-				"background": new java.awt.Color( 34, 3, 189, 255 )
+				"background": new java.awt.Color( 24, 2, 135, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblTitulo"
 					"text": "Simulador Grafico - Cola <String> "
@@ -25,17 +25,17 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {seq l {space :p:16:p, par l {par t:l {comp txtBuscar:::p:172:p, comp btnBuscar:::p:172:p}, par l:l::p {comp btnVerPrimero:::::x, comp btnVerUltimo::l:p:172:p}, par l:l::p {comp lblInsertar::l:p:96:p, comp btnEncolar::l:::x, comp txtValor:::::x, comp btnDesencolar:::::x, comp label4:::p:96:p, comp btnEliminarPrimero::l:::x, comp btnVaciarCola::l:p:172:p, comp label5::l:p:123:p, comp btnCrear::l:::x, comp label2::l:p:54:p}}, space ::24:x}}"
-				"$verticalGroup": "par l {seq l {space :p:12:p, comp label2:::p::p, space u:::p, comp btnCrear:::p::p, space u:::p, comp lblInsertar:::p::p, space s:::p, comp btnEncolar:::p::p, space s:::p, comp txtValor:::p::p, space u:::p, comp label4:::p::p, space u:::p, comp btnDesencolar:::p::p, space u:::p, comp btnEliminarPrimero:::p::p, space u:::p, comp btnVaciarCola:::p::p, space s:::p, comp label5:::p::p, space u:::p, comp btnVerPrimero:::p::p, space :p:12:p, comp btnVerUltimo:::p::p, space u:::p, comp btnBuscar:::p:30:p, space u:::p, comp txtBuscar:::p::p, space ::45:x}}"
+				"$verticalGroup": "par l {seq l {space :p:12:p, comp label2:::p::p, space u:::p, comp btnCrear:::p::p, space u:::p, comp lblInsertar:::p::p, space s:::p, comp btnEncolar:::p::p, space s:::p, comp txtValor:::p::p, space u:::p, comp label4:::p::p, space u:::p, comp btnDesencolar:::p::p, space u:::p, comp btnEliminarPrimero:::p::p, space u:::p, comp btnVaciarCola:::p::p, space s:::p, comp label5:::p::p, space u:::p, comp btnVerPrimero:::p::p, space :p:12:p, comp btnVerUltimo:::p::p, space u:::p, comp btnBuscar:::p:30:p, space u:::p, comp txtBuscar:::p::p, space ::49:x}}"
 			} ) {
 				name: "botones"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
 				"background": new java.awt.Color( 255, 255, 255, 255 )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnCrear"
-					"text": " Crear Cola"
+					"text": "+ Crear Cola"
 					"font": &Font0 new java.awt.Font( "Cascadia Code", 1, 16 )
 					"foreground": new java.awt.Color( 94, 153, 0, 255 )
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\icons8-add-pequenio.png" )
+					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					addEvent( new FormEvent( "java.awt.event.ActionListener", "actionPerformed", "btnCrear", true ) )
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
@@ -52,10 +52,9 @@ new FormModel {
 				} )
 				add( new FormComponent( "javax.swing.JButton" ) {
 					name: "btnEncolar"
-					"text": " Encolar"
+					"text": "+ Encolar"
 					"font": #Font0
 					"foreground": new java.awt.Color( 0, 51, 255, 255 )
-					"icon": new com.jformdesigner.model.SwingIcon( 1, "C:\\Users\\USUARIO\\OneDrive\\Documentos\\Estructuras\\ProjectQueue\\images\\masAzul.png" )
 				} )
 				add( new FormComponent( "javax.swing.JTextField" ) {
 					name: "txtValor"
@@ -113,8 +112,8 @@ new FormModel {
 				} )
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
-				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq {space :::p, par l {seq l {par l:::p {seq l {comp lblTamano:::p::p, space :::p, comp lblTamanio:::::x}, seq l {comp lblUltimo:::p::p, space :::p, comp lblFIn:::::x}, seq l {comp lblPrimero:::p::p, space :::p, comp lblFrente:::p:105:p}}, space :0:17:x}, seq t {space :0:0:x, par l {seq t {comp label7:::p::p, space :p:58:p}, seq t {comp lblEstado:::p::p, space :p:76:p}, seq t {par l {comp lblOrdenamiento:::p::p, par t:l::p {comp btnAscendente::l:::x, comp btnDescendente::t:::x, comp btnInvertir::l:p:150:p}}, space :p:39:p}}}}}}"
-				"$verticalGroup": "par l {seq l {space :p:13:p, comp lblEstado:::p::p, space s:::p, par b {comp lblTamano::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par b {comp lblPrimero::b:p::p, comp lblFrente::b:p:25:p}, space :p:18:p, par b {comp lblUltimo::b:p::p, comp lblFIn::b:p::p}, space :p:34:p, comp lblOrdenamiento:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space s:::p, comp btnInvertir:::p::p, space :p:28:p, comp label7:::p::p, space s:::p, comp scrollPane1::::247:x}}"
+				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq {space :::p, par l {seq l {par l:::p {seq l {comp lblTamano:::p::p, space :::p, comp lblTamanio:::::x}, seq l {comp lblUltimo:::p::p, space :::p, comp lblFin:::::x}, seq l {comp lblPrimero:::p::p, space :::p, comp lblPrincipio:::p:105:p}}, space :0:17:x}, seq t {space :0:0:x, par l {seq t {comp label7:::p::p, space :p:58:p}, seq t {comp lblEstado:::p::p, space :p:76:p}, seq t {par t:::p {comp btnDescendente::t:::x, comp btnInvertir::l:::x, comp lblOrdenamiento::l:::x, comp btnAscendente::l:::x}, space :p:39:p}}}}}}"
+				"$verticalGroup": "par l {seq l {space :p:13:p, comp lblEstado:::p::p, space s:::p, par b {comp lblTamano::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par b {comp lblPrimero::b:p::p, comp lblPrincipio::b:p:25:p}, space :p:18:p, par b {comp lblUltimo::b:p::p, comp lblFin::b:p::p}, space :p:34:p, comp lblOrdenamiento:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space s:::p, comp btnInvertir:::p::p, space :p:28:p, comp label7:::p::p, space s:::p, comp scrollPane1::::229:x}}"
 			} ) {
 				name: "derecha"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
@@ -151,7 +150,7 @@ new FormModel {
 					"background": #Color0
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblFrente"
+					name: "lblPrincipio"
 					"font": new java.awt.Font( "Cascadia Code", 1, 14 )
 					"background": #Color0
 					"text": "N"
@@ -163,7 +162,7 @@ new FormModel {
 					"background": #Color0
 				} )
 				add( new FormComponent( "javax.swing.JLabel" ) {
-					name: "lblFIn"
+					name: "lblFin"
 					"text": "N"
 					"font": new java.awt.Font( "Cascadia Code", 1, 14 )
 					"background": #Color0
