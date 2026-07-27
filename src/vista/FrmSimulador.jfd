@@ -11,7 +11,7 @@ new FormModel {
 			"background": new java.awt.Color( 255, 255, 255, 255 )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 				name: "titulo"
-				"background": new java.awt.Color( 34, 3, 189, 255 )
+				"background": new java.awt.Color( 24, 2, 135, 255 )
 				add( new FormComponent( "javax.swing.JLabel" ) {
 					name: "lblTitulo"
 					"text": "Simulador Grafico - Cola <String> "
@@ -114,7 +114,7 @@ new FormModel {
 			} )
 			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class org.jdesktop.layout.GroupLayout ) {
 				"$horizontalGroup": "par l {comp scrollPane1:::::x, seq {space :::p, par l {seq l {par l:::p {seq l {comp lblTamano:::p::p, space :::p, comp lblTamanio:::::x}, seq l {comp lblUltimo:::p::p, space :::p, comp lblFIn:::::x}, seq l {comp lblPrimero:::p::p, space :::p, comp lblFrente:::p:105:p}}, space :0:17:x}, seq t {space :0:0:x, par l {seq t {comp label7:::p::p, space :p:58:p}, seq t {comp lblEstado:::p::p, space :p:76:p}, seq t {par l {comp lblOrdenamiento:::p::p, par t:l::p {comp btnAscendente::l:::x, comp btnDescendente::t:::x, comp btnInvertir::l:p:150:p}}, space :p:39:p}}}}}}"
-				"$verticalGroup": "par l {seq l {space :p:13:p, comp lblEstado:::p::p, space s:::p, par b {comp lblTamano::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par b {comp lblPrimero::b:p::p, comp lblFrente::b:p:25:p}, space :p:18:p, par b {comp lblUltimo::b:p::p, comp lblFIn::b:p::p}, space :p:34:p, comp lblOrdenamiento:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space s:::p, comp btnInvertir:::p::p, space :p:28:p, comp label7:::p::p, space s:::p, comp scrollPane1::::247:x}}"
+				"$verticalGroup": "par l {seq l {space :p:13:p, comp lblEstado:::p::p, space s:::p, par b {comp lblTamano::b:p::p, comp lblTamanio::b:p::p}, space s:::p, par b {comp lblPrimero::b:p::p, comp lblFrente::b:p:25:p}, space :p:18:p, par b {comp lblUltimo::b:p::p, comp lblFIn::b:p::p}, space :p:34:p, comp lblOrdenamiento:::p::p, space u:::p, comp btnAscendente:::p::p, space s:::p, comp btnDescendente:::p::p, space s:::p, comp btnInvertir:::p::p, space :p:28:p, comp label7:::p::p, space s:::p, comp scrollPane1::::229:x}}"
 			} ) {
 				name: "derecha"
 				"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
