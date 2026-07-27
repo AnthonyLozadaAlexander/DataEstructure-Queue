@@ -8,12 +8,17 @@ import java.awt.*;
 import javax.swing.*;
 
 /**
- * Ventana principal del simulador gráfico de la estructura {@code cola<String>}
+ * Ventana principal del simulador gráfico de la estructura {@code Cola<String>}.
+ * <p>
  * Extiende {@link javax.swing.JFrame} y contiene todos los componentes visuales:
  * panel de botones, panel gráfico central de memoria y panel de información lateral.
- * Diseñado con JFormDesigner y adaptada para el patrón MVC.
+ * Diseñada con JFormDesigner y adaptada para el patrón MVC.
+ * </p>
  *
  * @author Grupo-02
+ * @version 1.0
+ * @see panelMemoria
+ * @see javax.swing.JFrame
  */
 public class FrmSimulador extends JFrame {
 
@@ -217,6 +222,10 @@ public class FrmSimulador extends JFrame {
         return btnVerUltimo;
      }
 
+    /**
+     * Inicializa y configura todos los componentes gráficos de la ventana.
+     * Método generado automáticamente por JFormDesigner; no debe modificarse manualmente.
+     */
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents  @formatter:off
         // Generated using JFormDesigner

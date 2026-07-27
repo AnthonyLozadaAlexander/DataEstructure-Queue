@@ -40,9 +40,16 @@ public class ControladorSM {
     /**
      * Crea el controlador, inyectando el modelo y la vista, y registra los
      * {@code ActionListener} de todos los botones de la interfaz gráfica.
+     * <p>
+     * Los botones registrados son: Crear Cola, Encolar, Desencolar, Eliminar Primero,
+     * Vaciar Cola, Invertir Cola, Ordenar Ascendente, Ordenar Descendente,
+     * Ver Primero, Ver Último y Buscar.
+     * </p>
      *
-     * @param cola           la cola de Strings que actúa como referencia de datos
-     * @param vistaPrincipal la ventana principal de la aplicación
+     * @param cola           la cola de tipo {@link TadCola} que actúa como modelo de datos
+     * @param vistaPrincipal la ventana principal {@link FrmSimulador} de la aplicación
+     * @see FrmSimulador
+     * @see TadCola
      */
 
     public ControladorSM(TadCola<String> cola, FrmSimulador vistaPrincipal) {
@@ -353,8 +360,11 @@ public class ControladorSM {
     }
 
     /**
-     * Restablece las etiquetas de frente y fin de la cola en la vista al valor {@code "N"},
+     * Restablece las etiquetas de principio y último de la cola en la vista al valor {@code "N"},
      * indicando que la cola está vacía o que ocurrió un error.
+     *
+     * @see FrmSimulador#setLblPrincipio(String)
+     * @see FrmSimulador#setLblUltimo(String)
      */
     public void etiquetasN() {
         this.vistaPrincipal.setLblPrincipio("N");

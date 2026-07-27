@@ -11,11 +11,16 @@ import java.util.ArrayList;
 /**
  * Componente gráfico personalizado que extiende {@link JPanel} para representar
  * visualmente la estructura de datos Cola y sus referencias (Principio y Fin).
+ * <p>
+ * Extrae los datos de la cola a una lista interna {@link java.util.ArrayList}
+ * y los dibuja como nodos enlazados con flechas y punteros de referencia.
+ * </p>
  *
  * @author Grupo-02
  * @version 1.0
  * @see JPanel
  * @see Cola
+ * @see TadCola
  */
 public class panelMemoria extends JPanel {
 
@@ -45,9 +50,14 @@ public class panelMemoria extends JPanel {
 
     /**
      * Establece la cola que debe graficarse en el panel extrayendo sus datos a una lista interna.
+     * <p>
+     * Utiliza una cola auxiliar {@link TadCola} para desencolar los elementos, copiarlos
+     * a la lista gráfica y restaurar la cola original sin destruirla.
      * Debe llamarse antes de invocar {@code repaint()} para actualizar la representación gráfica.
+     * </p>
      *
      * @param cola la cola de Strings a representar visualmente
+     * @see TadCola
      */
     public void setCola(Cola<String> cola) { // setter para extraer los datos de la cola para los graficos
         this.datosGraficos = new ArrayList<>();
@@ -132,7 +142,7 @@ public class panelMemoria extends JPanel {
         g2d.translate(0, -70); // mover el punto origen junto con el panel un poco hacia arriba
 
         if (datosGraficos != null) { // si la cola aun no esta creada
-          // si la cola fue creada
+            // si la cola fue creada
             dibujarReferencias(g2d);
             dibujarNodos(g2d);
         }
