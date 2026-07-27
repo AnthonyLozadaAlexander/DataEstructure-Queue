@@ -159,9 +159,9 @@ public class ControladorSM {
      * Si la cola está vacía, muestra las etiquetas en estado nulo.
      */
     private void quitarPrimero() {
-        if(!colaCreada){
+        if (!colaCreada) {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
-        }else {
+        } else {
             try {
                 cola.quitarPrimero();
                 this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con el primero quitado
@@ -237,9 +237,9 @@ public class ControladorSM {
                 this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
             } else {
                 String dato = this.vistaPrincipal.getTxtBuscar();
-                if(dato.isEmpty() || dato.equals("")){
+                if (dato.isEmpty() || dato.equals("")) {
                     this.vistaPrincipal.setTxtHistorial("Error \u25BC \nDebe Ingresar Un Dato");
-                }else {
+                } else {
                     boolean encontrar = Algoritmos.buscar(cola, dato);
                     if (encontrar) {
                         this.vistaPrincipal.setTxtHistorial("Dato Existente: \u25BC" + "\n" + dato);
@@ -303,9 +303,9 @@ public class ControladorSM {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
         } else {
             try {
-                if(cola.colaVacia()) {
+                if (cola.colaVacia()) {
                     this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
-                }else {
+                } else {
                     Algoritmos.quickSortDescendente(cola);
                     this.vistaPrincipal.getPanelMemoria().setCola(cola);
                     this.vistaPrincipal.getPanelMemoria().repaint();
@@ -331,9 +331,9 @@ public class ControladorSM {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
         } else {
             try {
-                if(cola.colaVacia()) {
+                if (cola.colaVacia()) {
                     this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
-                }else {
+                } else {
                     Algoritmos.quickSortAscendente(cola);
                     this.vistaPrincipal.getPanelMemoria().setCola(cola);
                     this.vistaPrincipal.getPanelMemoria().repaint();
@@ -390,9 +390,9 @@ public class ControladorSM {
             this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
         } else {
             try {
-                if(cola.colaVacia()){
+                if (cola.colaVacia()) {
                     this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Esta Vacia");
-                }else {
+                } else {
                     vistaPrincipal.setTxtHistorial("Ultimo Elemento \u25BC \n" + Algoritmos.ultimoElemento(cola));
                     vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
                     vistaPrincipal.getPanelMemoria().repaint();
