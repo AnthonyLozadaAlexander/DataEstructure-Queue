@@ -116,7 +116,7 @@ public class ControladorSM {
      */
     private void invertirCola() {
         if (!colaCreada) {
-            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada\n");
+            this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola No Ha Sido Creada");
         } else {
             try {
                 cola.invertirCola();
@@ -127,13 +127,10 @@ public class ControladorSM {
                 this.vistaPrincipal.setLblTamanio(tamanio());
                 this.vistaPrincipal.setLblPrincipio(String.valueOf(cola.primero()));
                 this.vistaPrincipal.setLblUltimo(Algoritmos.ultimoElemento(cola));
-
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
-                this.vistaPrincipal.getPanelMemoria().setCola(cola); // manda la cola, con la cola invertida
-                this.vistaPrincipal.getPanelMemoria().repaint(); // manda a redibujar
 
             } catch (ColaVacia e) {
-                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia\n");
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
                 this.etiquetasN();
             }
         }
@@ -179,7 +176,7 @@ public class ControladorSM {
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
 
             } catch (ColaVacia e) {
-                this.vistaPrincipal.setTxtHistorial("\u25BC \nLa Cola Se Encuentra Vacia");
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
                 this.vistaPrincipal.setLblTamanio("0");
                 etiquetasN();
             }
@@ -204,7 +201,7 @@ public class ControladorSM {
                 this.vistaPrincipal.setLblPrincipio(String.valueOf(cola.primero()));
                 this.vistaPrincipal.getPanelMemoria().setRemarcarBuscado(false);
             } catch (ColaVacia e) {
-                this.vistaPrincipal.setTxtHistorial("\n \u25BC \nLa Cola Se Encuentra Vacia");
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Se Encuentra Vacia");
                 this.vistaPrincipal.setLblTamanio("0");
                 etiquetasN();
             }
@@ -219,7 +216,7 @@ public class ControladorSM {
     private void crearCola() {
         try {
             if (colaCreada) {
-                this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Ya Fue Creada\n");
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Ya Fue Creada");
             } else {
                 colaCreada = true;
                 vistaPrincipal.getPanelMemoria().setCola(cola);
@@ -403,14 +400,14 @@ public class ControladorSM {
         } else {
             try {
                 if (cola.colaVacia()) {
-                    this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Esta Vacia");
+                    this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
                 } else {
                     vistaPrincipal.setTxtHistorial("Ultimo Elemento \u25BC \n" + Algoritmos.ultimoElemento(cola));
                     vistaPrincipal.getPanelMemoria().setRemarcarUltimo(true);
                     vistaPrincipal.getPanelMemoria().repaint();
                 }
             } catch (ColaVacia e) {
-                this.vistaPrincipal.setTxtHistorial("\nError \u25BC \nLa Cola Esta Vacia");
+                this.vistaPrincipal.setTxtHistorial("Error \u25BC \nLa Cola Esta Vacia");
             }
         }
     }
