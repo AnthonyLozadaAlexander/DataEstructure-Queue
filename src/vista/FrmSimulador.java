@@ -272,7 +272,7 @@ public class FrmSimulador extends JFrame {
 
         //======== titulo ========
         {
-            titulo.setBackground(new Color(0x2203bd));
+            titulo.setBackground(new Color(0x180287));
             titulo.setName("titulo");
             titulo.setLayout(new BorderLayout());
 
@@ -590,7 +590,7 @@ public class FrmSimulador extends JFrame {
                         .addGap(28, 28, 28)
                         .addComponent(label7)
                         .addGap(18, 18, 18)
-                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
+                        .addComponent(scrollPane1, GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
             );
         }
 
