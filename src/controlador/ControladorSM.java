@@ -97,6 +97,7 @@ public class ControladorSM {
         } else {
             info = "0";
         }
+
         return info;
     }
 
@@ -338,7 +339,6 @@ public class ControladorSM {
                 etiquetasN();
             }
         }
-
     }
 
     /**
