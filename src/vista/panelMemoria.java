@@ -240,17 +240,17 @@ public class panelMemoria extends JPanel {
 
 
             if (remarcarPrimero && i == 0) {
-                g.setColor(new Color(255, 243, 176, 150));
+                g.setColor(new Color(220, 205, 55, 90));
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
 
             } else if (remarcarUltimo && i == (totalElementos - 1)) {
-                g.setColor(new Color(255, 243, 176, 150));
+                g.setColor(new Color(220, 205, 55, 90));
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.drawLine(xi + 45, y, xi + 45, y + 40); // diagonal para formar la caja de referencia del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
             } else if (remarcarBuscado && i == indexBuscado) {
-                g.setColor(new Color(255, 243, 176, 150));
+                g.setColor(new Color(220, 205, 55, 90));
                 g.fillRect(xi, y, 45, alto); // dibujar caja del nodo
                 g.setColor(colorOriginal); // Restaurar el color original
             }
